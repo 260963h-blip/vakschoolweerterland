@@ -1,0 +1,3240 @@
+<!DOCTYPE html>
+<html lang="nl" xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coöperatie Vakschool Weerterland U.A. — Opzet & Strategie</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blauw: #1B2A4A;
+    --blauw-diep: #0F1E35;
+    --blauw-licht: #EDF0F5;
+    --oranje: #C04E20;
+    --oranje-licht: #F7EDE6;
+    --groen: #27AE60;
+    --groen-licht: #EAF3DE;
+    --paars: #7F77DD;
+    --tekst: #1A1A2E;
+    --tekst-sub: #555566;
+    --rand: #E8E8F0;
+    --achtergrond: #F8F6F3;
+    --wit: #FFFFFF;
+    --nav-breedte: 260px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    color: var(--tekst);
+    background: var(--achtergrond);
+    display: flex;
+    min-height: 100vh;
+  }
+
+  /* ── NAVIGATIE ─────────────────────────────────────────────────── */
+  nav {
+    width: var(--nav-breedte);
+    min-height: 100vh;
+    background: var(--wit);
+    border-right: 1px solid var(--rand);
+    position: fixed;
+    top: 0; left: 0;
+    display: flex;
+    flex-direction: column;
+    z-index: 100;
+    overflow-y: auto;
+  }
+
+  .nav-logo {
+    padding: 28px 24px 20px;
+    border-bottom: 1px solid var(--rand);
+  }
+
+  .nav-logo-naam {
+    font-family: 'DM Serif Display', serif;
+    font-size: 15px;
+    color: var(--blauw);
+    line-height: 1.3;
+    margin-bottom: 4px;
+  }
+
+  .nav-logo-sub {
+    font-size: 11px;
+    color: var(--tekst-sub);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .nav-sectie-label {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--tekst-sub);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 20px 24px 6px;
+  }
+
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 24px;
+    font-size: 13px;
+    color: var(--tekst-sub);
+    text-decoration: none;
+    transition: all 0.15s;
+    border-left: 3px solid transparent;
+    line-height: 1.3;
+  }
+
+  .nav-item:hover {
+    color: var(--blauw);
+    background: #EDF0F5;
+    border-left-color: var(--oranje);
+  }
+
+  .nav-item.actief {
+    color: var(--blauw);
+    background: #EDF0F5;
+    border-left-color: var(--oranje);
+    font-weight: 500;
+  }
+
+  .nav-item-nr {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--oranje);
+    min-width: 18px;
+    flex-shrink: 0;
+  }
+
+  .nav-tag {
+    font-size: 9px;
+    font-weight: 600;
+    padding: 1px 6px;
+    border-radius: 99px;
+    background: var(--oranje-licht);
+    color: var(--oranje);
+    margin-left: auto;
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+
+  .nav-footer {
+    margin-top: auto;
+    padding: 20px 24px;
+    border-top: 1px solid var(--rand);
+    font-size: 11px;
+    color: var(--tekst-sub);
+    line-height: 1.5;
+  }
+
+  /* ── HOOFD CONTENT ─────────────────────────────────────────────── */
+  main {
+    margin-left: var(--nav-breedte);
+    flex: 1;
+    max-width: 900px;
+    padding: 0 48px 80px;
+  }
+
+  /* ── HERO ──────────────────────────────────────────────────────── */
+  .hero {
+    background: linear-gradient(135deg, #0F1E35 0%, #1B2A4A 60%, #2A3F5F 100%);
+    margin: 0 -48px;
+    padding: 64px 48px 56px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.03);
+  }
+  .hero-w-mark {
+    position: absolute;
+    right: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.04;
+    font-family: var(--font-sans);
+    font-size: 220px;
+    font-weight: 500;
+    color: #fff;
+    line-height: 1;
+    letter-spacing: -8px;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; right: 80px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: rgba(192,78,32,0.12);
+  }
+
+  .hero-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 16px;
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 4px 12px;
+    border-radius: 99px;
+  }
+
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 42px;
+    color: var(--wit);
+    line-height: 1.15;
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-sub {
+    font-size: 16px;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.7;
+    max-width: 560px;
+    margin-bottom: 32px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-kernzin {
+    background: rgba(255,255,255,0.1);
+    border-left: 3px solid var(--oranje);
+    border-radius: 0 8px 8px 0;
+    padding: 14px 20px;
+    font-family: 'DM Serif Display', serif;
+    font-size: 18px;
+    color: var(--wit);
+    font-style: italic;
+    position: relative;
+    z-index: 1;
+    max-width: 520px;
+  }
+
+  .hero-meta {
+    display: flex;
+    gap: 24px;
+    margin-top: 28px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-meta-item {
+    font-size: 12px;
+    color: rgba(255,255,255,0.65);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  /* ── SECTIES ───────────────────────────────────────────────────── */
+  section {
+    padding-top: 64px;
+  }
+
+  .sectie-kop {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .sectie-nummer {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--blauw);
+    color: var(--wit);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 600;
+    flex-shrink: 0;
+    margin-top: 4px;
+  }
+
+  .sectie-kop h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 28px;
+    color: var(--tekst);
+    line-height: 1.2;
+    margin-bottom: 4px;
+  }
+
+  .sectie-kop p {
+    font-size: 14px;
+    color: var(--tekst-sub);
+    line-height: 1.6;
+  }
+
+  /* ── KAARTEN ───────────────────────────────────────────────────── */
+  .kaart {
+    background: var(--wit);
+    border: 1px solid var(--rand);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 16px;
+  }
+
+  .kaart-blauw { border-left: 4px solid var(--blauw); }
+  .kaart-oranje { border-left: 4px solid var(--oranje); }
+  .kaart-groen  { border-left: 4px solid var(--groen); }
+
+  .kaart h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--tekst);
+    margin-bottom: 8px;
+  }
+
+  .kaart p, .kaart li {
+    font-size: 14px;
+    color: var(--tekst-sub);
+    line-height: 1.7;
+  }
+
+  .kaart ul { padding-left: 18px; }
+  .kaart li { margin-bottom: 4px; }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
+
+  .stat-kaart {
+    background: var(--wit);
+    border: 1px solid var(--rand);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .stat-getal {
+    font-family: 'DM Serif Display', serif;
+    font-size: 32px;
+    color: var(--blauw);
+    margin-bottom: 4px;
+  }
+
+  .stat-label {
+    font-size: 12px;
+    color: var(--tekst-sub);
+    line-height: 1.4;
+  }
+
+  /* ── KNELPUNTEN ────────────────────────────────────────────────── */
+  .knelpunt {
+    display: flex;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--rand);
+    align-items: flex-start;
+  }
+  .knelpunt:last-child { border-bottom: none; }
+
+  .knelpunt-nr {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: var(--oranje);
+    color: var(--wit);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .knelpunt-body h4 {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--tekst);
+    margin-bottom: 3px;
+  }
+
+  .knelpunt-body p {
+    font-size: 13px;
+    color: var(--tekst-sub);
+    line-height: 1.6;
+  }
+
+  /* ── OPLOSSING KETTING ─────────────────────────────────────────── */
+  .ketting {
+    display: flex;
+    gap: 0;
+    margin: 20px 0;
+  }
+
+  .ketting-stap {
+    flex: 1;
+    background: #EDF0F5;
+    padding: 16px 14px;
+    position: relative;
+    text-align: center;
+  }
+
+  .ketting-stap::after {
+    content: '';
+    position: absolute;
+    right: -14px; top: 50%;
+    transform: translateY(-50%);
+    width: 0; height: 0;
+    border-top: 30px solid transparent;
+    border-bottom: 30px solid transparent;
+    border-left: 14px solid var(--blauw-licht);
+    z-index: 1;
+  }
+
+  .ketting-stap:last-child::after { display: none; }
+
+  .ketting-stap:nth-child(2) { background: var(--blauw); }
+  .ketting-stap:nth-child(2)::after { border-left-color: var(--blauw); }
+  .ketting-stap:nth-child(3) { background: var(--oranje-licht); }
+  .ketting-stap:nth-child(3)::after { border-left-color: var(--oranje-licht); }
+
+  .ketting-nr {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 4px;
+  }
+
+  .ketting-naam {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  /* ── DOORSTROOMPAD ─────────────────────────────────────────────── */
+  .doorstroom {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    overflow-x: auto;
+    padding: 4px 0;
+  }
+
+  .doorstroom-stap {
+    flex-shrink: 0;
+    text-align: center;
+    padding: 12px 16px;
+    border-radius: 10px;
+    min-width: 110px;
+  }
+
+  .doorstroom-pijl {
+    color: var(--tekst-sub);
+    font-size: 18px;
+    padding: 0 6px;
+    flex-shrink: 0;
+  }
+
+  .doorstroom-naam {
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 3px;
+  }
+
+  .doorstroom-sub {
+    font-size: 10px;
+    line-height: 1.3;
+    opacity: 0.8;
+  }
+
+  /* ── JAAR BLOKKEN ──────────────────────────────────────────────── */
+  .jaar-balk {
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 12px;
+    border: 1px solid var(--rand);
+  }
+
+  .jaar-balk-header {
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    justify-content: space-between;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .jaar-balk-header:hover { filter: brightness(0.97); }
+
+  .jaar-balk-jaar {
+    font-family: 'DM Serif Display', serif;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+
+  .jaar-balk-titel {
+    font-size: 14px;
+    font-weight: 600;
+    flex: 1;
+  }
+
+  .jaar-balk-sub {
+    font-size: 12px;
+    opacity: 0.8;
+    flex: 2;
+  }
+
+  .jaar-balk-toggle {
+    font-size: 18px;
+    transition: transform 0.2s;
+    flex-shrink: 0;
+  }
+
+  .jaar-balk-body {
+    padding: 0 20px 20px;
+    background: var(--wit);
+    display: none;
+  }
+
+  .jaar-balk-body.open { display: block; }
+
+  .jaar-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    padding-top: 16px;
+  }
+
+  .jaar-kolom h5 {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--tekst-sub);
+    margin-bottom: 10px;
+  }
+
+  .jaar-kolom li {
+    font-size: 13px;
+    color: var(--tekst-sub);
+    margin-bottom: 5px;
+    line-height: 1.4;
+    padding-left: 14px;
+    position: relative;
+  }
+
+  .jaar-kolom li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--blauw);
+    font-weight: 600;
+  }
+
+  /* ── TIPS & HIGHLIGHTS ─────────────────────────────────────────── */
+  .highlight {
+    background: var(--blauw-licht);
+    border-left: 4px solid var(--blauw);
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-size: 14px;
+    color: var(--blauw-diep);
+    line-height: 1.7;
+  }
+
+  .highlight-oranje {
+    background: var(--oranje-licht);
+    border-left-color: var(--oranje);
+    color: #5A3200;
+  }
+
+  .highlight-groen {
+    background: var(--groen-licht);
+    border-left-color: var(--groen);
+    color: #1A4A2A;
+  }
+
+  /* ── TABEL ─────────────────────────────────────────────────────── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin: 12px 0;
+  }
+
+  th {
+    text-align: left;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--tekst-sub);
+    padding: 8px 12px;
+    border-bottom: 2px solid var(--rand);
+  }
+
+  td {
+    padding: 9px 12px;
+    border-bottom: 1px solid var(--rand);
+    color: var(--tekst);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(even) td { background: var(--achtergrond); }
+
+  td.ja { color: var(--groen); font-weight: 600; }
+  td.nee { color: var(--tekst-sub); }
+  td.oranje { color: var(--oranje); font-weight: 600; }
+
+  /* ── BADGE ─────────────────────────────────────────────────────── */
+  .badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 99px;
+  }
+
+  .badge-blauw { background: var(--blauw-licht); color: var(--blauw-diep); }
+  .badge-oranje { background: var(--oranje-licht); color: #5A3200; }
+  .badge-groen  { background: var(--groen-licht);  color: #1A4A2A; }
+  .badge-grijs  { background: #F0F0F0; color: var(--tekst-sub); }
+
+  /* ── SCHEIDSLIJN ───────────────────────────────────────────────── */
+  .scheidslijn {
+    height: 1px;
+    background: var(--rand);
+    margin: 48px 0;
+  }
+
+  /* ── AFSLUITING ────────────────────────────────────────────────── */
+  .afsluiting {
+    background: linear-gradient(135deg, #0F1E35, #1B2A4A);
+    border-radius: 16px;
+    padding: 48px;
+    color: var(--wit);
+    margin-top: 64px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .afsluiting::after {
+    content: '';
+    position: absolute;
+    bottom: -30px; right: -30px;
+    width: 180px; height: 180px;
+    border-radius: 50%;
+    background: rgba(192,78,32,0.18);
+  }
+
+  .afsluiting h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 32px;
+    margin-bottom: 12px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .afsluiting p {
+    font-size: 15px;
+    opacity: 0.85;
+    line-height: 1.7;
+    max-width: 540px;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 8px;
+  }
+
+  /* ── PRINT ─────────────────────────────────────────────────────── */
+  @media print {
+    nav { display: none; }
+    main { margin-left: 0; padding: 20px 40px; max-width: 100%; }
+    .hero { margin: 0; border-radius: 8px; }
+    .jaar-balk-body { display: block !important; }
+    section { page-break-inside: avoid; }
+  }
+
+  /* ── SCROLL PROGRESS ───────────────────────────────────────────── */
+  .progress-bar {
+    position: fixed;
+    top: 0; left: 0;
+    height: 3px;
+    background: var(--oranje);
+    z-index: 200;
+    transition: width 0.1s;
+  }
+</style>
+
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:_dlc_DocId msdt:dt="string">N36ZD6P3VSNZ-1124819296-13974</mso:_dlc_DocId>
+<mso:_dlc_DocIdItemGuid msdt:dt="string">0a69b37f-9f4c-4e56-b38e-c25097371a5a</mso:_dlc_DocIdItemGuid>
+<mso:_dlc_DocIdUrl msdt:dt="string">https://askgroupeu.sharepoint.com/sites/HRM/_layouts/15/DocIdRedir.aspx?ID=N36ZD6P3VSNZ-1124819296-13974, N36ZD6P3VSNZ-1124819296-13974</mso:_dlc_DocIdUrl>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+<body>
+
+<div class="progress-bar" id="progress"></div>
+<!-- DISCLAIMER BANNER -->
+<div id="disclaimer-banner" style="position:fixed;bottom:0;left:0;right:0;z-index:300;background:#1A1A2E;color:rgba(255,255,255,0.85);font-family:'DM Sans',sans-serif;font-size:12px;padding:10px 24px;display:flex;align-items:center;gap:16px;border-top:2px solid #C04E20;">
+  <span style="color:#C04E20;font-weight:700;flex-shrink:0;">⚠ Concept</span>
+  <span>Alle getallen, aantallen en bedragen in dit document zijn indicatief en gebaseerd op aannames. Werkelijke tarieven en begrotingen worden vastgesteld door het bestuur na oprichting op basis van actuele CAO-loonschalen, offertes en ledenaantal. Zie bijlage D voor de indicatieve begroting.</span>
+  <button onclick="document.getElementById('disclaimer-banner').style.display='none'" style="background:none;border:1px solid rgba(255,255,255,0.3);color:rgba(255,255,255,0.7);padding:4px 12px;border-radius:6px;cursor:pointer;font-size:11px;flex-shrink:0;font-family:inherit;">Begrepen</button>
+</div>
+
+<!-- ── NAVIGATIE ──────────────────────────────────────────────────── -->
+<nav>
+  <div class="nav-logo" style="padding:0;">
+    <!-- Logo SVG inline -->
+    <div style="background:#1B2A4A; padding:20px 20px 16px; position:relative; overflow:hidden;">
+      <svg viewBox="0 0 220 72" width="100%" xmlns="http://www.w3.org/2000/svg" style="display:block;">
+        <!-- Terracotta balk 12px -->
+        <rect x="0" y="0" width="10" height="72" fill="#C04E20"/>
+        <!-- W als twee V's -->
+        <polygon points="16,4 30,60 40,60 50,18 43,4" fill="#C04E20"/>
+        <polygon points="43,4 50,18 60,60 70,60 84,4 74,4 62,44 50,18" fill="#FFFFFF"/>
+        <!-- Naam -->
+        <text x="96" y="28" font-family="'DM Sans',Arial,sans-serif" font-size="15" font-weight="500" fill="#FFFFFF" letter-spacing="-0.2">Vakschool</text>
+        <text x="96" y="48" font-family="'DM Sans',Arial,sans-serif" font-size="15" font-weight="500" fill="#FFFFFF" letter-spacing="-0.2">Weerterland</text>
+        <!-- Terracotta accentlijn -->
+        <rect x="96" y="56" width="60" height="1.5" rx="0.75" fill="#C04E20" opacity="0.7"/>
+      </svg>
+      <div style="font-size:10px; color:rgba(255,255,255,0.45); letter-spacing:0.06em; text-transform:uppercase; padding:6px 0 0 10px;">Opzet &amp; Strategie 2026–2030</div>
+    </div>
+  </div>
+
+  <div class="nav-sectie-label">Het verhaal</div>
+  <a href="#samenvatting" class="nav-item actief">
+    <span class="nav-item-nr">—</span>Samenvatting
+  </a>
+  <a href="#missie" class="nav-item">
+    <span class="nav-item-nr">✦</span>Missie &amp; visie
+  </a>
+  <a href="#probleem" class="nav-item">
+    <span class="nav-item-nr">1</span>Het vraagstuk
+  </a>
+  <a href="#oplossing" class="nav-item">
+    <span class="nav-item-nr">2</span>De oplossing
+  </a>
+
+  <div class="nav-sectie-label">De organisatie</div>
+  <a href="#structuur" class="nav-item">
+    <span class="nav-item-nr">3</span>Structuur &amp; bestuur
+  </a>
+  <a href="#overleg" class="nav-item">
+    <span class="nav-item-nr">4</span>Overlegstructuur
+  </a>
+  <a href="#stichting" class="nav-item">
+    <span class="nav-item-nr">5</span>Rol stichting
+  </a>
+
+  <div class="nav-sectie-label">De uitvoering</div>
+  <a href="#leerlingen" class="nav-item">
+    <span class="nav-item-nr">6</span>Leerlingen &amp; niveaus
+  </a>
+  <a href="#pob" class="nav-item">
+    <span class="nav-item-nr">7</span>Praktijkopleiders
+  </a>
+  <a href="#oom" class="nav-item">
+    <span class="nav-item-nr">8</span>Subsidies &amp; sectorheffing
+  </a>
+  <a href="#financieel" class="nav-item">
+    <span class="nav-item-nr">9</span>Financieel model
+  </a>
+
+  <div class="nav-sectie-label">De toekomst</div>
+  <a href="#sectoren" class="nav-item">
+    <span class="nav-item-nr">10</span>Sectoren &amp; groei
+    <span class="nav-tag">Nieuw</span>
+  </a>
+  <a href="#strategie" class="nav-item">
+    <span class="nav-item-nr">11</span>5-jarige strategie
+  </a>
+  <a href="#tcw" class="nav-item">
+    <span class="nav-item-nr">12</span>TCW &amp; Regiodeal
+  </a>
+
+  <div class="nav-sectie-label">Bijlagen</div>
+  <a href="#documenten" class="nav-item">
+    <span class="nav-item-nr">A</span>Documentenset
+  </a>
+  <a href="#volgende-stappen" class="nav-item">
+    <span class="nav-item-nr">B</span>Volgende stappen
+  </a>
+  <a href="#communicatie" class="nav-item">
+    <span class="nav-item-nr">C</span>Communicatie &amp; merk
+    <span class="nav-tag">Nieuw</span>
+  </a>
+
+  <div class="nav-footer" style="border-top:1px solid rgba(255,255,255,0.08);">
+    <svg viewBox="0 0 90 28" width="90" xmlns="http://www.w3.org/2000/svg" style="display:block; margin-bottom:8px; opacity:0.5;">
+      <rect x="0" y="0" width="4" height="28" rx="1" fill="#C04E20"/>
+      <polygon points="8,2 15,24 20,24 24,8 21,2" fill="#C04E20"/>
+      <polygon points="21,2 24,8 28,24 33,24 40,2 37,2 30,18 24,8" fill="#1B2A4A" style="fill:currentColor;"/>
+    </svg>
+    <span style="font-size:11px; color:var(--tekst-sub);">Concept v1.0 · Juni 2026</span><br>
+    <span style="font-size:11px; color:var(--tekst-sub);">Intern document werkgroep</span>
+  </div>
+</nav>
+
+<!-- ── HOOFD CONTENT ──────────────────────────────────────────────── -->
+<main>
+
+  <!-- HERO -->
+  <div class="hero" id="samenvatting">
+    <!-- Logo in hero -->
+    <svg viewBox="0 0 180 58" width="180" xmlns="http://www.w3.org/2000/svg" style="display:block; margin-bottom:24px; opacity:0.95;">
+      <rect x="0" y="0" width="8" height="58" rx="2" fill="#C04E20"/>
+      <polygon points="14,3 26,50 34,50 42,15 36,3" fill="#C04E20"/>
+      <polygon points="36,3 42,15 50,50 58,50 70,3 62,3 52,37 42,15" fill="#FFFFFF"/>
+      <text x="82" y="22" font-family="'DM Sans',Arial,sans-serif" font-size="13" font-weight="500" fill="#FFFFFF" letter-spacing="-0.1">Vakschool</text>
+      <text x="82" y="40" font-family="'DM Sans',Arial,sans-serif" font-size="13" font-weight="500" fill="#FFFFFF" letter-spacing="-0.1">Weerterland</text>
+      <rect x="82" y="46" width="50" height="1.5" rx="0.75" fill="#C04E20" opacity="0.7"/>
+    </svg>
+    <div class="hero-w-mark" aria-hidden="true">W</div>
+    <div class="hero-tag">Intern document · Werkgroep praktijk · Juni 2026</div>
+    <h1>Coöperatie Vakschool<br>Weerterland U.A.</h1>
+    <p class="hero-sub">Een volledig uitgewerkt plan voor een regionaal leerwerkbedrijf dat technisch vakmanschap in Weerterland borgt — van idee tot zelfstandige organisatie op 1 januari 2029.</p>
+    <div class="hero-kernzin">"De ondernemer levert de werkplek. Wij leveren de vakman van morgen."</div>
+    <div class="hero-meta">
+      <span class="hero-meta-item">📅 Start: september 2026</span>
+      <span class="hero-meta-item">🏭 Klein starten met oprichtende leden</span>
+      <span class="hero-meta-item">🎓 Eerste leerlingen gestart — metaal als pilotbranche</span>
+      <span class="hero-meta-item">📆 Zelfstandig: 1-1-2029</span>
+    </div>
+  </div>
+
+  <!-- SAMENVATTING -->
+  <section id="samenvatting-tekst">
+    <div class="sectie-kop">
+      <div style="width:36px;height:36px;border-radius:50%;background:var(--oranje);color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;flex-shrink:0;margin-top:4px;">✦</div>
+      <div>
+        <h2>Wat staat er in dit document?</h2>
+        <p>Dit document legt in begrijpelijke taal uit wat de Coöperatie Vakschool Weerterland is, waarom ze wordt opgericht, hoe ze werkt en waar ze naartoe groeit. Je kunt het van voor naar achter lezen — of via de navigatie direct naar het onderdeel dat je wil begrijpen.</p>
+      </div>
+    </div>
+
+    <div class="grid-3">
+      <div class="stat-kaart">
+        <div class="stat-getal">3</div>
+        <div class="stat-label">Lagen<br>samenvatting · model · bijlagen</div>
+      </div>
+      <div class="stat-kaart">
+        <div class="stat-getal">12</div>
+        <div class="stat-label">Hoofdstukken<br>van probleem tot strategie</div>
+      </div>
+      <div class="stat-kaart">
+        <div class="stat-getal">5</div>
+        <div class="stat-label">Jaar vooruit<br>tot 2030</div>
+      </div>
+    </div>
+
+    <div class="highlight">
+      <strong>Voor wie is dit document?</strong> Voor elke ondernemer die overweegt mee te doen als oprichtend lid, voor de werkgroep die het besluit neemt, en voor de notaris, accountant en stichting die betrokken zijn bij de oprichting. Ieder leest het niveau dat bij hem past.
+    </div>
+  </section>
+
+
+  <div class="scheidslijn"></div>
+
+  <!-- MISSIE & VISIE -->
+  <section id="missie">
+    <div class="sectie-kop">
+      <div style="width:36px;height:36px;border-radius:50%;background:var(--oranje);color:#fff;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;margin-top:4px;">✦</div>
+      <div>
+        <h2>Missie &amp; visie</h2>
+        <p>Waarom bestaat de Coöperatie Vakschool Weerterland — en waar gaan we naartoe?</p>
+      </div>
+    </div>
+
+    <!-- Missie -->
+    <div style="background:linear-gradient(135deg,#0F1E35,#1B2A4A); border-radius:16px; padding:32px; margin-bottom:16px; position:relative; overflow:hidden;">
+      <div style="position:absolute;top:-30px;right:-30px;width:160px;height:160px;border-radius:50%;background:rgba(255,255,255,0.04);"></div>
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:rgba(255,255,255,0.6);margin-bottom:12px;">Missie — waarom bestaan wij?</div>
+      <p style="font-family:'DM Serif Display',serif;font-size:20px;color:#fff;line-height:1.65;margin:0;position:relative;z-index:1;">
+        Coöperatie Vakschool Weerterland verbindt MKB-bedrijven en leerlingen in de regio Weerterland. Wij zijn werkgever van BBL-leerlingen op alle niveaus en plaatsen hen bij onze leden om het vak te leren. Zo ontzorgen wij de ondernemer volledig en zorgen wij ervoor dat technisch vakmanschap in de regio behouden blijft en doorgroeit — voor jongeren, zij-instromers en iedereen die wil en kan werken in de techniek.
+      </p>
+    </div>
+
+    <!-- Visie -->
+    <div style="background:linear-gradient(135deg,#923A17,#C04E20); border-radius:16px; padding:32px; margin-bottom:24px; position:relative; overflow:hidden;">
+      <div style="position:absolute;bottom:-20px;left:-20px;width:120px;height:120px;border-radius:50%;background:rgba(255,255,255,0.06);"></div>
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:rgba(255,255,255,0.7);margin-bottom:12px;">Visie — waar gaan wij naartoe?</div>
+      <p style="font-family:'DM Serif Display',serif;font-size:20px;color:#fff;line-height:1.65;margin:0;position:relative;z-index:1;">
+        Op 1 januari 2029 staat de Coöperatie Vakschool Weerterland als zelfstandige, financieel gezonde organisatie die zonder subsidie haar eigen broek ophoudt. Met meer dan 25 lid-bedrijven, 30+ leerlingen op alle niveaus én meerdere zij-instroomtrajecten is de coöperatie het regionale ankerpunt voor praktijkgericht vakmanschap in Weerterland — erkend door bedrijven, onderwijsinstellingen, gemeente Weert en het TCW.
+      </p>
+    </div>
+
+    <!-- Kernwaarden -->
+    <h3 style="font-size:16px;font-weight:600;margin-bottom:14px;">Kernwaarden — hoe werken wij?</h3>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:8px;">
+      <div style="background:#fff;border:1px solid var(--rand);border-radius:10px;padding:16px;border-top:3px solid var(--blauw);">
+        <div style="font-size:13px;font-weight:600;color:var(--blauw);margin-bottom:5px;">Eerlijk</div>
+        <div style="font-size:12px;color:var(--tekst-sub);line-height:1.6;">Subsidies worden eerlijk verdeeld. Kosten transparant doorbelast. Geen verborgen agenda.</div>
+      </div>
+      <div style="background:#fff;border:1px solid var(--rand);border-radius:10px;padding:16px;border-top:3px solid var(--oranje);">
+        <div style="font-size:13px;font-weight:600;color:var(--oranje);margin-bottom:5px;">Vakgericht</div>
+        <div style="font-size:12px;color:var(--tekst-sub);line-height:1.6;">Wij zijn er voor het vak. Niet voor vergaderen, maar voor leerlingen die het vak leren bij mensen die het kunnen.</div>
+      </div>
+      <div style="background:#fff;border:1px solid var(--rand);border-radius:10px;padding:16px;border-top:3px solid var(--groen);">
+        <div style="font-size:13px;font-weight:600;color:var(--groen);margin-bottom:5px;">Regionaal geworteld</div>
+        <div style="font-size:12px;color:var(--tekst-sub);line-height:1.6;">Weerterland is ons werkgebied. Talent dat hier opgroeit, mag hier werken en hier bijdragen.</div>
+      </div>
+      <div style="background:#fff;border:1px solid var(--rand);border-radius:10px;padding:16px;border-top:3px solid #7F77DD;">
+        <div style="font-size:13px;font-weight:600;color:#7F77DD;margin-bottom:5px;">Inclusief</div>
+        <div style="font-size:12px;color:var(--tekst-sub);line-height:1.6;">Iedereen die wil en kan werken in de techniek is welkom — jongere, zij-instromer of herintreder.</div>
+      </div>
+      <div style="background:#fff;border:1px solid var(--rand);border-radius:10px;padding:16px;border-top:3px solid #085041;">
+        <div style="font-size:13px;font-weight:600;color:#085041;margin-bottom:5px;">Betrouwbaar</div>
+        <div style="font-size:12px;color:var(--tekst-sub);line-height:1.6;">Leerlingen, bedrijven, opleiders en subsidieverstrekkers kunnen op ons rekenen. Afspraken worden nagekomen.</div>
+      </div>
+      <div style="background:#fff;border:1px solid var(--rand);border-radius:10px;padding:16px;border-top:3px solid var(--tekst-sub);">
+        <div style="font-size:13px;font-weight:600;color:var(--tekst);margin-bottom:5px;">Van de leden</div>
+        <div style="font-size:12px;color:var(--tekst-sub);line-height:1.6;">De coöperatie is van de bedrijven samen. Geen externe eigenaar. Winst bestaat niet — resultaat wel.</div>
+      </div>
+    </div>
+
+    <!-- Notitie voor notaris -->
+    <div style="background:var(--achtergrond);border:1px dashed var(--rand);border-radius:10px;padding:14px 18px;margin-top:8px;">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:var(--tekst-sub);margin-bottom:6px;">📋 Toelichting voor de notaris</div>
+      <p style="font-size:12px;color:var(--tekst-sub);line-height:1.7;margin:0;">De missie vormt de basis voor het statutaire doel van de coöperatie. De formulering is bewust breed gehouden zodat uitbreiding naar andere sectoren, niveaus en doelgroepen niet een statutenwijziging vereist. Het statutaire doel luidt in de concept-statuten: <em>"het opleiden van BBL-studenten in ambachtelijke en technische sectoren door als werkgever op te treden en hen te plaatsen bij aangesloten leerbedrijven, alsmede het leveren van begeleidingsdiensten, zulks in de ruimste zin des woords."</em></p>
+    </div>
+  </section>
+
+  <div class="scheidslijn"></div>
+
+  <!-- 1. HET VRAAGSTUK -->
+  <section id="probleem">
+    <div class="sectie-kop">
+      <div class="sectie-nummer">1</div>
+      <div>
+        <h2>Het vraagstuk — waarom dit initiatief?</h2>
+        <p>Het carrouselmodel voor BBL-leerlingen in de techniek loopt vast op vijf juridische en praktische problemen. Die problemen zijn oplosbaar — maar niet met een kleine aanpassing. Er is een structurele oplossing nodig.</p>
+      </div>
+    </div>
+
+    <div class="kaart">
+      <div class="knelpunt">
+        <div class="knelpunt-nr">1</div>
+        <div class="knelpunt-body">
+          <h4>Sectorsubsidies zijn gekoppeld aan één leerbedrijf</h4>
+          <p>Bij het carrouselmodel werkt een leerling bij meerdere bedrijven. Het sectorinstituut (zoals OOM voor de metaal, OTIB voor installatietechniek) weet dan niet bij wie de leerling 'hoort' — en dat kost subsidiegeld dat jullie als bedrijf al hebben betaald via de sectorheffing.</p>
+        </div>
+      </div>
+      <div class="knelpunt">
+        <div class="knelpunt-nr">2</div>
+        <div class="knelpunt-body">
+          <h4>Aansprakelijkheid bij een bedrijfsongeval</h4>
+          <p>Als een leerling zich bezighoudt bij bedrijf A maar zijn contract bij bedrijf B ligt — wie is dan aansprakelijk? In de huidige BBL-constructie is dat juridisch niet goed geregeld.</p>
+        </div>
+      </div>
+      <div class="knelpunt">
+        <div class="knelpunt-nr">3</div>
+        <div class="knelpunt-body">
+          <h4>CAO en arbo over meerdere werkgevers</h4>
+          <p>Welke CAO is van toepassing als een leerling bij drie bedrijven werkt? Wie draagt de arbo-verantwoordelijkheid? In de huidige constructie is dat een juridische puzzel zonder duidelijk antwoord.</p>
+        </div>
+      </div>
+      <div class="knelpunt">
+        <div class="knelpunt-nr">4</div>
+        <div class="knelpunt-body">
+          <h4>Gepensioneerde praktijkopleiders kunnen zich niet inschrijven</h4>
+          <p>Waardevolle vakkennis gaat verloren omdat gepensioneerde vakmensen zich niet officieel kunnen inschrijven als praktijkopleider via een leerbedrijf. Dat is zonde en onnodig.</p>
+        </div>
+      </div>
+      <div class="knelpunt">
+        <div class="knelpunt-nr">5</div>
+        <div class="knelpunt-body">
+          <h4>Subsidierecht verlies bij eigen begeleiding</h4>
+          <p>Een ondernemer die zelf een leerling begeleidt verliest zijn recht op sectorsubsidie. Dat is oneerlijk en remt de betrokkenheid van ondernemers bij de opleiding.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="highlight-oranje">
+      <strong>De kern van het probleem:</strong> het huidige systeem is gebouwd voor één werkgever per leerling. Het carrouselmodel heeft per definitie meerdere betrokkenen. Die mismatch los je niet op met extra afspraken — je lost hem op door één werkgever te creëren die de regie heeft.
+    </div>
+  </section>
+
+  <div class="scheidslijn"></div>
+
+  <!-- 2. DE OPLOSSING -->
+  <section id="oplossing">
+    <div class="sectie-kop">
+      <div class="sectie-nummer">2</div>
+      <div>
+        <h2>De oplossing — één werkgever voor alle leerlingen</h2>
+        <p>De Coöperatie Vakschool Weerterland U.A. wordt de werkgever van alle BBL-leerlingen. De bedrijven zijn de leerplek. De coöperatie regelt de rest.</p>
+      </div>
+    </div>
+
+    <div class="ketting">
+      <div class="ketting-stap">
+        <div class="ketting-nr" style="color:var(--blauw);">Leerling</div>
+        <div class="ketting-naam" style="color:var(--blauw);">Arbeidscontract met coöperatie</div>
+      </div>
+      <div class="ketting-stap">
+        <div class="ketting-nr" style="color:rgba(255,255,255,0.7);">Coöperatie</div>
+        <div class="ketting-naam" style="color:#fff;">Werkgever · regelt alles</div>
+      </div>
+      <div class="ketting-stap">
+        <div class="ketting-nr" style="color:#5A3200;">Bedrijf</div>
+        <div class="ketting-naam" style="color:#5A3200;">Levert werkplek en vakwerk</div>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="kaart kaart-blauw">
+        <h3>Wat de coöperatie regelt</h3>
+        <ul>
+          <li>Arbeidsovereenkomst met de leerling</li>
+          <li>Loon betalen conform CAO</li>
+          <li>Sectorsubsidies aanvragen en verdelen (per sector via het sectorinstituut, zoals OOM voor metaal)</li>
+          <li>Aansprakelijkheid als werkgever</li>
+          <li>Praktijkopleiders registreren en inzetten</li>
+          <li>BPV-overeenkomst met de onderwijsinstelling</li>
+          <li>Verzuim en verzekeringen regelen</li>
+          <li>Rapportage richting TCW en Regiodeal</li>
+        </ul>
+      </div>
+      <div class="kaart kaart-oranje">
+        <h3>Wat het bedrijf doet</h3>
+        <ul>
+          <li>De werkplek beschikbaar stellen</li>
+          <li>De leerling het echte vakwerk laten zien</li>
+          <li>Plaatsingsvergoeding betalen per gewerkt uur</li>
+          <li>Deelnemen aan het sectortafeloverleg (4× per jaar)</li>
+          <li>Een praktijkopleider beschikbaar stellen</li>
+        </ul>
+        <div class="highlight-oranje" style="margin-top:12px; font-size:13px;">
+          <strong>Dat is alles.</strong> Geen werkgeversrisico, geen subsidie-administratie, geen juridisch gedoe.
+        </div>
+      </div>
+    </div>
+
+
+    <div class="kaart" style="background:var(--blauw-licht); border:1px solid var(--blauw); border-radius:12px; margin-bottom:16px;">
+      <h3 style="color:var(--blauw-diep); margin-bottom:12px;">Hoe wordt de plaatsingsvergoeding bepaald?</h3>
+      <p style="font-size:14px; color:var(--tekst-sub); line-height:1.7; margin-bottom:12px;">
+        Het tarief dat een bedrijf betaalt per gewerkt uur van de leerling is gebaseerd op een kostprijsberekening. Zo weet iedereen dat het tarief eerlijk en transparant is opgebouwd — niet willekeurig gekozen.
+      </p>
+      <div style="background:var(--wit); border-radius:8px; padding:16px; font-family:monospace; font-size:13px; color:var(--tekst); border:1px solid var(--rand);">
+        <div style="margin-bottom:6px; color:var(--tekst-sub); font-family:'DM Sans',sans-serif; font-size:11px; text-transform:uppercase; letter-spacing:0.05em;">Tariefformule</div>
+        <strong>Tarief (per uur) = Totale jaarkosten per leerling ÷ Factureerbare uren per jaar</strong>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:12px;">
+        <div>
+          <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:var(--tekst-sub); margin-bottom:6px;">Jaarkosten bestaan uit</div>
+          <ul style="font-size:13px; color:var(--tekst-sub); padding-left:16px; line-height:1.8;">
+            <li>Bruto loon conform CAO-loonschaal</li>
+            <li>Werkgeverslasten (sociaal + fiscaal)</li>
+            <li>Verzuimverzekering en AVB</li>
+            <li>Salarisadministratie en accountant</li>
+            <li>Directeurskosten (uitvoering &amp; coördinatie)</li>
+            <li>Praktijkopleidervergoeding</li>
+            <li>Reserveopslag voor onvoorzien</li>
+          </ul>
+        </div>
+        <div>
+          <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:var(--tekst-sub); margin-bottom:6px;">Factureerbare uren</div>
+          <p style="font-size:13px; color:var(--tekst-sub); line-height:1.7;">Een leerling werkt 3 van 5 dagen per week op de werkvloer (BBL). Van de bruto werkdagen gaan vakantiedagen, feestdagen en gemiddeld ziekteverzuim af. Alleen de <em>werkelijk aanwezige uren</em> worden gefactureerd — de overige dagen zijn voor risico van de coöperatie en verdisconteerd in het tarief.</p>
+          <div style="background:var(--oranje-licht); border-left:3px solid var(--oranje); border-radius:0 6px 6px 0; padding:8px 12px; margin-top:8px; font-size:13px; color:#5A3200;">
+            <strong>Het voordeel voor het bedrijf:</strong> jullie betalen nooit voor een dag dat de leerling er niet staat. Ziekte, vakantie en feestdagen zijn niet voor jullie rekening.
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:12px; padding-top:12px; border-top:1px solid var(--rand); font-size:12px; color:var(--tekst-sub); font-style:italic;">
+        Het concrete tarief wordt berekend en vastgesteld door het bestuur op basis van actuele CAO-loonschalen en offertes. Per sector kan het tarief verschillen omdat elk sectorinstituut eigen loonschalen en heffingspercentages hanteert. De indicatieve berekening voor de startsituatie is opgenomen in bijlage D.
+      </div>
+    </div>
+
+    <!-- BTO Barneveld referentie -->
+    <div class="kaart" style="background:var(--groen-licht); border:1px solid var(--groen); margin-bottom:16px;">
+      <h3 style="color:#1A4A2A; margin-bottom:8px;">Dit model bestaat al — BTO Barneveld als referentie</h3>
+      <p style="font-size:14px; color:#1A4A2A; line-height:1.7;">De Coöperatie Vakschool Weerterland is niet de eerste. In Barneveld werkt BTO (Bouw Techniek Onderwijs) al jaren op exact hetzelfde principe: de coöperatie is werkgever van alle BBL-leerlingen, de bedrijven zijn de leerplek. BTO heeft bewezen dat dit model juridisch robuust, financieel gezond en schaalbaar is. Weerterland bouwt voort op deze beproefde aanpak en past het toe op de eigen regionale context — met eigen sectortafels, eigen subsidiestromen en een eigen governance die aansluit bij de TCW Regiodeal.</p>
+    </div>
+
+    <div class="highlight-groen">
+      <strong>Hoe lost dit de vijf knelpunten op?</strong> De coöperatie is de enige werkgever — dus het sectorinstituut weet altijd bij wie de leerling hoort (1). De aansprakelijkheid ligt helder bij de coöperatie (2). De juiste CAO staat in het arbeidscontract (3). Gepensioneerden kunnen via de coöperatie officieel praktijkopleider worden (4). De leerling is in dienst bij de coöperatie — niet bij het bedrijf — dus het bedrijf verliest zijn subsidierecht niet (5).
+    </div>
+  </section>
+
+
+  <div class="scheidslijn"></div>
+
+  <!-- 3. STRUCTUUR & BESTUUR -->
+  <section id="structuur">
+    <div class="sectie-kop">
+      <div class="sectie-nummer">3</div>
+      <div>
+        <h2>Structuur &amp; bestuur — wie doet wat?</h2>
+        <p>De coöperatie heeft een heldere, slanke structuur. Drie lagen — bestuur, sectortafel en directeur — met elk een eigen rol en eigen mandaat. Zo blijft de organisatie wendbaar zonder dat één persoon alles moet beslissen.</p>
+      </div>
+    </div>
+
+    <!-- Org diagram als kaarten -->
+    <div style="display:flex; flex-direction:column; align-items:center; gap:12px; margin-bottom:24px;">
+
+      <!-- Top -->
+      <div style="background:var(--blauw); border-radius:12px; padding:16px 32px; text-align:center; width:100%; max-width:480px;">
+        <div style="font-size:15px; font-weight:600; color:#fff; margin-bottom:3px;">Coöperatie Vakschool Weerterland U.A.</div>
+        <div style="font-size:12px; color:rgba(255,255,255,0.8);">Werkgever · één rechtspersoon · van de leden</div>
+      </div>
+
+      <div style="font-size:20px; color:var(--tekst-sub);">↓</div>
+
+      <!-- Drie blokken -->
+      <div class="grid-3" style="width:100%;">
+        <div style="background:var(--blauw-licht); border:1.5px solid var(--blauw); border-radius:12px; padding:16px;">
+          <div style="font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:var(--blauw); margin-bottom:6px;">Bestuur</div>
+          <div style="font-size:14px; font-weight:600; color:var(--tekst); margin-bottom:6px;">3 leden</div>
+          <div style="font-size:12px; color:var(--tekst-sub); line-height:1.6;">Voorzitter · Penningmeester · Secretaris<br>Gekozen uit en door de leden</div>
+        </div>
+        <div style="background:var(--oranje-licht); border:1.5px solid var(--oranje); border-radius:12px; padding:16px;">
+          <div style="font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:var(--oranje); margin-bottom:6px;">Sectortafel</div>
+          <div style="font-size:14px; font-weight:600; color:var(--tekst); margin-bottom:6px;">Per branche</div>
+          <div style="font-size:12px; color:var(--tekst-sub); line-height:1.6;">Alle lid-bedrijven van die branche<br>Elk lid is automatisch lid van zijn tafel</div>
+        </div>
+        <div style="background:var(--groen-licht); border:1.5px solid var(--groen); border-radius:12px; padding:16px;">
+          <div style="font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:var(--groen); margin-bottom:6px;">Directeur</div>
+          <div style="font-size:14px; font-weight:600; color:var(--tekst); margin-bottom:6px;">Dagelijkse uitvoering</div>
+          <div style="font-size:12px; color:var(--tekst-sub); line-height:1.6;">Coördinatie · administratie · begeleiding<br>Via opdrachtenovereenkomst</div>
+        </div>
+      </div>
+
+      <div style="font-size:20px; color:var(--tekst-sub);">↓</div>
+
+      <!-- Leerlingen -->
+      <div style="background:var(--oranje-licht); border:1px solid var(--oranje); border-radius:12px; padding:14px 24px; text-align:center; width:100%; max-width:480px;">
+        <div style="font-size:14px; font-weight:600; color:var(--oranje); margin-bottom:2px;">BBL-leerlingen</div>
+        <div style="font-size:12px; color:var(--tekst-sub);">In dienst bij de coöperatie · geplaatst via het carrouselmodel</div>
+      </div>
+
+      <div style="font-size:20px; color:var(--tekst-sub);">↓</div>
+
+      <!-- Externe partners -->
+      <div class="grid-2" style="width:100%; max-width:480px;">
+        <div style="background:#f8f8fc; border:1px solid var(--rand); border-radius:10px; padding:12px; text-align:center;">
+          <div style="font-size:12px; font-weight:600; color:var(--tekst-sub);">Onderwijsinstelling</div>
+          <div style="font-size:11px; color:var(--tekst-sub);">BBL · BPV · opleiding</div>
+        </div>
+        <div style="background:#f8f8fc; border:1px solid var(--rand); border-radius:10px; padding:12px; text-align:center;">
+          <div style="font-size:12px; font-weight:600; color:var(--tekst-sub);">Stichting MKB Techniek W.</div>
+          <div style="font-size:11px; color:var(--tekst-sub);">Werving · TCW · steunlid</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Taken per rol -->
+    <div class="grid-3">
+      <div class="kaart kaart-blauw">
+        <h3>Wat doet het bestuur?</h3>
+        <ul>
+          <li>Stuurt bij op koers en beleid</li>
+          <li>Stelt het tarief plaatsingsvergoeding vast</li>
+          <li>Keurt nieuwe leden toe</li>
+          <li>Beheert de reserve binnen de kaders</li>
+          <li>Sluit brancheovereenkomsten</li>
+          <li>Vergadert 6× per jaar</li>
+        </ul>
+      </div>
+      <div class="kaart kaart-oranje">
+        <h3>Wat doet de sectortafel?</h3>
+        <ul>
+          <li>Bepaalt het plaatsingsrooster per leerling</li>
+          <li>Regelt inzet van praktijkopleiders</li>
+          <li>Adviseert over nieuwe leerlingen</li>
+          <li>Stelt brancheaansluiting voor</li>
+          <li>Vergadert 4× per jaar — 1 uur</li>
+        </ul>
+      </div>
+      <div class="kaart" style="border-left:4px solid var(--groen);">
+        <h3>Wat doet de directeur?</h3>
+        <ul>
+          <li>Sluit arbeids- en plaatsingsovereenkomsten</li>
+          <li>Betaalt loon en regelt administratie</li>
+          <li>Vraagt sectorsubsidies aan</li>
+          <li>Registreert en begeleidt praktijkopleiders</li>
+          <li>Levert kwartaalrapportage aan stichting</li>
+          <li>Neemt deel aan TCW-werkgroepen</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="highlight">
+      <strong>De coöperatie is van de leden.</strong> Elk lid-bedrijf heeft één stem in de ledenvergadering — ongeacht grootte. Het bestuur heeft mandaat voor het dagelijks beleid. Grote besluiten — nieuwe sectortafels, statutenwijziging, jaarrekening — gaan altijd naar de ledenvergadering. Zo blijft de zeggenschap bij de bedrijven die meedoen.
+    </div>
+    <div class="highlight-oranje">
+      <strong>Tegenstrijdig belang — transparantie over de directeursrol:</strong> de directeur van de coöperatie vervult zijn rol via een opdrachtenovereenkomst met zijn eigen holding. Bij besluiten over zijn eigen vergoeding of de voorwaarden van die overeenkomst heeft de directeur geen stemrecht en neemt hij niet deel aan de beraadslaging. Zo zijn de belangen van de coöperatie en de directeur altijd helder gescheiden. De vergoeding is marktconform en wordt vastgesteld door de overige bestuursleden.
+    </div>
+  </section>
+
+  <div class="scheidslijn"></div>
+
+  <!-- 4. OVERLEGSTRUCTUUR -->
+  <section id="overleg">
+    <div class="sectie-kop">
+      <div class="sectie-nummer">4</div>
+      <div>
+        <h2>Overlegstructuur — wie vergadert waarover?</h2>
+        <p>Met tientallen leden kom je er niet met één grote vergadering voor alles. De coöperatie werkt met drie niveaus — elk met een eigen agenda en eigen beslismandaat. Zo vergaderen de juiste mensen over de juiste dingen en houdt de organisatie vaart.</p>
+      </div>
+    </div>
+
+    <div class="highlight-oranje">
+      <strong>De gouden regel:</strong> stuur elk besluit naar het laagst mogelijke niveau. De ledenvergadering is het zwaarste instrument — gebruik het zuinig. Een goed werkende coöperatie heeft een ledenvergadering die in anderhalf uur klaar is omdat het bestuur en de sectortafels al het voorwerk hebben gedaan.
+    </div>
+
+    <!-- Drie niveaus -->
+    <div style="margin-top:24px;">
+
+      <!-- Niveau 1 -->
+      <div style="border:1px solid var(--rand); border-radius:12px; overflow:hidden; margin-bottom:12px;">
+        <div style="background:var(--blauw-licht); padding:14px 20px; display:flex; align-items:center; gap:14px; border-bottom:1px solid var(--rand);">
+          <div style="width:32px; height:32px; border-radius:50%; background:var(--blauw); color:#fff; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:700; flex-shrink:0;">1</div>
+          <div style="flex:1;">
+            <div style="font-size:14px; font-weight:600; color:var(--blauw);">Sectortafel — het werkende niveau</div>
+            <div style="font-size:12px; color:var(--tekst-sub);">Alle bedrijven van die branche · 4× per jaar · 1 uur</div>
+          </div>
+          <span class="badge badge-blauw">Operationeel</span>
+        </div>
+        <div style="padding:16px 20px; background:#fff;">
+          <div class="grid-2">
+            <div>
+              <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:var(--tekst-sub); margin-bottom:8px;">Zelfstandig beslissen over</div>
+              <ul style="font-size:13px; color:var(--tekst-sub); padding-left:16px; line-height:1.8;">
+                <li>Plaatsingsrooster leerlingen</li>
+                <li>Inzet en wissel van praktijkopleiders</li>
+                <li>Praktische werkafspraken per periode</li>
+              </ul>
+            </div>
+            <div>
+              <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:var(--tekst-sub); margin-bottom:8px;">Adviseert of stelt voor aan bestuur</div>
+              <ul style="font-size:13px; color:var(--tekst-sub); padding-left:16px; line-height:1.8;">
+                <li>Nieuwe leerling aantrekken</li>
+                <li>Brancheaansluiting (bijv. TechNext)</li>
+                <li>Aanpassing van het werkproces</li>
+              </ul>
+            </div>
+          </div>
+          <div style="margin-top:12px; font-size:12px; color:var(--tekst-sub); padding:8px 12px; background:var(--achtergrond); border-radius:8px; border-left:3px solid var(--oranje);">
+            <strong style="color:var(--tekst);">Verplichting:</strong> elk lid-bedrijf is automatisch lid van de sectortafel van zijn branche. Deelname is de basisafspraak bij toetreding. Zonder actieve sectortafel kan de directeur het carrouselmodel niet plannen.
+          </div>
+        </div>
+      </div>
+
+      <!-- Niveau 2 -->
+      <div style="border:1px solid var(--rand); border-radius:12px; overflow:hidden; margin-bottom:12px;">
+        <div style="background:var(--oranje-licht); padding:14px 20px; display:flex; align-items:center; gap:14px; border-bottom:1px solid var(--rand);">
+          <div style="width:32px; height:32px; border-radius:50%; background:var(--oranje); color:#fff; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:700; flex-shrink:0;">2</div>
+          <div style="flex:1;">
+            <div style="font-size:14px; font-weight:600; color:#5A3200;">Bestuur — het sturende niveau</div>
+            <div style="font-size:12px; color:var(--tekst-sub);">3 bestuursleden · 6× per jaar · max. 5 agendapunten</div>
+          </div>
+          <span class="badge badge-oranje">Beleid</span>
+        </div>
+        <div style="padding:16px 20px; background:#fff;">
+          <div class="grid-2">
+            <div>
+              <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:var(--tekst-sub); margin-bottom:8px;">Zelfstandig beslissen over</div>
+              <ul style="font-size:13px; color:var(--tekst-sub); padding-left:16px; line-height:1.8;">
+                <li>Hoogte plaatsingsvergoeding (tarief)</li>
+                <li>Nieuwe leden toelaten</li>
+                <li>Brancheovereenkomst goedkeuren</li>
+                <li>Opdrachtenovereenkomst directeur</li>
+                <li>Reserve inzetten binnen vastgestelde kaders</li>
+              </ul>
+            </div>
+            <div>
+              <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:var(--tekst-sub); margin-bottom:8px;">Legt voor aan ledenvergadering</div>
+              <ul style="font-size:13px; color:var(--tekst-sub); padding-left:16px; line-height:1.8;">
+                <li>Jaarrekening en begroting</li>
+                <li>Nieuwe sectortafel openen</li>
+                <li>Reservebeleid vaststellen</li>
+                <li>Statutenwijziging</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Niveau 3 -->
+      <div style="border:1px solid var(--rand); border-radius:12px; overflow:hidden; margin-bottom:12px;">
+        <div style="background:var(--groen-licht); padding:14px 20px; display:flex; align-items:center; gap:14px; border-bottom:1px solid var(--rand);">
+          <div style="width:32px; height:32px; border-radius:50%; background:var(--groen); color:#fff; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:700; flex-shrink:0;">3</div>
+          <div style="flex:1;">
+            <div style="font-size:14px; font-weight:600; color:#1A4A2A;">Ledenvergadering — het beslissende niveau</div>
+            <div style="font-size:12px; color:var(--tekst-sub);">Alle leden · 2× per jaar · 1 stem per bedrijf</div>
+          </div>
+          <span class="badge badge-groen">Beslissend</span>
+        </div>
+        <div style="padding:16px 20px; background:#fff;">
+          <div class="grid-2">
+            <div>
+              <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:var(--tekst-sub); margin-bottom:8px;">Altijd naar de ledenvergadering</div>
+              <ul style="font-size:13px; color:var(--tekst-sub); padding-left:16px; line-height:1.8;">
+                <li>Jaarrekening vaststellen</li>
+                <li>Begroting goedkeuren</li>
+                <li>Nieuwe sectortafel openen</li>
+                <li>Bestuur kiezen en ontslaan</li>
+                <li>Reservebeleid vaststellen</li>
+                <li>Statutenwijziging (2/3 meerderheid)</li>
+              </ul>
+            </div>
+            <div>
+              <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:var(--tekst-sub); margin-bottom:8px;">Praktisch</div>
+              <ul style="font-size:13px; color:var(--tekst-sub); padding-left:16px; line-height:1.8;">
+                <li>Vergadering 1: maart — jaarrekening vorig jaar</li>
+                <li>Vergadering 2: november — begroting nieuw jaar</li>
+                <li>Altijd een concreet besluitvoorstel op papier</li>
+                <li>Nooit meer dan 5 besluiten per vergadering</li>
+                <li>Volmacht mogelijk bij afwezigheid</li>
+                <li><strong>Quorum:</strong> vergadering is geldig als meer dan de helft van de leden aanwezig of per volmacht vertegenwoordigd is</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Jaarcyclus -->
+    <h3 style="font-size:16px; font-weight:600; margin:24px 0 12px;">De jaarcyclus in één overzicht</h3>
+    <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:8px;">
+      <div style="background:#fff; border:1px solid var(--rand); border-radius:10px; padding:12px;">
+        <div style="font-size:12px; font-weight:700; color:var(--blauw); margin-bottom:4px;">Jan · Feb</div>
+        <div style="font-size:11px; color:var(--tekst-sub); line-height:1.5;"><span style="color:var(--oranje);">●</span> Bestuur Q4-evaluatie<br><span style="color:var(--blauw);">●</span> Sectortafels jaarplan</div>
+      </div>
+      <div style="background:var(--groen-licht); border:1.5px solid var(--groen); border-radius:10px; padding:12px;">
+        <div style="font-size:12px; font-weight:700; color:var(--groen); margin-bottom:4px;">Maart</div>
+        <div style="font-size:11px; color:#1A4A2A; line-height:1.5;"><strong>Ledenvergadering 1</strong><br>Jaarrekening · begroting · bestuur</div>
+      </div>
+      <div style="background:#fff; border:1px solid var(--rand); border-radius:10px; padding:12px;">
+        <div style="font-size:12px; font-weight:700; color:var(--blauw); margin-bottom:4px;">Apr · Jun</div>
+        <div style="font-size:11px; color:var(--tekst-sub); line-height:1.5;"><span style="color:var(--blauw);">●</span> Sectortafels Q1<br><span style="color:var(--oranje);">●</span> Bestuur voortgang</div>
+      </div>
+      <div style="background:#fff; border:1px solid var(--rand); border-radius:10px; padding:12px;">
+        <div style="font-size:12px; font-weight:700; color:var(--blauw); margin-bottom:4px;">Jul · Aug</div>
+        <div style="font-size:11px; color:var(--tekst-sub); line-height:1.5;"><span style="color:var(--oranje);">●</span> Bestuur halvejaar<br><span style="color:var(--blauw);">●</span> Sectortafels zomer</div>
+      </div>
+      <div style="background:#fff; border:1px solid var(--rand); border-radius:10px; padding:12px;">
+        <div style="font-size:12px; font-weight:700; color:var(--blauw); margin-bottom:4px;">September</div>
+        <div style="font-size:11px; color:var(--tekst-sub); line-height:1.5;"><span style="color:var(--blauw);">●</span> Sectortafels nieuw schooljaar<br><span style="color:var(--oranje);">●</span> Bestuur nieuwe leerlingen</div>
+      </div>
+      <div style="background:#fff; border:1px solid var(--rand); border-radius:10px; padding:12px;">
+        <div style="font-size:12px; font-weight:700; color:var(--blauw); margin-bottom:4px;">Oktober</div>
+        <div style="font-size:11px; color:var(--tekst-sub); line-height:1.5;"><span style="color:var(--oranje);">●</span> Bestuur begroting<br><span style="color:var(--blauw);">●</span> Sectortafels Q3</div>
+      </div>
+      <div style="background:var(--groen-licht); border:1.5px solid var(--groen); border-radius:10px; padding:12px;">
+        <div style="font-size:12px; font-weight:700; color:var(--groen); margin-bottom:4px;">November</div>
+        <div style="font-size:11px; color:#1A4A2A; line-height:1.5;"><strong>Ledenvergadering 2</strong><br>Begroting · beleid · nieuwe sectortafels</div>
+      </div>
+      <div style="background:#fff; border:1px solid var(--rand); border-radius:10px; padding:12px;">
+        <div style="font-size:12px; font-weight:700; color:var(--blauw); margin-bottom:4px;">December</div>
+        <div style="font-size:11px; color:var(--tekst-sub); line-height:1.5;"><span style="color:var(--oranje);">●</span> Bestuur jaareinde<br><span style="color:var(--blauw);">●</span> Directeur TCW-rapportage</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="scheidslijn"></div>
+
+  <!-- 5. ROL STICHTING -->
+  <section id="stichting">
+    <div class="sectie-kop">
+      <div class="sectie-nummer">5</div>
+      <div>
+        <h2>Rol van de stichting — denken en verbinden</h2>
+        <p>De Stichting MKB Techniek Weerterland en de coöperatie werken nauw samen maar zijn juridisch volledig onafhankelijk van elkaar. Die scheiding is geen zwakte — het is de kracht van het model.</p>
+      </div>
+    </div>
+
+    <!-- Kernprincipe -->
+    <div style="display:grid; grid-template-columns:1fr auto 1fr; gap:0; margin-bottom:24px; align-items:stretch;">
+      <div style="background:var(--blauw); border-radius:12px 0 0 12px; padding:20px 24px; color:#fff;">
+        <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; opacity:0.75; margin-bottom:6px;">Stichting</div>
+        <div style="font-size:20px; font-weight:600; margin-bottom:4px;">Denken</div>
+        <div style="font-size:12px; opacity:0.85; line-height:1.5;">Strategie · netwerk · subsidies · werving · bestuurlijk niveau</div>
+      </div>
+      <div style="background:var(--rand); display:flex; align-items:center; justify-content:center; padding:0 16px; font-size:20px; color:var(--tekst-sub);">↔</div>
+      <div style="background:var(--oranje); border-radius:0 12px 12px 0; padding:20px 24px; color:#fff;">
+        <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; opacity:0.8; margin-bottom:6px;">Coöperatie</div>
+        <div style="font-size:20px; font-weight:600; margin-bottom:4px;">Doen</div>
+        <div style="font-size:12px; opacity:0.9; line-height:1.5;">Werkgever · loon · subsidies · begeleiding · uitvoering</div>
+      </div>
+    </div>
+
+    <!-- Vier rollen stichting -->
+    <h3 style="font-size:16px; font-weight:600; margin-bottom:14px;">De vier concrete rollen van de stichting</h3>
+    <div class="grid-2">
+      <div class="kaart kaart-blauw">
+        <h3>1 — Stem van het MKB naar buiten</h3>
+        <p>De stichting vertegenwoordigt alle techniek-MKB-bedrijven in Weerterland richting gemeente, TCW-stuurgroep en Regiodeal. Als de gemeente wil weten hoe het gaat met de techniekinstroom, bellen ze de stichting. Die gebruikt de cijfers die de coöperatie aanlevert.</p>
+      </div>
+      <div class="kaart kaart-oranje">
+        <h3>2 — Werving van bedrijven en leerlingen</h3>
+        <p>De stichting heeft het netwerk en de communicatiekracht. Ze werft leerlingen via scholen en events. Ze haalt nieuwe bedrijven binnen die vervolgens lid worden van de coöperatie. Ze signaleert welke sectoren klaar zijn om een sectortafel te openen.</p>
+      </div>
+      <div class="kaart" style="border-left:4px solid var(--groen);">
+        <h3>3 — Penvoerder TCW-subsidies</h3>
+        <p>De TCW Regiodeal-subsidie loopt via de stichting als penvoerder. De coöperatie levert de bewijslast aan — leerlingenaantallen, praktijkopleiders, leerwerkplekken. De stichting verwerkt dat in de kwartaalrapportage richting gemeente Weert.</p>
+      </div>
+      <div class="kaart" style="border-left:4px solid var(--paars);">
+        <h3>4 — Strategisch kompas</h3>
+        <p>De stichting denkt verder dan het lopende schooljaar. Ze signaleert welke sectoren in Weerterland over twee jaar groeien. Ze brengt partijen als Infracampus, STL en TechNext in contact met de coöperatie. Ze bereidt voor op wat na 2029 komt.</p>
+      </div>
+    </div>
+
+    <!-- Wat doet stichting NIET -->
+    <div class="highlight-oranje" style="margin-top:8px;">
+      <strong>Wat de stichting bewust niet doet:</strong> de stichting is geen werkgever en heeft geen stemrecht in de ledenvergadering van de coöperatie (steunlid). Ze stuurt niet mee in de sectortafels en zit niet in het bestuur van de coöperatie. Zo blijft ze onafhankelijk en geloofwaardig richting gemeente, onderwijs en TCW-partners.
+    </div>
+
+    <!-- Verbinding -->
+    <h3 style="font-size:16px; font-weight:600; margin:24px 0 12px;">Hoe werken ze samen?</h3>
+    <div class="kaart">
+      <table>
+        <tr>
+          <th style="width:35%;">Activiteit</th>
+          <th style="width:30%;">Stichting</th>
+          <th>Coöperatie</th>
+        </tr>
+        <tr>
+          <td>TCW-stuurgroep deelname</td>
+          <td class="ja">✓ Strategisch</td>
+          <td class="oranje">Directeur op uitvoering</td>
+        </tr>
+        <tr>
+          <td>Werving nieuwe leerlingen</td>
+          <td class="ja">✓ Breed netwerk</td>
+          <td style="color:var(--tekst-sub);">Ontvangt leerlingen</td>
+        </tr>
+        <tr>
+          <td>Werving nieuwe lid-bedrijven</td>
+          <td class="ja">✓ Actief</td>
+          <td style="color:var(--tekst-sub);">Bestuur neemt toe</td>
+        </tr>
+        <tr>
+          <td>TCW-subsidie ontvangen</td>
+          <td class="ja">✓ Penvoerder</td>
+          <td class="nee">— Niet van toepassing</td>
+        </tr>
+        <tr>
+          <td>Werkgever leerlingen</td>
+          <td class="nee">— Nooit</td>
+          <td class="ja">✓ Enige werkgever</td>
+        </tr>
+        <tr>
+          <td>Sectorsubsidies aanvragen</td>
+          <td class="nee">— Niet</td>
+          <td class="ja">✓ Als werkgever</td>
+        </tr>
+        <tr>
+          <td>Nieuwe sectoren signaleren</td>
+          <td class="ja">✓ Initieert</td>
+          <td style="color:var(--tekst-sub);">Opent sectortafel na besluit</td>
+        </tr>
+        <tr>
+          <td>Kwartaalrapportage TCW</td>
+          <td class="ja">✓ Opstelt</td>
+          <td class="ja">✓ Levert data aan</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="highlight-groen">
+      <strong>De verbinding:</strong> twee keer per jaar overleggen de voorzitter van de stichting en de directeur van de coöperatie in een gezamenlijk afstemmingsoverleg. Daarnaast neemt de directeur van de coöperatie deel aan de relevante TCW-werkgroepen als uitvoeringspartner — niet als vertegenwoordiger van de stichting. Dit is vastgelegd in de samenwerkingsovereenkomst.
+    </div>
+  </section>
+
+
+  <div class="scheidslijn"></div>
+
+  <!-- 6. LEERLINGEN & NIVEAUS -->
+  <section id="leerlingen">
+    <div class="sectie-kop">
+      <div class="sectie-nummer">6</div>
+      <div>
+        <h2>Leerlingen &amp; niveaus — van N2 tot N4</h2>
+        <p>De coöperatie werkt met BBL-leerlingen op alle niveaus. Het model is hetzelfde voor elk niveau — wat verandert is het loon, het tarief en de mate van roulering. N2 start met het carrouselmodel. N3 en N4 werken toe naar meer verdieping bij één bedrijf.</p>
+      </div>
+    </div>
+
+    <!-- Niveauoverzicht -->
+    <div class="grid-3">
+      <div style="background:var(--blauw-licht); border:1.5px solid var(--blauw); border-radius:12px; overflow:hidden;">
+        <div style="background:var(--blauw); padding:12px 16px;">
+          <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:rgba(255,255,255,0.75);">Start</div>
+          <div style="font-size:18px; font-weight:600; color:#fff;">Niveau 2</div>
+          <div style="font-size:12px; color:rgba(255,255,255,0.8);">Operator · Constructeur</div>
+        </div>
+        <div style="padding:14px 16px;">
+          <ul style="font-size:12px; color:var(--tekst-sub); padding-left:14px; line-height:1.8;">
+            <li>Loon conform CAO-loonschaal N2</li>
+            <li>BBL-duur: 2–3 jaar</li>
+            <li>Carrouselmodel — meerdere bedrijven</li>
+            <li>Sectorsubsidie via sectorinstituut</li>
+            <li>Opstart: pilotbranche</li>
+          </ul>
+        </div>
+      </div>
+      <div style="background:var(--oranje-licht); border:1.5px solid var(--oranje); border-radius:12px; overflow:hidden;">
+        <div style="background:var(--oranje); padding:12px 16px;">
+          <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:rgba(255,255,255,0.8);">Uitbreiding</div>
+          <div style="font-size:18px; font-weight:600; color:#fff;">Niveau 3</div>
+          <div style="font-size:12px; color:rgba(255,255,255,0.9);">Allround vakman</div>
+        </div>
+        <div style="padding:14px 16px;">
+          <ul style="font-size:12px; color:var(--tekst-sub); padding-left:14px; line-height:1.8;">
+            <li>Hogere loonschaal conform CAO N3</li>
+            <li>BBL-duur: 2–3 jaar</li>
+            <li>Minder rouleren, meer verdiepen</li>
+            <li>Sectorsubsidie via sectorinstituut</li>
+            <li>Ook via servicedienst beschikbaar</li>
+          </ul>
+        </div>
+      </div>
+      <div style="background:var(--groen-licht); border:1.5px solid var(--groen); border-radius:12px; overflow:hidden;">
+        <div style="background:var(--groen); padding:12px 16px;">
+          <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:rgba(255,255,255,0.8);">Doorgroei</div>
+          <div style="font-size:18px; font-weight:600; color:#fff;">Niveau 4</div>
+          <div style="font-size:12px; color:rgba(255,255,255,0.9);">Technicus · Voorman</div>
+        </div>
+        <div style="padding:14px 16px;">
+          <ul style="font-size:12px; color:var(--tekst-sub); padding-left:14px; line-height:1.8;">
+            <li>Hogere loonschaal conform CAO N4</li>
+            <li>BBL-duur: 3–4 jaar</li>
+            <li>Veelal één bedrijf — complexe opdrachten</li>
+            <li>Sectorsubsidie via sectorinstituut</li>
+            <li>Ook via servicedienst beschikbaar</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="highlight">
+      <strong>Het model werkt voor elk niveau hetzelfde.</strong> De coöperatie is werkgever, de sectorspecifieke CAO bepaalt het loon, het sectorinstituut betaalt de subsidie. Het tarief dat het bedrijf betaalt wordt per niveau berekend via de kostprijsmethode — hogere loonkosten betekenen een hoger tarief. Per sector kan dit verder verschillen. De indicatieve berekening staat in bijlage D.
+    </div>
+
+    <!-- Hoe verloopt het proces -->
+    <h3 style="font-size:16px; font-weight:600; margin:24px 0 12px;">Hoe verloopt het proces met een leerling — stap voor stap</h3>
+    <div style="display:flex; flex-direction:column; gap:0;">
+      <div style="display:flex; gap:14px; padding-bottom:8px;">
+        <div style="display:flex; flex-direction:column; align-items:center;">
+          <div style="width:30px; height:30px; border-radius:50%; background:var(--blauw); color:#fff; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700; flex-shrink:0;">1</div>
+          <div style="width:2px; flex:1; background:var(--rand); margin:3px 0;"></div>
+        </div>
+        <div style="padding-bottom:16px; flex:1;">
+          <div style="font-size:13px; font-weight:600; color:var(--tekst); margin-bottom:2px;">Bedrijf meldt behoefte aan een leerling</div>
+          <div style="font-size:12px; color:var(--tekst-sub);">Via de sectortafel of rechtstreeks bij de directeur. Het bedrijf geeft aan: welke branche, welk niveau, wanneer en voor hoeveel dagen per week.</div>
+        </div>
+      </div>
+      <div style="display:flex; gap:14px; padding-bottom:8px;">
+        <div style="display:flex; flex-direction:column; align-items:center;">
+          <div style="width:30px; height:30px; border-radius:50%; background:var(--blauw); color:#fff; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700; flex-shrink:0;">2</div>
+          <div style="width:2px; flex:1; background:var(--rand); margin:3px 0;"></div>
+        </div>
+        <div style="padding-bottom:16px; flex:1;">
+          <div style="font-size:13px; font-weight:600; color:var(--tekst); margin-bottom:2px;">Directeur matcht en werft leerling</div>
+          <div style="font-size:12px; color:var(--tekst-sub);">Via de stichting, de onderwijsinstelling of eigen werving. De directeur kijkt welke bedrijven in het carrouselmodel passen bij de leerling.</div>
+        </div>
+      </div>
+      <div style="display:flex; gap:14px; padding-bottom:8px;">
+        <div style="display:flex; flex-direction:column; align-items:center;">
+          <div style="width:30px; height:30px; border-radius:50%; background:var(--blauw); color:#fff; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700; flex-shrink:0;">3</div>
+          <div style="width:2px; flex:1; background:var(--rand); margin:3px 0;"></div>
+        </div>
+        <div style="padding-bottom:16px; flex:1;">
+          <div style="font-size:13px; font-weight:600; color:var(--tekst); margin-bottom:2px;">Coöperatie sluit arbeidsovereenkomst</div>
+          <div style="font-size:12px; color:var(--tekst-sub);">De coöperatie is de werkgever. De leerling tekent een arbeidsovereenkomst conform de sectorspecifieke CAO. De BPV-overeenkomst met de onderwijsinstelling wordt gelijktijdig gesloten.</div>
+        </div>
+      </div>
+      <div style="display:flex; gap:14px; padding-bottom:8px;">
+        <div style="display:flex; flex-direction:column; align-items:center;">
+          <div style="width:30px; height:30px; border-radius:50%; background:var(--blauw); color:#fff; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700; flex-shrink:0;">4</div>
+          <div style="width:2px; flex:1; background:var(--rand); margin:3px 0;"></div>
+        </div>
+        <div style="padding-bottom:16px; flex:1;">
+          <div style="font-size:13px; font-weight:600; color:var(--tekst); margin-bottom:2px;">Plaatsingsovereenkomst per bedrijf</div>
+          <div style="font-size:12px; color:var(--tekst-sub);">Per deelnemend bedrijf sluit de coöperatie een plaatsingsovereenkomst: welke periodes, wie is de praktijkopleider, wat zijn de arbo-afspraken op de werkvloer, wat is de plaatsingsvergoeding per gewerkt uur.</div>
+        </div>
+      </div>
+      <div style="display:flex; gap:14px; padding-bottom:8px;">
+        <div style="display:flex; flex-direction:column; align-items:center;">
+          <div style="width:30px; height:30px; border-radius:50%; background:var(--blauw); color:#fff; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700; flex-shrink:0;">5</div>
+          <div style="width:2px; flex:1; background:var(--rand); margin:3px 0;"></div>
+        </div>
+        <div style="padding-bottom:16px; flex:1;">
+          <div style="font-size:13px; font-weight:600; color:var(--tekst); margin-bottom:2px;">Leerling gaat aan de slag</div>
+          <div style="font-size:12px; color:var(--tekst-sub);">3 dagen per week op de werkvloer bij de deelnemende bedrijven, 2 dagen per week les bij de onderwijsinstelling. De directeur houdt het rooster bij en bewaakt de voortgang.</div>
+        </div>
+      </div>
+      <div style="display:flex; gap:14px;">
+        <div style="display:flex; flex-direction:column; align-items:center;">
+          <div style="width:30px; height:30px; border-radius:50%; background:var(--groen); color:#fff; display:flex; align-items:center; justify-content:center; font-size:16px; flex-shrink:0;">✓</div>
+        </div>
+        <div style="flex:1;">
+          <div style="font-size:13px; font-weight:600; color:var(--tekst); margin-bottom:2px;">Maandelijks: loon en facturatie</div>
+          <div style="font-size:12px; color:var(--tekst-sub);">De coöperatie betaalt het loon. Daarna stuurt de coöperatie per bedrijf een factuur voor de gewerkte uren. Alleen de uren dat de leerling er daadwerkelijk stond worden gefactureerd.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Doorstroompad -->
+    <h3 style="font-size:16px; font-weight:600; margin:28px 0 12px;">Het doorstroompad — van leerling tot senior vakman</h3>
+    <div class="doorstroom">
+      <div class="doorstroom-stap" style="background:var(--blauw-licht);">
+        <div class="doorstroom-naam" style="color:var(--blauw);">N2 BBL</div>
+        <div class="doorstroom-sub" style="color:var(--blauw);">Coöperatie werkgever · carrousel</div>
+      </div>
+      <div class="doorstroom-pijl">→</div>
+      <div class="doorstroom-stap" style="background:var(--oranje-licht);">
+        <div class="doorstroom-naam" style="color:#5A3200;">N3 BBL</div>
+        <div class="doorstroom-sub" style="color:#5A3200;">Coöperatie werkgever · verdiepen</div>
+      </div>
+      <div class="doorstroom-pijl">→</div>
+      <div class="doorstroom-stap" style="background:#fff; border:2px dashed var(--groen);">
+        <div class="doorstroom-naam" style="color:var(--groen);">Diploma → vaste baan</div>
+        <div class="doorstroom-sub" style="color:#1A4A2A;">Leerling kiest zelf</div>
+      </div>
+      <div class="doorstroom-pijl">→</div>
+      <div class="doorstroom-stap" style="background:#EEEDFE;">
+        <div class="doorstroom-naam" style="color:var(--paars);">N4 via servicedienst</div>
+        <div class="doorstroom-sub" style="color:var(--paars);">Bedrijf werkgever · coöp. regelt admin</div>
+      </div>
+      <div class="doorstroom-pijl">→</div>
+      <div class="doorstroom-stap" style="background:#E1F5EE;">
+        <div class="doorstroom-naam" style="color:#085041;">Senior vakman</div>
+        <div class="doorstroom-sub" style="color:#085041;">Evt. zelf praktijkopleider</div>
+      </div>
+    </div>
+
+    <!-- Doorstroombeleid na diploma -->
+    <h3 style="font-size:16px; font-weight:600; margin:28px 0 12px;">Na het diploma — wat dan?</h3>
+    <div class="kaart">
+      <p style="margin-bottom:14px; font-size:14px; color:var(--tekst-sub); line-height:1.7;">Na het behalen van het diploma eindigt de BBL-overeenkomst van rechtswege. De leerling is vrij om te kiezen waar hij gaat werken — er is geen verplichting om bij een lid-bedrijf in dienst te treden. De coöperatie heeft geen recht op voorkeur.</p>
+      <div class="grid-2">
+        <div>
+          <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:var(--tekst-sub); margin-bottom:8px;">Wat de leerling kan kiezen</div>
+          <ul style="font-size:13px; color:var(--tekst-sub); padding-left:16px; line-height:1.9;">
+            <li>In dienst treden bij een van de lid-bedrijven</li>
+            <li>Een baan zoeken buiten de coöperatie</li>
+            <li>Doorstromen naar N3 via een nieuwe arbeidsovereenkomst bij de coöperatie</li>
+            <li>Een maatwerktraject starten via de servicedienst als hij al een baan heeft</li>
+          </ul>
+        </div>
+        <div>
+          <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:var(--tekst-sub); margin-bottom:8px;">Afspraak in het huishoudelijk reglement</div>
+          <div class="highlight-oranje" style="margin:0; font-size:13px;">Een lid-bedrijf dat een gediplomeerde leerling wil aannemen, informeert de directeur minimaal vier weken van tevoren. Zo kan de coöperatie tijdig een nieuwe leerling werven voor die leerwerkplek — de carrousel blijft draaien.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ziekte -->
+    <h3 style="font-size:16px; font-weight:600; margin:28px 0 12px;">Wat als een leerling ziek is?</h3>
+    <div class="kaart">
+      <p style="margin-bottom:14px; font-size:14px; color:var(--tekst-sub); line-height:1.7;">De coöperatie is werkgever en betaalt het loon door bij ziekte — dat is wettelijk verplicht. Het bedrijf betaalt <strong>niets</strong> over ziekteperioden. Er gaat geen factuur naar het bedrijf voor dagen dat de leerling er niet staat.</p>
+      <div class="grid-3">
+        <div style="background:var(--groen-licht); border-radius:8px; padding:12px; border-left:3px solid var(--groen);">
+          <div style="font-size:11px; font-weight:700; color:var(--groen); margin-bottom:4px;">Korte ziekte (1–13 dgn)</div>
+          <div style="font-size:12px; color:var(--tekst-sub); line-height:1.5;">Coöperatie betaalt loon door. Reservebuffer dekt dit. Geen factuur aan bedrijf.</div>
+        </div>
+        <div style="background:var(--oranje-licht); border-radius:8px; padding:12px; border-left:3px solid var(--oranje);">
+          <div style="font-size:11px; font-weight:700; color:#5A3200; margin-bottom:4px;">Langere ziekte (14+ dgn)</div>
+          <div style="font-size:12px; color:var(--tekst-sub); line-height:1.5;">Verzuimverzekering springt bij. Coöperatie betaalt minimaal 70% loon. Geen factuur aan bedrijf.</div>
+        </div>
+        <div style="background:#FCEBEB; border-radius:8px; padding:12px; border-left:3px solid #E24B4A;">
+          <div style="font-size:11px; font-weight:700; color:#791F1F; margin-bottom:4px;">Langdurig (arbeidsongeschikt)</div>
+          <div style="font-size:12px; color:var(--tekst-sub); line-height:1.5;">Verzuimverzekering dekt tot 104 weken. Daarna neemt UWV over. Geen risico voor het bedrijf.</div>
+        </div>
+      </div>
+      <div class="highlight-oranje" style="margin-top:12px; font-size:13px;">
+        De coöperatie sluit een verzuimverzekering af voor alle leerlingen. De kosten hiervan zijn verdisconteerd in het tarief. Het bedrijf heeft geen enkel risico bij ziekte van de leerling.
+      </div>
+    </div>
+
+    <!-- Servicedienst -->
+    <h3 style="font-size:16px; font-weight:600; margin:28px 0 12px;">De servicedienst — voor medewerkers mét een vaste baan</h3>
+    <div class="kaart kaart-blauw">
+      <p style="margin-bottom:14px; font-size:14px; color:var(--tekst-sub); line-height:1.7;">Heeft een medewerker al een vaste baan maar wil hij zijn N3 of N4 halen? Dan kan de coöperatie de administratie overnemen zonder werkgever te worden. Het bedrijf behoudt het loon en de sectorsubsidie — de coöperatie regelt de BPV-overeenkomst, de begeleiding en de subsidieaanvraag.</p>
+      <div class="grid-2">
+        <div>
+          <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:var(--tekst-sub); margin-bottom:8px;">Wat doet de coöperatie?</div>
+          <ul style="font-size:13px; color:var(--tekst-sub); padding-left:16px; line-height:1.8;">
+            <li>BPV-overeenkomst afsluiten met onderwijsinstelling</li>
+            <li>Subsidieaanvraag namens het bedrijf regelen</li>
+            <li>Praktijkopleider beschikbaar stellen indien gewenst</li>
+            <li>Voortgangsrapportage bijhouden richting school</li>
+          </ul>
+        </div>
+        <div>
+          <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:var(--tekst-sub); margin-bottom:8px;">Wat blijft bij het bedrijf?</div>
+          <ul style="font-size:13px; color:var(--tekst-sub); padding-left:16px; line-height:1.8;">
+            <li>Het werkgeverschap — coöperatie is hier géén werkgever</li>
+            <li>De sectorsubsidie — die gaat naar het bedrijf zelf</li>
+            <li>De medewerker — die blijft gewoon in dienst</li>
+          </ul>
+          <div style="background:var(--blauw-licht); border-radius:6px; padding:8px 10px; margin-top:10px; font-size:12px; color:var(--blauw-diep);">
+            Het bedrijf betaalt de coöperatie een servicefee voor de administratie en begeleiding. De indicatieve berekening staat in bijlage D.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- UWV voordelen bij zij-instroom -->
+    <h3 style="font-size:16px; font-weight:600; margin:28px 0 12px;">Financieel voordeel bij zij-instromers — UWV-regelingen</h3>
+    <div class="kaart kaart-groen">
+      <p style="font-size:14px; color:var(--tekst-sub); line-height:1.7; margin-bottom:14px;">Voor zij-instromers die vanuit een uitkering of met een arbeidsbeperking instromen zijn extra financiële regelingen beschikbaar. Deze maken zij-instroom voor de coöperatie extra aantrekkelijk.</p>
+      <div class="grid-3">
+        <div style="background:#fff; border-radius:8px; padding:12px;">
+          <div style="font-size:12px; font-weight:600; color:var(--groen); margin-bottom:5px;">UWV No-riskpolis</div>
+          <div style="font-size:12px; color:var(--tekst-sub); line-height:1.5;">Als de leerling ziek wordt, betaalt UWV het loon terug aan de coöperatie. Geen ziektekostenrisico voor de coöperatie bij deze groep.</div>
+        </div>
+        <div style="background:#fff; border-radius:8px; padding:12px;">
+          <div style="font-size:12px; font-weight:600; color:var(--groen); margin-bottom:5px;">Loonkostensubsidie gemeente</div>
+          <div style="font-size:12px; color:var(--tekst-sub); line-height:1.5;">Gemeente kan loonkostensubsidie verstrekken als iemand nog niet volledig productief is. Verlaagt de effectieve loonkosten voor de coöperatie in het eerste jaar.</div>
+        </div>
+        <div style="background:#fff; border-radius:8px; padding:12px;">
+          <div style="font-size:12px; font-weight:600; color:var(--groen); margin-bottom:5px;">Proefplaatsing UWV</div>
+          <div style="font-size:12px; color:var(--tekst-sub); line-height:1.5;">Kandidaat werkt 2 maanden bij een leerbedrijf zonder dat de coöperatie loon betaalt — UWV betaalt de uitkering door. Gratis kennismakingsfase op de werkvloer.</div>
+        </div>
+      </div>
+      <div style="margin-top:10px; font-size:12px; color:#1A4A2A; font-style:italic;">De directeur regelt de aanvraag in samenwerking met UWV, Werk.kom en de gemeente Weert. Het bedrijf hoeft hier niets voor te doen.</div>
+    </div>
+  </section>
+
+  <div class="scheidslijn"></div>
+
+  <!-- 7. PRAKTIJKOPLEIDERS -->
+  <section id="pob">
+    <div class="sectie-kop">
+      <div class="sectie-nummer">7</div>
+      <div>
+        <h2>Praktijkopleiders — begeleiding geregeld</h2>
+        <p>De coöperatie ontzorgt de ondernemer volledig — ook op het gebied van begeleiding. We leveren een praktijkopleider die past bij de situatie van het bedrijf. Drie profielen, elk met een eigen contractvorm.</p>
+      </div>
+    </div>
+
+    <div class="highlight-oranje">
+      <strong>Jullie hoeven maar één ding te doen:</strong> de werkplek leveren en de leerling het échte vakwerk laten zien. De begeleiding, de registratie bij SBB en de scholing van de praktijkopleider regelt de coöperatie.
+    </div>
+
+    <!-- Drie profielen -->
+    <div class="grid-3" style="margin-top:20px;">
+      <div class="kaart kaart-blauw">
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:10px;">
+          <div style="width:28px; height:28px; border-radius:50%; background:var(--blauw); color:#fff; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700; flex-shrink:0;">A</div>
+          <h3 style="margin:0;">Gepensioneerde vakman</h3>
+        </div>
+        <p style="font-size:12px; color:var(--tekst-sub); margin-bottom:8px; font-style:italic;">Overeenkomst van opdracht · geen arbeidscontract</p>
+        <ul>
+          <li>Vrij van gevolgen voor AOW of pensioen</li>
+          <li>Via coöperatie officieel geregistreerd bij SBB</li>
+          <li>Flexibel inzetbaar — bepaalt eigen uren</li>
+          <li>Vakkennis doorgeven aan de volgende generatie</li>
+          <li>Coöperatie regelt de scholingscursus</li>
+        </ul>
+      </div>
+      <div class="kaart kaart-oranje">
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:10px;">
+          <div style="width:28px; height:28px; border-radius:50%; background:var(--oranje); color:#fff; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700; flex-shrink:0;">B</div>
+          <h3 style="margin:0;">Eigen bedrijfsvakman</h3>
+        </div>
+        <p style="font-size:12px; color:var(--tekst-sub); margin-bottom:8px; font-style:italic;">Detachering bedrijf → coöperatie</p>
+        <ul>
+          <li>Vakman blijft in dienst bij het bedrijf</li>
+          <li>Bedrijf factureert begeleidingsuren aan coöperatie</li>
+          <li>Subsidierecht van het bedrijf blijft intact</li>
+          <li>Optimale match — hij kent het bedrijf al</li>
+          <li>Coöperatie regelt de SBB-registratie</li>
+        </ul>
+      </div>
+      <div class="kaart" style="border-left:4px solid var(--groen);">
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:10px;">
+          <div style="width:28px; height:28px; border-radius:50%; background:var(--groen); color:#fff; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700; flex-shrink:0;">C</div>
+          <h3 style="margin:0;">Zelfstandige begeleider</h3>
+        </div>
+        <p style="font-size:12px; color:var(--tekst-sub); margin-bottom:8px; font-style:italic;">Overeenkomst van opdracht · ZZP</p>
+        <ul>
+          <li>Professionele begeleider op maat</li>
+          <li>Geen vaste kosten voor de coöperatie</li>
+          <li>Schaalbaar naarmate het ledenaantal groeit</li>
+          <li>Kan meerdere sectortafels bedienen</li>
+          <li>Coöperatie regelt de DBA-overeenkomst</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- SBB registratie -->
+    <h3 style="font-size:16px; font-weight:600; margin:24px 0 12px;">Registratie bij SBB — hoe werkt dat?</h3>
+    <div class="kaart">
+      <p style="font-size:14px; color:var(--tekst-sub); line-height:1.7; margin-bottom:14px;">SBB (Samenwerkingsorganisatie Beroepsonderwijs Bedrijfsleven) stelt eisen aan praktijkopleiders. De coöperatie is het erkende leerbedrijf en regelt de registratie. Wat een praktijkopleider nodig heeft:</p>
+      <div class="grid-2">
+        <div>
+          <ul style="font-size:13px; color:var(--tekst-sub); padding-left:16px; line-height:1.9;">
+            <li>Vakdiploma passend bij de opleiding</li>
+            <li>Erkende praktijkopleiderscursus (1 dag of online)</li>
+            <li>Inschrijving in het SBB-register via de coöperatie</li>
+          </ul>
+        </div>
+        <div class="highlight-groen" style="margin:0; font-size:13px;">
+          <strong>De coöperatie betaalt de scholingscursus</strong> voor de praktijkopleider via het scholingsbudget van het sectorinstituut. Dat betekent: geen kosten voor de ondernemer, geen kosten voor de praktijkopleider.
+        </div>
+      </div>
+    </div>
+
+    <!-- Wat als er geen POB beschikbaar is -->
+    <div class="kaart" style="background:var(--achtergrond); border:1px dashed var(--rand);">
+      <h3>Wat als er geen praktijkopleider beschikbaar is?</h3>
+      <p>De directeur zoekt een passende begeleider uit de pool van de coöperatie — profiel A, B of C. Het bedrijf hoeft zelf niets te regelen. Dit is onderdeel van het ontzorgingsmodel: de coöperatie levert de leerling én de begeleiding. Jullie leveren de werkplek.</p>
+    </div>
+  </section>
+
+  <div class="scheidslijn"></div>
+
+  <!-- 8. SUBSIDIES & SECTORHEFFING -->
+  <section id="oom">
+    <div class="sectie-kop">
+      <div class="sectie-nummer">8</div>
+      <div>
+        <h2>Subsidies &amp; sectorheffing — geld dat er al is</h2>
+        <p>Elke sector in Nederland heeft een sectorinstituut dat opleidingssubsidies verstrekt aan werkgevers. Als werkgever draagt de coöperatie een kleine sectorheffing af — en ontvangt daarvoor een substantiële leerwerkbijdrage per leerling per jaar. Jullie betalen die heffing als bedrijf al. Via de coöperatie halen we dat geld terug.</p>
+      </div>
+    </div>
+
+    <!-- Hoe werkt het -->
+    <h3 style="font-size:16px; font-weight:600; margin-bottom:14px;">Het principe — drie stappen</h3>
+    <div class="ketting">
+      <div class="ketting-stap">
+        <div class="ketting-nr" style="color:var(--blauw);">Stap 1</div>
+        <div class="ketting-naam" style="color:var(--blauw);">CAO in het arbeidscontract</div>
+      </div>
+      <div class="ketting-stap">
+        <div class="ketting-nr" style="color:rgba(255,255,255,0.75);">Stap 2</div>
+        <div class="ketting-naam" style="color:#fff;">Sectorheffing afdragen</div>
+      </div>
+      <div class="ketting-stap">
+        <div class="ketting-nr" style="color:#5A3200;">Stap 3</div>
+        <div class="ketting-naam" style="color:#5A3200;">Leerwerkbijdrage ontvangen</div>
+      </div>
+    </div>
+
+    <div class="kaart" style="margin-top:0;">
+      <p style="font-size:14px; color:var(--tekst-sub); line-height:1.7; margin-bottom:16px;">De CAO die in het arbeidscontract van de leerling staat bepaalt welk sectorinstituut van toepassing is en welke heffing de coöperatie betaalt. Die heffing geeft recht op de leerwerkbijdrage. Zo werkt het voor elke sector:</p>
+      <table>
+        <tr>
+          <th>Sector</th>
+          <th>Sectorinstituut</th>
+          <th>CAO (richtlijn)</th>
+          <th>Start</th>
+        </tr>
+        <tr>
+          <td><span class="badge badge-blauw">Pilotbranche</span> Metaal</td>
+          <td>OOM</td>
+          <td>Metaal &amp; Techniek</td>
+          <td>2026</td>
+        </tr>
+        <tr>
+          <td>Elektro / installatie</td>
+          <td>OTIB</td>
+          <td>Installatietechniek</td>
+          <td>Op besluit</td>
+        </tr>
+        <tr>
+          <td>Hout / meubelindustrie</td>
+          <td>HOUT&amp;ME</td>
+          <td>Houthandel</td>
+          <td>Op besluit</td>
+        </tr>
+        <tr>
+          <td>Infra &amp; GWW</td>
+          <td>Fundeon / OAO</td>
+          <td>Bouw &amp; Infra</td>
+          <td>Op besluit</td>
+        </tr>
+        <tr>
+          <td>Transport &amp; logistiek</td>
+          <td>STL / SOOB</td>
+          <td>Beroepsgoederenvervoer</td>
+          <td>Op besluit</td>
+        </tr>
+      </table>
+      <div style="font-size:12px; color:var(--tekst-sub); margin-top:8px; font-style:italic;">Nieuwe sectoren worden toegevoegd op basis van een besluit van de ledenvergadering. Bij elke nieuwe sectortafel legt de directeur de toepasselijke CAO en het bijbehorende sectorinstituut schriftelijk vast.</div>
+    </div>
+
+    <!-- Wat levert het op -->
+    <div class="grid-2" style="margin-top:16px;">
+      <div class="kaart kaart-blauw">
+        <h3>Wat betaalt de coöperatie?</h3>
+        <p>Een kleine sectorheffing — een percentage van de loonsom van de leerlingen in die sector. Dit percentage verschilt per sectorinstituut. De heffing is verdisconteerd in het plaatsingsvergoedingstarief dat het bedrijf betaalt. De coöperatie draagt de heffing maandelijks af via de loonadministratie.</p>
+      </div>
+      <div class="kaart kaart-oranje">
+        <h3>Wat ontvangt de coöperatie?</h3>
+        <p>Een leerwerkbijdrage per leerling per jaar. Het exacte bedrag verschilt per sectorinstituut en per opleidingsniveau. Daarbovenop zijn er voortgangsbonussen en een diplomabonus. De leerwerkbijdrage wordt door de coöperatie gebruikt om de kosten te dekken en de reserve op te bouwen. Zie bijlage D voor de indicatieve berekening.</p>
+      </div>
+    </div>
+
+    <!-- Praktijkleersubsidie Rijk -->
+    <div class="kaart" style="background:var(--groen-licht); border:1px solid var(--groen); margin-top:4px;">
+      <h3 style="color:#1A4A2A;">Bovenop de sectorsubsidie: Praktijkleersubsidie van het Rijk</h3>
+      <p style="font-size:14px; color:#1A4A2A; line-height:1.7;">Als erkend leerbedrijf heeft de coöperatie ook recht op de Praktijkleersubsidie van het ministerie van OCW. Deze subsidie wordt jaarlijks aangevraagd bij de Rijksdienst voor Ondernemend Nederland (RVO) en staat naast de sectorsubsidie. De hoogte is afhankelijk van het aantal weken dat de leerling heeft gewerkt. De directeur vraagt beide subsidies aan — het bedrijf hoeft hier niets voor te doen.</p>
+    </div>
+
+    <!-- Wat het bedrijf doet -->
+    <div class="highlight-groen" style="margin-top:16px;">
+      <strong>Wat het bedrijf zelf doet:</strong> niets. De coöperatie is werkgever en vraagt alle subsidies aan. Het bedrijf betaalt de plaatsingsvergoeding per gewerkt uur — daarin zijn alle kosten en heffingen al verdisconteerd. De coöperatie verantwoordt de subsidies richting de sectorinstituten en het Rijk.
+    </div>
+  </section>
+
+
+  <div class="scheidslijn"></div>
+
+  <!-- 9. FINANCIEEL MODEL -->
+  <section id="financieel">
+    <div class="sectie-kop">
+      <div class="sectie-nummer">9</div>
+      <div>
+        <h2>Financieel model — kostendekkend zonder winstdoel</h2>
+        <p>De coöperatie is niet opgericht om winst te maken. Het doel is kostendekkend opereren met een reserveopbouw voor de toekomst. Alle inkomsten gaan naar kosten en reserve — nooit naar de leden als uitkering.</p>
+      </div>
+    </div>
+
+    <div class="highlight">
+      <strong>Belangrijk:</strong> alle bedragen en berekeningen in dit hoofdstuk zijn indicatief en gebaseerd op aannames. De werkelijke tarieven en begroting worden vastgesteld door het bestuur na oprichting op basis van actuele CAO-loonschalen, offertes en het werkelijke ledenaantal. De gedetailleerde indicatieve begroting staat in bijlage D.
+    </div>
+
+    <!-- Inkomstenbronnen -->
+    <h3 style="font-size:16px; font-weight:600; margin:24px 0 12px;">De drie inkomstenbronnen</h3>
+    <div class="grid-3">
+      <div class="kaart kaart-blauw">
+        <h3>1 — Plaatsingsvergoeding</h3>
+        <p>De hoofdinkomstenbron. Elk bedrijf betaalt per daadwerkelijk gewerkt uur van de leerling. Het tarief is berekend via de kostprijsmethode en dekt alle directe en indirecte kosten. Geen uur werkt de leerling bij jullie? Dan geen factuur.</p>
+        <div style="margin-top:10px; padding:8px 10px; background:var(--blauw-licht); border-radius:6px; font-size:12px; color:var(--blauw-diep);">
+          <strong>Formule:</strong> totale jaarkosten per leerling ÷ factureerbare uren per jaar
+        </div>
+      </div>
+      <div class="kaart kaart-oranje">
+        <h3>2 — Sectorsubsidie</h3>
+        <p>De coöperatie ontvangt als werkgever een leerwerkbijdrage per leerling per jaar van het sectorinstituut. Hoe meer leerlingen, hoe hoger de totale subsidie. Daarbovenop komen voortgangsbonussen en een diplomabonus bij succesvolle afronding.</p>
+        <div style="margin-top:10px; padding:8px 10px; background:var(--oranje-licht); border-radius:6px; font-size:12px; color:#5A3200;">
+          Per sector verschilt het subsidiebedrag. Zie bijlage D voor de indicatieve bedragen per sector.
+        </div>
+      </div>
+      <div class="kaart" style="border-left:4px solid var(--groen);">
+        <h3>3 — Ledenbijdrage</h3>
+        <p>Elk lid-bedrijf betaalt een jaarlijkse bijdrage. Deze dekt de vaste basiskosten van de coöperatie — bestuur, administratie, accountant — ongeacht hoeveel leerlingen een bedrijf afneemt.</p>
+        <div style="margin-top:10px; padding:8px 10px; background:var(--groen-licht); border-radius:6px; font-size:12px; color:#1A4A2A;">
+          De hoogte wordt jaarlijks vastgesteld door de ledenvergadering op voorstel van het bestuur.
+        </div>
+      </div>
+    </div>
+
+    <!-- Kostencategorieën -->
+    <h3 style="font-size:16px; font-weight:600; margin:24px 0 12px;">Waar gaat het geld naartoe?</h3>
+    <div class="kaart">
+      <table>
+        <tr>
+          <th>Kostenpost</th>
+          <th>Toelichting</th>
+          <th>Karakter</th>
+        </tr>
+        <tr>
+          <td><strong>Loon leerlingen</strong></td>
+          <td>Bruto loon conform sectorspecifieke CAO-loonschaal, per niveau</td>
+          <td><span class="badge badge-blauw">Variabel</span></td>
+        </tr>
+        <tr>
+          <td><strong>Werkgeverslasten</strong></td>
+          <td>Sociale premies en fiscale lasten bovenop het bruto loon</td>
+          <td><span class="badge badge-blauw">Variabel</span></td>
+        </tr>
+        <tr>
+          <td><strong>Verzuimverzekering</strong></td>
+          <td>Dekt loondoorbetaling bij ziekte vanaf dag 14 of eerder</td>
+          <td><span class="badge badge-blauw">Variabel</span></td>
+        </tr>
+        <tr>
+          <td><strong>Directeur coöperatie</strong></td>
+          <td>Vergoeding via opdrachtenovereenkomst — uitvoering en coördinatie</td>
+          <td><span class="badge badge-oranje">Deels vast</span></td>
+        </tr>
+        <tr>
+          <td><strong>Salarisadministratie</strong></td>
+          <td>Extern kantoor voor loonstroken, aangiften en mutaties</td>
+          <td><span class="badge badge-blauw">Variabel</span></td>
+        </tr>
+        <tr>
+          <td><strong>Accountant + jaarrekening</strong></td>
+          <td>Wettelijk verplicht voor coöperaties als rechtspersoon</td>
+          <td><span class="badge badge-grijs">Vast</span></td>
+        </tr>
+        <tr>
+          <td><strong>Verzekeringen AVB + rechtsbijstand</strong></td>
+          <td>Bedrijfsaansprakelijkheid en arbeidsrechtelijke bescherming</td>
+          <td><span class="badge badge-grijs">Vast</span></td>
+        </tr>
+        <tr>
+          <td><strong>Praktijkopleiders</strong></td>
+          <td>Vergoeding of detacheringskosten per inzet</td>
+          <td><span class="badge badge-blauw">Variabel</span></td>
+        </tr>
+        <tr>
+          <td><strong>Sectorheffing</strong></td>
+          <td>Percentage van loonsom — toegang tot sectorsubsidie</td>
+          <td><span class="badge badge-blauw">Variabel</span></td>
+        </tr>
+        <tr>
+          <td><strong>Oprichtingskosten (jaar 1)</strong></td>
+          <td>Notaris, KvK, SBB-erkenning, juridisch advies</td>
+          <td><span class="badge badge-grijs">Eenmalig</span></td>
+        </tr>
+        <tr>
+          <td><strong>Onvoorzien + reserveopslag</strong></td>
+          <td>Buffer voor onverwachte kosten en reserveopbouw</td>
+          <td><span class="badge badge-grijs">Vast % van totaal</span></td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- Reserve -->
+    <h3 style="font-size:16px; font-weight:600; margin:24px 0 12px;">Reserveopbouw — waarvoor en hoeveel?</h3>
+    <div class="kaart kaart-blauw">
+      <p style="font-size:14px; color:var(--tekst-sub); line-height:1.7; margin-bottom:16px;">Een overschot op de exploitatie gaat niet naar de leden maar naar de reserve van de coöperatie. Dat is wettelijk verankerd in de U.A.-structuur. De reserve groeit elk jaar en heeft drie bestemmingen:</p>
+      <div class="grid-3">
+        <div style="background:#fff; border-radius:8px; padding:12px; text-align:center;">
+          <div style="font-size:24px; margin-bottom:4px;">🛡</div>
+          <div style="font-size:13px; font-weight:600; color:var(--blauw); margin-bottom:4px;">Instabiliteitsbuffer</div>
+          <div style="font-size:12px; color:var(--tekst-sub); line-height:1.4;">Minimaal 2 maanden loonkosten. Dekt ziekte, leegloop of een vertraging in subsidie-uitbetaling.</div>
+        </div>
+        <div style="background:#fff; border-radius:8px; padding:12px; text-align:center;">
+          <div style="font-size:24px; margin-bottom:4px;">📈</div>
+          <div style="font-size:13px; font-weight:600; color:var(--blauw); margin-bottom:4px;">Groeiinvestering</div>
+          <div style="font-size:12px; color:var(--tekst-sub); line-height:1.4;">Voor extra personeel, scholing van praktijkopleiders en de opstart van nieuwe sectortafels.</div>
+        </div>
+        <div style="background:#fff; border-radius:8px; padding:12px; text-align:center;">
+          <div style="font-size:24px; margin-bottom:4px;">🏗</div>
+          <div style="font-size:13px; font-weight:600; color:var(--blauw); margin-bottom:4px;">Toekomstige huisvesting</div>
+          <div style="font-size:12px; color:var(--tekst-sub); line-height:1.4;">Indien de coöperatie op termijn een eigen praktijklocatie wil realiseren voor begeleiding en scholing.</div>
+        </div>
+      </div>
+      <div style="margin-top:14px; font-size:12px; color:var(--tekst-sub); font-style:italic; padding-top:12px; border-top:1px solid var(--rand);">
+        De ledenvergadering stelt elk jaar het reservebeleid vast. Het bestuur voert dit uit. Uitkering van de reserve aan leden is statutair niet toegestaan.
+      </div>
+    </div>
+
+    <!-- Drie knoppen -->
+    <h3 style="font-size:16px; font-weight:600; margin:24px 0 12px;">De drie knoppen om kostendekkend te sturen</h3>
+    <div class="grid-3">
+      <div style="background:#fff; border:1px solid var(--rand); border-radius:10px; padding:16px; text-align:center;">
+        <div style="width:36px; height:36px; border-radius:50%; background:var(--blauw); color:#fff; display:flex; align-items:center; justify-content:center; font-size:16px; margin:0 auto 10px;">1</div>
+        <div style="font-size:13px; font-weight:600; color:var(--tekst); margin-bottom:6px;">Plaatsingsvergoeding</div>
+        <div style="font-size:12px; color:var(--tekst-sub); line-height:1.5;">Het uurtarief wordt jaarlijks herberekend op basis van actuele loonkosten en overhead. Bestuur stelt vast.</div>
+      </div>
+      <div style="background:#fff; border:1px solid var(--rand); border-radius:10px; padding:16px; text-align:center;">
+        <div style="width:36px; height:36px; border-radius:50%; background:var(--oranje); color:#fff; display:flex; align-items:center; justify-content:center; font-size:16px; margin:0 auto 10px;">2</div>
+        <div style="font-size:13px; font-weight:600; color:var(--tekst); margin-bottom:6px;">Ledenbijdrage</div>
+        <div style="font-size:12px; color:var(--tekst-sub); line-height:1.5;">Vaste jaarlijkse bijdrage per lid. Dekt de basiskosten. Ledenvergadering stelt hoogte vast.</div>
+      </div>
+      <div style="background:#fff; border:1px solid var(--rand); border-radius:10px; padding:16px; text-align:center;">
+        <div style="width:36px; height:36px; border-radius:50%; background:var(--groen); color:#fff; display:flex; align-items:center; justify-content:center; font-size:16px; margin:0 auto 10px;">3</div>
+        <div style="font-size:13px; font-weight:600; color:var(--tekst); margin-bottom:6px;">Reserve</div>
+        <div style="font-size:12px; color:var(--tekst-sub); line-height:1.5;">Overschot blijft in de coöperatie. Bij tekort: bijdrage of tarief omhoog. Nooit geld terug naar leden.</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="scheidslijn"></div>
+
+  <!-- 10. SECTOREN & GROEI -->
+  <section id="sectoren">
+    <div class="sectie-kop">
+      <div class="sectie-nummer">10</div>
+      <div>
+        <h2>Sectoren &amp; groei — vraaggestuurd uitbreiden</h2>
+        <p>De coöperatie start met één sector als pilotbranche. Uitbreiding naar andere sectoren gebeurt altijd op basis van vraag — als er voldoende bedrijven zijn die mee willen doen. Nooit aanbodgestuurd groeien. De naam "Vakschool Weerterland" dekt alle ambachten.</p>
+      </div>
+    </div>
+
+    <!-- Principe uitbreiding -->
+    <div class="highlight-oranje">
+      <strong>Wanneer opent een nieuwe sectortafel?</strong> Als minimaal drie bedrijven uit een nieuwe sector lid worden en de ledenvergadering met gewone meerderheid besluit tot opening. Daarna vraagt de directeur leerbedrijferkenning aan bij SBB en meldt de coöperatie zich aan bij het bijbehorende sectorinstituut. Geen aparte organisatie nodig — alles via de bestaande coöperatie.
+    </div>
+
+    <!-- Sectoroverzicht -->
+    <h3 style="font-size:16px; font-weight:600; margin:24px 0 12px;">Mogelijke sectortafels — op volgorde van haalbaarheid</h3>
+    <div class="kaart">
+      <table>
+        <tr>
+          <th>Sector</th>
+          <th>Status</th>
+          <th>Sectorinstituut</th>
+          <th>Externe partner</th>
+          <th>Vereiste</th>
+        </tr>
+        <tr>
+          <td><strong>Metaal &amp; constructie</strong></td>
+          <td><span class="badge badge-blauw">Pilotbranche</span></td>
+          <td>OOM</td>
+          <td>TechNext</td>
+          <td>5 oprichtende leden</td>
+        </tr>
+        <tr>
+          <td>Elektro &amp; installatietechniek</td>
+          <td><span class="badge badge-grijs">Op besluit</span></td>
+          <td>OTIB</td>
+          <td>Techniek Nederland</td>
+          <td>Min. 3 bedrijven + ledenverg.</td>
+        </tr>
+        <tr>
+          <td>Mechatronica</td>
+          <td><span class="badge badge-grijs">Op besluit</span></td>
+          <td>OOM</td>
+          <td>TechNext</td>
+          <td>Min. 3 bedrijven + ledenverg.</td>
+        </tr>
+        <tr>
+          <td>Hout &amp; meubelindustrie</td>
+          <td><span class="badge badge-grijs">Op besluit</span></td>
+          <td>HOUT&amp;ME</td>
+          <td>—</td>
+          <td>Min. 3 bedrijven + ledenverg.</td>
+        </tr>
+        <tr>
+          <td>Infra &amp; GWW</td>
+          <td><span class="badge badge-grijs">Op besluit</span></td>
+          <td>Fundeon / OAO</td>
+          <td>Infracampus Kelpen-Oler</td>
+          <td>Min. 3 bedrijven + ledenverg.</td>
+        </tr>
+        <tr>
+          <td>Transport &amp; logistiek</td>
+          <td><span class="badge badge-grijs">Op besluit</span></td>
+          <td>STL / SOOB</td>
+          <td>STL</td>
+          <td>Min. 3 bedrijven + ledenverg.</td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- Externe partners -->
+    <h3 style="font-size:16px; font-weight:600; margin:24px 0 12px;">Externe partners — sectorgroep sluit aan bij branche</h3>
+    <div class="grid-2">
+      <div class="kaart kaart-blauw">
+        <h3>TechNext</h3>
+        <p>Landelijk platform voor de technologische maakindustrie. Verbindt bedrijven met leerlingen en scholen. De sectortafel Metaal kan als partner aansluiten bij TechNext voor zichtbaarheid, werving en branchenetwerk. Geen subsidieverstrekker — wel een wervingskanaal.</p>
+      </div>
+      <div class="kaart" style="border-left:4px solid var(--groen);">
+        <h3>Infracampus Kelpen-Oler</h3>
+        <p>Erkende praktijklocatie voor grond-, weg- en waterbouw — vlak bij Weerterland. Als de sectortafel Infra &amp; GWW wordt geopend, kan Infracampus als steunlid aansluiten bij de coöperatie. Ze brengen hun eigen netwerk van GWW-bedrijven en hun erkende leerplek mee.</p>
+      </div>
+      <div class="kaart" style="border-left:4px solid var(--paars);">
+        <h3>STL — Sectorinstituut Transport &amp; Logistiek</h3>
+        <p>Landelijk instituut voor transport en logistiek met eigen BBL-structuur en SOOB-subsidiesystematiek. Als de sectortafel Transport wordt geopend, kan STL als steunlid toetreden. Ze brengen hun landelijke netwerk en subsidiekennis mee.</p>
+      </div>
+      <div class="kaart kaart-oranje">
+        <h3>Hoe sluit een externe partner aan?</h3>
+        <p>Via een partnerovereenkomst tussen de coöperatie en de externe organisatie. De sectortafel stelt het voor aan het bestuur — het bestuur sluit de overeenkomst. Geen wijziging van de statuten nodig. Elk partnerschap is maatwerk: wat levert de partner, wat levert de coöperatie?</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="scheidslijn"></div>
+
+  <!-- 11. 5-JARIGE STRATEGIE -->
+  <section id="strategie">
+    <div class="sectie-kop">
+      <div class="sectie-nummer">11</div>
+      <div>
+        <h2>Vijfjarige strategie — van start naar ankerpunt</h2>
+        <p>De coöperatie bouwt in vijf jaar toe naar een zelfstandige, breed gedragen organisatie die het regionale ankerpunt is voor technisch vakmanschap in Weerterland. Elk jaar heeft een eigen focus en eigen mijlpalen.</p>
+      </div>
+    </div>
+
+    <div class="highlight-groen">
+      <strong>De rode draad:</strong> klein beginnen, solide bouwen, vraaggestuurd groeien. Nooit meer diensten aanbieden dan de organisatie aankan. Nooit meer leerlingen dan er goede leerwerkplekken en praktijkopleiders zijn. De kwaliteit van de begeleiding bepaalt de reputatie — en de reputatie bepaalt de groei.
+    </div>
+
+    <!-- Jaar blokken inklapbaar -->
+    <div style="margin-top:20px;">
+
+      <div class="jaar-balk">
+        <div class="jaar-balk-header" style="background:var(--blauw-licht);" onclick="toggleJaar(this)">
+          <div class="jaar-balk-jaar" style="color:var(--blauw);">2026</div>
+          <div>
+            <div class="jaar-balk-titel" style="color:var(--blauw);">Funderen</div>
+            <div class="jaar-balk-sub">Coöperatie opgericht · pilotbranche gestart · TCW-basis gelegd</div>
+          </div>
+          <div class="jaar-balk-toggle" style="color:var(--blauw);">▾</div>
+        </div>
+        <div class="jaar-balk-body open">
+          <div class="jaar-grid">
+            <div class="jaar-kolom">
+              <h5>Organisatie</h5>
+              <ul>
+                <li>Coöperatie opgericht bij notaris</li>
+                <li>KvK-inschrijving en SBB-erkenning</li>
+                <li>Bestuur gekozen — 3 leden</li>
+                <li>Directeur actief via opdrachtenovereenkomst</li>
+                <li>Salarisadministratie en accountant geregeld</li>
+              </ul>
+            </div>
+            <div class="jaar-kolom">
+              <h5>Uitvoering</h5>
+              <ul>
+                <li>Eerste leerlingen N2 pilotbranche in dienst</li>
+                <li>Carrouselmodel draait</li>
+                <li>Sectorsubsidie aangevraagd</li>
+                <li>Praktijkopleiders geregistreerd bij SBB</li>
+                <li>Kwartaalrapportage TCW op schema</li>
+              </ul>
+            </div>
+            <div class="jaar-kolom">
+              <h5>Mijlpalen</h5>
+              <ul>
+                <li>Oprichtende leden actief</li>
+                <li>Eerste sectortafel operationeel</li>
+                <li>Sectorsubsidie bevestigd</li>
+                <li>Reserveopbouw gestart</li>
+                <li>TCW WP1.1 gehaald</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="jaar-balk">
+        <div class="jaar-balk-header" style="background:var(--oranje-licht);" onclick="toggleJaar(this)">
+          <div class="jaar-balk-jaar" style="color:var(--oranje);">2027</div>
+          <div>
+            <div class="jaar-balk-titel" style="color:#5A3200;">Uitbreiden</div>
+            <div class="jaar-balk-sub">N3 gestart · servicedienst actief · tweede sectortafel · meer leden</div>
+          </div>
+          <div class="jaar-balk-toggle" style="color:var(--oranje);">▾</div>
+        </div>
+        <div class="jaar-balk-body">
+          <div class="jaar-grid">
+            <div class="jaar-kolom">
+              <h5>Organisatie</h5>
+              <ul>
+                <li>Tweede sectortafel geopend op besluit leden</li>
+                <li>Externe partnerovereenkomst gesloten</li>
+                <li>UWV / Werk.kom aansluiting voor zij-instroom</li>
+                <li>Eerste organisatiegroei naast directeur</li>
+                <li>Verkenning Infracampus als partner</li>
+              </ul>
+            </div>
+            <div class="jaar-kolom">
+              <h5>Uitvoering</h5>
+              <ul>
+                <li>N3 BBL gestart in pilotbranche</li>
+                <li>Servicedienst actief voor werkenden N3/N4</li>
+                <li>Eerste zij-instroomtraject gestart</li>
+                <li>LLO-modules voor medewerkers lid-bedrijven</li>
+                <li>Pool gepensioneerde POB's uitgebouwd</li>
+              </ul>
+            </div>
+            <div class="jaar-kolom">
+              <h5>Mijlpalen</h5>
+              <ul>
+                <li>Ledenaantal gegroeid naar 12–15</li>
+                <li>Twee sectortafels actief</li>
+                <li>Eerste leerlingen 2026 op weg naar diploma</li>
+                <li>Reserve aangegroeid</li>
+                <li>TCW WP1.2 + WP4.2 op schema</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="jaar-balk">
+        <div class="jaar-balk-header" style="background:var(--groen-licht);" onclick="toggleJaar(this)">
+          <div class="jaar-balk-jaar" style="color:var(--groen);">2028</div>
+          <div>
+            <div class="jaar-balk-titel" style="color:#1A4A2A;">Versterken</div>
+            <div class="jaar-balk-sub">N4 gestart · meer sectoren · TCW afronden · alle KPI's groen</div>
+          </div>
+          <div class="jaar-balk-toggle" style="color:var(--groen);">▾</div>
+        </div>
+        <div class="jaar-balk-body">
+          <div class="jaar-grid">
+            <div class="jaar-kolom">
+              <h5>Organisatie</h5>
+              <ul>
+                <li>Drie of vier sectortafels actief</li>
+                <li>Infracampus en/of STL als steunlid</li>
+                <li>Huisvesting onderzocht indien nodig</li>
+                <li>Exploitatiemodel 2029 vastgesteld</li>
+                <li>Directeur overdraagbaar gemaakt</li>
+              </ul>
+            </div>
+            <div class="jaar-kolom">
+              <h5>Uitvoering</h5>
+              <ul>
+                <li>N4 BBL gestart</li>
+                <li>Zij-instroomtrajecten structureel</li>
+                <li>TCW KPI-doelstelling zij-instromers gehaald</li>
+                <li>TCW KPI-doelstelling POB's gehaald</li>
+                <li>Eerste N2-cohort gediplomeerd</li>
+              </ul>
+            </div>
+            <div class="jaar-kolom">
+              <h5>Mijlpalen</h5>
+              <ul>
+                <li>25+ leden</li>
+                <li>30+ leerlingen alle niveaus en sectoren</li>
+                <li>Alle TCW-KPI's aantoonbaar gerealiseerd</li>
+                <li>Subsidieafhankelijkheid afgebouwd</li>
+                <li>Reserve op doelniveau</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="jaar-balk">
+        <div class="jaar-balk-header" style="background:#EEEDFE;" onclick="toggleJaar(this)">
+          <div class="jaar-balk-jaar" style="color:var(--paars);">2029</div>
+          <div>
+            <div class="jaar-balk-titel" style="color:#3C3489;">Zelfstandig</div>
+            <div class="jaar-balk-sub">TCW voorbij · eigen financiering · regionale autoriteit</div>
+          </div>
+          <div class="jaar-balk-toggle" style="color:var(--paars);">▾</div>
+        </div>
+        <div class="jaar-balk-body">
+          <div class="jaar-grid">
+            <div class="jaar-kolom">
+              <h5>Organisatie</h5>
+              <ul>
+                <li>Volledig zelffinancierende coöperatie</li>
+                <li>Vaste medewerkers naast directeur</li>
+                <li>Eigen locatie of vaste huisvesting gerealiseerd</li>
+                <li>Nieuwe vijfjaarsplan opgesteld</li>
+                <li>Geen subsidieafhankelijkheid meer</li>
+              </ul>
+            </div>
+            <div class="jaar-kolom">
+              <h5>Diensten volledig</h5>
+              <ul>
+                <li>N2 · N3 · N4 volledig en structureel</li>
+                <li>Servicedienst schaalbaar ingericht</li>
+                <li>Zij-instroomtrajecten als vast product</li>
+                <li>LLO als eigen dienstenaanbod</li>
+                <li>POB-scholing als dienst aan bedrijven</li>
+              </ul>
+            </div>
+            <div class="jaar-kolom">
+              <h5>Mijlpalen</h5>
+              <ul>
+                <li>30+ leden</li>
+                <li>40+ leerlingen en servicedienstklanten</li>
+                <li>Vijf of meer sectortafels</li>
+                <li>Reserve boven doelniveau</li>
+                <li>Erkend regionaal leerwerkbedrijf</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="jaar-balk">
+        <div class="jaar-balk-header" style="background:#E1F5EE;" onclick="toggleJaar(this)">
+          <div class="jaar-balk-jaar" style="color:#085041;">2030</div>
+          <div>
+            <div class="jaar-balk-titel" style="color:#085041;">Doorgroeien</div>
+            <div class="jaar-balk-sub">Regionaal ankerpunt · cirkel rond · model exporteerbaar</div>
+          </div>
+          <div class="jaar-balk-toggle" style="color:#085041;">▾</div>
+        </div>
+        <div class="jaar-balk-body">
+          <div class="jaar-grid">
+            <div class="jaar-kolom">
+              <h5>Positie in de regio</h5>
+              <ul>
+                <li>Erkend regionaal leerwerkbedrijf voor alle ambachten</li>
+                <li>Vaste partner gemeente Weert en omgeving</li>
+                <li>Model bekend bij andere regio's in Nederland</li>
+                <li>40+ leden over alle sectoren</li>
+              </ul>
+            </div>
+            <div class="jaar-kolom">
+              <h5>De cirkel is rond</h5>
+              <ul>
+                <li>Eerste leerlingen van 2026 zijn nu vakman</li>
+                <li>Sommigen zijn zelf praktijkopleider geworden</li>
+                <li>Technisch vakmanschap geborgd in Weerterland</li>
+                <li>Nieuwe generatie leerlingen in opleiding</li>
+              </ul>
+            </div>
+            <div class="jaar-kolom">
+              <h5>Mijlpalen</h5>
+              <ul>
+                <li>40+ leden</li>
+                <li>50+ leerlingen en servicedienstklanten</li>
+                <li>Reserve ruim boven doelniveau</li>
+                <li>Weerterland behoudt zijn vakmensen</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="scheidslijn"></div>
+
+  <!-- 12. TCW & REGIODEAL -->
+  <section id="tcw">
+    <div class="sectie-kop">
+      <div class="sectie-nummer">12</div>
+      <div>
+        <h2>TCW &amp; Regiodeal — wat de coöperatie levert</h2>
+        <p>De TCW Regiodeal Midden-Limburg loopt van 1 mei 2026 tot 31 december 2028. De coöperatie is de uitvoerende arm van het MKB binnen TCW. Zonder de coöperatie haalt TCW zijn eigen KPI's niet.</p>
+      </div>
+    </div>
+
+    <div class="highlight">
+      <strong>De kern:</strong> de stichting verantwoordt de Regiodeal richting de gemeente Weert. De coöperatie levert de feitelijke realisatie — leerlingen, leerwerkplekken, praktijkopleiders, zij-instromers. De directeur van de coöperatie neemt deel aan de relevante TCW-werkgroepen als uitvoeringspartner.
+    </div>
+
+    <!-- KPI tabel -->
+    <h3 style="font-size:16px; font-weight:600; margin:24px 0 12px;">TCW KPI's — bijdrage van de coöperatie</h3>
+    <div class="kaart">
+      <table>
+        <tr>
+          <th style="width:12%">WP</th>
+          <th style="width:38%">TCW-doelstelling</th>
+          <th style="width:20%">Deadline</th>
+          <th>Coöperatie levert</th>
+        </tr>
+        <tr>
+          <td><span class="badge badge-blauw">WP1.1</span></td>
+          <td>Uitvoeringsplan BBL N2</td>
+          <td>Juli 2026</td>
+          <td class="ja">Arbeids- en plaatsingsovereenkomsten</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-blauw">WP1.1</span></td>
+          <td>Eerste leerlingen N2 gestart</td>
+          <td>Sept. 2026</td>
+          <td class="ja">Leerlingen in dienst bij coöperatie</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-blauw">WP1.1</span></td>
+          <td>Cumulatief 30 studenten N2</td>
+          <td>Eind 2028</td>
+          <td class="ja">Groei via carrouselmodel</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-blauw">WP1.2</span></td>
+          <td>4 extra BBL-opleidingen N2/N3/N4</td>
+          <td>2028</td>
+          <td class="ja">N3 (2027) + N4 (2028) + nieuwe sectortafels</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-blauw">WP1.2</span></td>
+          <td>50 bedrijven met leerwerkplekken</td>
+          <td>2028</td>
+          <td class="oranje">Coöp. + stichting samen</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-blauw">WP1.3</span></td>
+          <td>20 praktijkopleiders bijgeschoold</td>
+          <td>2026–2028</td>
+          <td class="ja">POB-scholing via sectorinstituut + SBB</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-blauw">WP1.3</span></td>
+          <td>4 hybride docenten actief</td>
+          <td>2026–2028</td>
+          <td class="ja">Gepensioneerde POB's die ook lesgeven</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-blauw">WP4.1</span></td>
+          <td>110 werkenden in LLO</td>
+          <td>2026–2028</td>
+          <td class="oranje">LLO-modules + servicedienst + stichting</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-blauw">WP4.2</span></td>
+          <td>25 zij-instromers in maatwerktrajecten</td>
+          <td>2026–2028</td>
+          <td class="ja">In dienst bij coöperatie via UWV-samenwerking</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-blauw">WP4.2</span></td>
+          <td>2 maatwerk doelgroepprojecten</td>
+          <td>2026–2028</td>
+          <td class="ja">Project 1: werkzoekenden N3 · Project 2: statushouders</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-blauw">WP5.2</span></td>
+          <td>25 MKB-koplopers</td>
+          <td>2028</td>
+          <td class="ja">Elk coöperatielid telt als koploper</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-blauw">WP5.3</span></td>
+          <td>Governance-structuur operationeel</td>
+          <td>2028</td>
+          <td class="ja">Statuten · bestuur · reglement = TCW-governance</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-blauw">WP5.4</span></td>
+          <td>Kennis- &amp; adviescentrum MKB operationeel</td>
+          <td>1-7-2028</td>
+          <td class="oranje">Coöperatie levert praktijkkennis vanuit uitvoeringservaring</td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- WP2.3 campuslocatie -->
+    <div class="kaart" style="background:var(--achtergrond); border:1px dashed var(--rand); margin-top:8px;">
+      <h3 style="color:var(--tekst-sub);">Raakvlak met WP2.3 — Techcampus locatie</h3>
+      <p style="font-size:13px; color:var(--tekst-sub); line-height:1.7;">Het TCW-programma onderzoekt een toekomstige campuslocatie voor praktijkonderwijs (WP2.3). Als de coöperatie groeit en een eigen of gedeelde praktijklocatie wil realiseren voor begeleiding, scholing van praktijkopleiders en N3/N4-opdrachten, sluit dit direct aan bij dit campusvraagstuk. De directeur van de coöperatie neemt actief deel aan de verkenning van dit vraagstuk via de relevante TCW-werkgroep.</p>
+    </div>
+
+    <!-- Rapportage -->
+    <h3 style="font-size:16px; font-weight:600; margin:24px 0 12px;">Rapportage — wat de directeur bijhoudt</h3>
+    <div class="kaart kaart-oranje">
+      <p style="font-size:14px; color:var(--tekst-sub); line-height:1.7; margin-bottom:14px;">De directeur houdt per kwartaal bij wat de coöperatie heeft gerealiseerd. Dit vormt de basis voor de TCW-rapportage die de stichting aanlevert bij de gemeente Weert. <strong>Zonder registratie geen verantwoording — zonder verantwoording geen subsidie-uitkering.</strong></p>
+      <div class="grid-2">
+        <div>
+          <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:var(--tekst-sub); margin-bottom:8px;">Wat wordt bijgehouden</div>
+          <ul style="font-size:13px; color:var(--tekst-sub); padding-left:16px; line-height:1.9;">
+            <li>Aantal leerlingen per niveau en sector</li>
+            <li>Aantal actieve leerwerkplekken per bedrijf</li>
+            <li>Geregistreerde praktijkopleiders + scholing</li>
+            <li>Deelnemers LLO en servicedienst</li>
+            <li>Zij-instromers per traject</li>
+            <li>Aantal actieve leden coöperatie</li>
+          </ul>
+        </div>
+        <div>
+          <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:var(--tekst-sub); margin-bottom:8px;">Rapportageritme</div>
+          <div style="font-size:13px; color:var(--tekst-sub); line-height:2.0;">
+            <div>📅 <strong>1 april</strong> — Q1 rapportage aan stichting</div>
+            <div>📅 <strong>1 juli</strong> — Q2 rapportage aan stichting</div>
+            <div>📅 <strong>1 oktober</strong> — Q3 rapportage aan stichting</div>
+            <div>📅 <strong>15 december</strong> — Q4 rapportage aan stichting</div>
+          </div>
+          <div style="margin-top:10px; font-size:12px; color:var(--tekst-sub); padding:8px 10px; background:var(--oranje-licht); border-radius:6px;">
+            De stichting verwerkt de coöperatiedata in de formele kwartaalrapportage richting gemeente Weert.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="scheidslijn"></div>
+
+  <!-- BIJLAGE A: DOCUMENTENSET -->
+  <section id="documenten">
+    <div class="sectie-kop">
+      <div style="width:36px;height:36px;border-radius:50%;background:var(--tekst-sub);color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;flex-shrink:0;margin-top:4px;">A</div>
+      <div>
+        <h2>Bijlage A — Volledige documentenset</h2>
+        <p>Alle documenten van de coöperatie zijn gereed. Hieronder een overzicht per laag met de doelgroep van elk document. De documenten zelf zijn te vinden in de sectie <strong>Documentenset</strong> verderop in dit hoofddocument.</p>
+      </div>
+    </div>
+
+    <div class="kaart">
+      <table>
+        <tr>
+          <th style="width:10%">Laag</th>
+          <th style="width:32%">Document</th>
+          <th style="width:12%">Status</th>
+          <th>Voor wie</th>
+        </tr>
+
+        <tr>
+          <td><span class="badge badge-blauw">A</span> Het verhaal</td>
+          <td>Hoofddocument HTML (dit document)</td>
+          <td><span class="badge badge-groen">Gereed</span></td>
+          <td>Elke ondernemer die wil begrijpen wat de coöperatie is</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-blauw">A</span></td>
+          <td>Presentatie werkgroep (PPTX)</td>
+          <td><span class="badge badge-groen">Gereed</span></td>
+          <td>Werkgroep / besluitvorming</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-blauw">A</span></td>
+          <td>Missie, visie en vijfjarenplan</td>
+          <td><span class="badge badge-groen">Gereed</span></td>
+          <td>Bestuur / TCW-partners / gemeente</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-blauw">A</span></td>
+          <td>One-pager voor ondernemers</td>
+          <td><span class="badge badge-groen">Gereed</span></td>
+          <td>Eerste gesprekken werving nieuwe leden</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-blauw">A</span></td>
+          <td>Notitie rolverdeling stichting &amp; coöperatie</td>
+          <td><span class="badge badge-groen">Gereed</span></td>
+          <td>Intern stichtingsbestuur</td>
+        </tr>
+
+        <tr>
+          <td><span class="badge badge-oranje">B</span> Oprichting</td>
+          <td>Statuten coöperatie — concept </td>
+          <td><span class="badge badge-groen">Gereed</span></td>
+          <td>Notaris / oprichtende leden</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-oranje">B</span></td>
+          <td>Huishoudelijk reglement</td>
+          <td><span class="badge badge-groen">Gereed</span></td>
+          <td>Bestuur / ledenvergadering / directeur</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-oranje">B</span></td>
+          <td>Intentieverklaring oprichtend lid</td>
+          <td><span class="badge badge-groen">Gereed</span></td>
+          <td>Oprichtende bedrijven</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-oranje">B</span></td>
+          <td>Checklist oprichting coöperatie</td>
+          <td><span class="badge badge-groen">Gereed</span></td>
+          <td>Directeur / initiatiefnemer</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-oranje">B</span></td>
+          <td>Opdrachtenovereenkomst holding → coöperatie</td>
+          <td><span class="badge badge-groen">Gereed</span></td>
+          <td>Notaris / accountant / directeur</td>
+        </tr>
+
+        <tr>
+          <td><span class="badge badge-groen">C</span> Overeenkomsten</td>
+          <td>Samenwerkingsovereenkomst stichting ↔ coöperatie</td>
+          <td><span class="badge badge-groen">Gereed</span></td>
+          <td>Stichting + coöperatie</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-groen">C</span></td>
+          <td>Arbeidsovereenkomst BBL-leerling (sjabloon)</td>
+          <td><span class="badge badge-groen">Gereed</span></td>
+          <td>Elke nieuwe leerling</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-groen">C</span></td>
+          <td>Plaatsingsovereenkomst lid-bedrijf (sjabloon)</td>
+          <td><span class="badge badge-groen">Gereed</span></td>
+          <td>Elk lid-bedrijf per geplaatste leerling</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-groen">C</span></td>
+          <td>Overeenkomst van opdracht gepensioneerde POB</td>
+          <td><span class="badge badge-groen">Gereed</span></td>
+          <td>Gepensioneerde praktijkopleiders</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-groen">C</span></td>
+          <td>Declaratieformulier POB</td>
+          <td><span class="badge badge-groen">Gereed</span></td>
+          <td>Praktijkopleiders — maandelijkse declaratie</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-groen">C</span></td>
+          <td>Dienstverleningsovereenkomst BPV</td>
+          <td><span class="badge badge-groen">Gereed</span></td>
+          <td>Lid-bedrijven die eigen vakman inbrengen als begeleider</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-groen">C</span></td>
+          <td>Serviceovereenkomst werkenden N3/N4</td>
+          <td><span class="badge badge-groen">Gereed</span></td>
+          <td>Bedrijven die medewerker willen laten bijleren</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-groen">C</span></td>
+          <td>Partnerovereenkomst brancheaansluiting (sjabloon)</td>
+          <td><span class="badge badge-groen">Gereed</span></td>
+          <td>TechNext / Infracampus / STL en andere brancheorganisaties</td>
+        </tr>
+
+        <tr>
+          <td><span class="badge badge-paars">D</span> Financiën</td>
+          <td>Begroting jaar 1 (Excel)</td>
+          <td><span class="badge badge-groen">Gereed</span></td>
+          <td>Bestuur / ledenvergadering</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-paars">D</span></td>
+          <td>Subsidieoverzicht per sector</td>
+          <td><span class="badge badge-groen">Gereed</span></td>
+          <td>Bestuur / directeur</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-paars">D</span></td>
+          <td>Kwartaalrapportage sjabloon (TCW)</td>
+          <td><span class="badge badge-groen">Gereed</span></td>
+          <td>Directeur → stichting als penvoerder TCW</td>
+        </tr>
+
+        <tr>
+          <td><span class="badge badge-grijs">HS</span> Huisstijl</td>
+          <td>Briefpapier</td>
+          <td><span class="badge badge-groen">Gereed</span></td>
+          <td>Alle correspondentie van de coöperatie</td>
+        </tr>
+
+      </table>
+    </div>
+
+    <div class="highlight-groen">
+      <strong>Alle 22 documenten zijn gereed.</strong> De set is compleet — van statuten tot arbeidsovereenkomst, van HH-reglement tot begroting. Alle documenten zijn vindbaar in de sectie Documentenset verderop in dit hoofddocument, met directe downloadlinks per bestand.
+    </div>
+  </section>
+
+<!-- BIJLAGE B: VOLGENDE STAPPEN -->
+  <section id="volgende-stappen">
+    <div class="sectie-kop">
+      <div style="width:36px;height:36px;border-radius:50%;background:var(--tekst-sub);color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;flex-shrink:0;margin-top:4px;">B</div>
+      <div>
+        <h2>Bijlage B — Volgende stappen</h2>
+        <p>Wat er nu moet gebeuren om per september 2026 de eerste leerlingen in dienst te hebben. Gesorteerd op urgentie.</p>
+      </div>
+    </div>
+
+    <div class="kaart">
+      <table>
+        <tr>
+          <th style="width:12%">Prioriteit</th>
+          <th style="width:18%">Wanneer</th>
+          <th style="width:25%">Wie</th>
+          <th>Actie</th>
+        </tr>
+        <tr>
+          <td><span class="badge" style="background:#FCEBEB; color:#791F1F;">Nu</span></td>
+          <td>Deze week</td>
+          <td>Initiatiefnemer</td>
+          <td>Sectorinstituut bellen — schriftelijke bevestiging vragen over subsidietoegang voor de coöperatie als werkgever</td>
+        </tr>
+        <tr>
+          <td><span class="badge" style="background:#FCEBEB; color:#791F1F;">Nu</span></td>
+          <td>Deze week</td>
+          <td>Initiatiefnemer</td>
+          <td>Oprichtende leden benaderen — intentieverklaring ophalen bij minimaal 4 bedrijven</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-oranje">Urgent</span></td>
+          <td>Juni 2026</td>
+          <td>Werkgroep</td>
+          <td>Akkoord werkgroep op dit voorstel — stichting daarna informeren</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-oranje">Urgent</span></td>
+          <td>Juni 2026</td>
+          <td>Initiatiefnemer + accountant</td>
+          <td>Holding-constructie doorspreken — fee, startkapitaal, BTW-positie</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-blauw">Plannen</span></td>
+          <td>Juli 2026</td>
+          <td>Notaris</td>
+          <td>Statuten opstellen — breed doel, sectortafelclausule, tegenstrijdig belang, UA-bepaling</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-blauw">Plannen</span></td>
+          <td>Juli 2026</td>
+          <td>Coöperatie</td>
+          <td>KvK-inschrijving + leerbedrijferkenning SBB pilotbranche aanvragen</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-blauw">Plannen</span></td>
+          <td>Augustus 2026</td>
+          <td>Coöperatie</td>
+          <td>Arbeidsovereenkomsten eerste leerlingen opstellen · BPV-overeenkomst onderwijsinstelling</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-groen">Doel</span></td>
+          <td>September 2026</td>
+          <td>Coöperatie</td>
+          <td>Eerste leerlingen in dienst — carrousel start — sectorsubsidie aanvraag indienen</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="highlight-groen">
+      <strong>De deadline is september 2026.</strong> Elke week die wordt gewacht op draagvlak is een week minder voor de leerlingen. Het draagvlak zit bij de bedrijven — daar begint de coöperatie. De stichting wordt geïnformeerd zodra er een principebesluit ligt van de oprichtende leden.
+    </div>
+  </section>
+
+  <div class="scheidslijn"></div>
+
+  <!-- BIJLAGE C: COMMUNICATIE & MERK -->
+  <section id="communicatie">
+    <div class="sectie-kop">
+      <div style="width:36px;height:36px;border-radius:50%;background:var(--tekst-sub);color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;flex-shrink:0;margin-top:4px;">C</div>
+      <div>
+        <h2>Bijlage C — Communicatie &amp; merkstrategie</h2>
+        <p>Hoe presenteert de coöperatie zich naar buiten? Wie communiceert wat, hoe ziet de coöperatie er visueel uit en hoe bereiken we leerlingen en bedrijven? Dit is het startpunt — uitwerking volgt in afstemming met de marketeer.</p>
+      </div>
+    </div>
+
+    <div class="highlight-oranje">
+      <strong>Let op — dit is een startpunt, geen definitief plan.</strong> De communicatie- en merkstrategie wordt verder uitgewerkt door de marketeer in afstemming met het bestuur van de coöperatie en de stichting. Onderstaande principes zijn leidend.
+    </div>
+
+    <div class="grid-2" style="margin-top:20px;">
+      <div class="kaart kaart-blauw">
+        <h3>Naam en identiteit</h3>
+        <ul>
+          <li><strong>Naam:</strong> Coöperatie Vakschool Weerterland U.A.</li>
+          <li><strong>Verkorte naam:</strong> Vakschool Weerterland</li>
+          <li><strong>Kernzin:</strong> "De ondernemer levert de werkplek. Wij leveren de vakman van morgen."</li>
+          <li><strong>Huisstijl:</strong> blauw (RGB 0·112·192) en oranje (RGB 255·140·0)</li>
+          <li><strong>Toon:</strong> nuchter, vakgericht, regionaal trots — geen jargon</li>
+        </ul>
+      </div>
+      <div class="kaart kaart-oranje">
+        <h3>Twee doelgroepen — twee boodschappen</h3>
+        <ul>
+          <li><strong>Naar bedrijven:</strong> "Geen gedoe, wel een vakman" — ontzorging centraal</li>
+          <li><strong>Naar leerlingen:</strong> "Leer het vak bij echte bedrijven" — praktijk centraal</li>
+          <li>De stichting communiceert breed en strategisch</li>
+          <li>De coöperatie communiceert operationeel en concreet</li>
+          <li>Nooit tegenstrijdige boodschappen — afstemming via SOK</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 style="font-size:16px; font-weight:600; margin:24px 0 12px;">Wie communiceert wat — taakverdeling</h3>
+    <div class="kaart">
+      <table>
+        <tr><th style="width:35%">Communicatie-activiteit</th><th>Stichting</th><th>Coöperatie</th></tr>
+        <tr><td>Werving nieuwe leerlingen (breed)</td><td class="ja">✓ Hoofdverantwoordelijk</td><td class="oranje">Ondersteunt met info</td></tr>
+        <tr><td>Werving nieuwe lid-bedrijven</td><td class="ja">✓ Netwerk &amp; events</td><td class="oranje">Directeur 1-op-1</td></tr>
+        <tr><td>Nieuws over de coöperatie zelf</td><td class="nee">— Niet</td><td class="ja">✓ Bestuur / directeur</td></tr>
+        <tr><td>TCW-communicatie naar gemeente</td><td class="ja">✓ Enige stem</td><td class="nee">— Via stichting</td></tr>
+        <tr><td>Sociale media techniekpromotie</td><td class="ja">✓ Breed</td><td class="oranje">Eigen kanaal indien nodig</td></tr>
+        <tr><td>Wervingsfolders leerlingen</td><td class="ja">✓ Maakt en verspreidt</td><td class="oranje">Levert inhoud aan</td></tr>
+        <tr><td>Persberichten &amp; media</td><td class="ja">✓ Woordvoerder</td><td class="nee">— Via stichting</td></tr>
+      </table>
+    </div>
+
+    <div class="highlight">
+      <strong>Uit te werken door de marketeer (Q3 2026):</strong> visuele identiteit (logo, templates, lettertype), wervingsfolder leerlingen A4, wervingspresentatie voor bedrijven, social media strategie, websitepagina of landingspagina, afspraken met stichting over merkvoering en tone of voice.
+    </div>
+  </section>
+
+
+  <div class="scheidslijn"></div>
+
+  <!-- DOCUMENTENSET -->
+  <section id="documentenset">
+    <div class="sectie-kop">
+      <div style="width:36px;height:36px;border-radius:50%;background:var(--marine);color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;flex-shrink:0;margin-top:4px;">D</div>
+      <div>
+        <h2>Documentenset</h2>
+        <p>Alle 22 documenten van de coöperatie zijn gereed. Koppel hieronder jouw eigen versie van elk document — klik op de knop, kies het bestand op je computer en het opent direct vanuit dit hoofddocument.</p>
+      </div>
+    </div>
+
+    <div class="highlight" style="margin-bottom:20px;">
+      <strong>Hoe werkt het koppelen?</strong> Klik op een knop zoals <em>📄 PDF koppelen</em>. Kies het bijbehorende PDF-bestand op je computer. De knop verandert in <em>PDF openen</em> — klik daarop om het document te openen. De koppelingen worden bewaard zolang dit tabblad open is.
+    </div>
+
+    <style>
+      .doc-laag { margin-bottom: 28px; }
+      .doc-laag-titel { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; padding: 6px 12px; border-radius: 4px; display: inline-block; }
+      .doc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 10px; }
+      .doc-kaart { background: #fff; border: 1px solid #E8E5E0; border-radius: 8px; padding: 14px 16px; display: flex; flex-direction: column; gap: 6px; }
+      .doc-laag-badge { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 2px 8px; border-radius: 3px; display: inline-block; width: fit-content; }
+      .doc-kaart-naam { font-size: 13px; font-weight: 600; color: #1B2A4A; line-height: 1.3; }
+      .doc-kaart-omschrijving { font-size: 12px; color: #777; line-height: 1.5; flex: 1; }
+      .doc-kaart-links { display: flex; gap: 6px; margin-top: 4px; flex-wrap: wrap; }
+      .doc-koppel-btn { font-size: 11px; font-weight: 600; padding: 5px 10px; border-radius: 4px; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; border: 1.5px dashed currentColor; opacity: 0.8; transition: opacity 0.15s; }
+      .doc-koppel-btn:hover { opacity: 1; }
+      .doc-open-btn { font-size: 11px; font-weight: 600; padding: 5px 10px; border-radius: 4px; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; border: 1.5px solid currentColor; }
+      .doc-open-btn:hover { opacity: 0.8; }
+    </style>
+
+    
+    <div class="doc-laag">
+      <div class="doc-laag-titel" style="background:#E6F1FB;color:#0C447C;">Laag A — Het verhaal</div>
+      <div class="doc-grid">
+               <div class="doc-kaart">
+          <div class="doc-laag-badge" style="background:#E6F1FB;color:#0C447C;">Laag A</div>
+          <div class="doc-kaart-naam">Presentatie werkgroep</div>
+          <div class="doc-kaart-omschrijving">Slidedeck voor de werkgroepvergadering — 13 slides met sprekersnotities.</div>
+          <div class="doc-kaart-links">
+            <label class="doc-koppel-btn" style="background:#FCEBEB;color:#791F1F;" title="Klik om te koppelen">
+              <input type="file" id="doc-presentatie-pdf" accept=".pdf" style="display:none" onchange="koppelDoc(this,'doc-presentatie-pdf-link','PDF')">
+              <span id="doc-presentatie-pdf-icon">📄 PDF koppelen</span>
+            </label>
+            <a id="doc-presentatie-pdf-link" class="doc-open-btn" style="display:none;background:#FCEBEB;color:#791F1F;" href="#" target="_blank">📄 PDF openen</a>
+          </div>
+        </div>
+        <div class="doc-kaart">
+          <div class="doc-laag-badge" style="background:#E6F1FB;color:#0C447C;">Laag A</div>
+          <div class="doc-kaart-naam">Missie, visie en vijfjarenplan</div>
+          <div class="doc-kaart-omschrijving">Strategisch kompas van de coöperatie — missie, visie en vijfjarenplan 2026–2031 inclusief TCW KPI-koppeling.</div>
+          <div class="doc-kaart-links">
+            <label class="doc-koppel-btn" style="background:#FCEBEB;color:#791F1F;" title="Klik om te koppelen">
+              <input type="file" id="doc-missie-pdf" accept=".pdf" style="display:none" onchange="koppelDoc(this,'doc-missie-pdf-link','PDF')">
+              <span id="doc-missie-pdf-icon">📄 PDF koppelen</span>
+            </label>
+            <a id="doc-missie-pdf-link" class="doc-open-btn" style="display:none;background:#FCEBEB;color:#791F1F;" href="#" target="_blank">📄 PDF openen</a>
+          </div>
+        </div>
+        <div class="doc-kaart">
+          <div class="doc-laag-badge" style="background:#E6F1FB;color:#0C447C;">Laag A</div>
+          <div class="doc-kaart-naam">One-pager voor ondernemers</div>
+          <div class="doc-kaart-omschrijving">Eén A4 voor het eerste gesprek met een ondernemer — wat is het, wat win je, wat kost het.</div>
+          <div class="doc-kaart-links">
+            
+            <label class="doc-koppel-btn" style="background:#FCEBEB;color:#791F1F;" title="Klik om One-pager voor ondernemers (PDF) te koppelen">
+              <input type="file" id="doc-onepager-pdf" accept=".pdf" style="display:none" onchange="koppelDoc(this,'doc-onepager-pdf-link','PDF')">
+              <span id="doc-onepager-pdf-icon">📄 PDF koppelen</span>
+            </label>
+            <a id="doc-onepager-pdf-link" class="doc-open-btn" style="display:none;background:#FCEBEB;color:#791F1F;" href="#" target="_blank">📄 PDF openen</a>
+          </div>
+        </div>
+        <div class="doc-kaart">
+          <div class="doc-laag-badge" style="background:#E6F1FB;color:#0C447C;">Laag A</div>
+          <div class="doc-kaart-naam">Notitie rolverdeling stichting & coöperatie</div>
+          <div class="doc-kaart-omschrijving">Intern document voor het stichtingsbestuur — waarom de stichting geen rol heeft in de overlegstructuur.</div>
+          <div class="doc-kaart-links">
+            
+            <label class="doc-koppel-btn" style="background:#FCEBEB;color:#791F1F;" title="Klik om Notitie rolverdeling stichting & coöperatie (PDF) te koppelen">
+              <input type="file" id="doc-notitie-pdf" accept=".pdf" style="display:none" onchange="koppelDoc(this,'doc-notitie-pdf-link','PDF')">
+              <span id="doc-notitie-pdf-icon">📄 PDF koppelen</span>
+            </label>
+            <a id="doc-notitie-pdf-link" class="doc-open-btn" style="display:none;background:#FCEBEB;color:#791F1F;" href="#" target="_blank">📄 PDF openen</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="doc-laag">
+      <div class="doc-laag-titel" style="background:#FAEEDA;color:#633806;">Laag B — Oprichting</div>
+      <div class="doc-grid">
+        <div class="doc-kaart">
+          <div class="doc-laag-badge" style="background:#FAEEDA;color:#633806;">Laag B</div>
+          <div class="doc-kaart-naam">Statuten — concept</div>
+          <div class="doc-kaart-omschrijving">Conceptstatuten voor de notaris — breed doel, sectortafelclausule, U.A., tegenstrijdig belang, bestuurstermijn 3+3+3.</div>
+          <div class="doc-kaart-links">
+            
+            <label class="doc-koppel-btn" style="background:#FCEBEB;color:#791F1F;" title="Klik om Statuten — concept (PDF) te koppelen">
+              <input type="file" id="doc-statuten-pdf" accept=".pdf" style="display:none" onchange="koppelDoc(this,'doc-statuten-pdf-link','PDF')">
+              <span id="doc-statuten-pdf-icon">📄 PDF koppelen</span>
+            </label>
+            <a id="doc-statuten-pdf-link" class="doc-open-btn" style="display:none;background:#FCEBEB;color:#791F1F;" href="#" target="_blank">📄 PDF openen</a>
+          </div>
+        </div>
+        <div class="doc-kaart">
+          <div class="doc-laag-badge" style="background:#FAEEDA;color:#633806;">Laag B</div>
+          <div class="doc-kaart-naam">Huishoudelijk reglement</div>
+          <div class="doc-kaart-omschrijving">Het centrale operationele document — 48 artikelen, 16 hoofdstukken, jaarcyclus-bijlage, besluitmatrix.</div>
+          <div class="doc-kaart-links">
+            
+            <label class="doc-koppel-btn" style="background:#FCEBEB;color:#791F1F;" title="Klik om Huishoudelijk reglement (PDF) te koppelen">
+              <input type="file" id="doc-hhr-pdf" accept=".pdf" style="display:none" onchange="koppelDoc(this,'doc-hhr-pdf-link','PDF')">
+              <span id="doc-hhr-pdf-icon">📄 PDF koppelen</span>
+            </label>
+            <a id="doc-hhr-pdf-link" class="doc-open-btn" style="display:none;background:#FCEBEB;color:#791F1F;" href="#" target="_blank">📄 PDF openen</a>
+          </div>
+        </div>
+        <div class="doc-kaart">
+          <div class="doc-laag-badge" style="background:#FAEEDA;color:#633806;">Laag B</div>
+          <div class="doc-kaart-naam">Intentieverklaring oprichtend lid</div>
+          <div class="doc-kaart-omschrijving">Eén pagina — bedrijf verklaart mee te willen doen als oprichtend lid.</div>
+          <div class="doc-kaart-links">
+            
+            <label class="doc-koppel-btn" style="background:#FCEBEB;color:#791F1F;" title="Klik om Intentieverklaring oprichtend lid (PDF) te koppelen">
+              <input type="file" id="doc-intentie-pdf" accept=".pdf" style="display:none" onchange="koppelDoc(this,'doc-intentie-pdf-link','PDF')">
+              <span id="doc-intentie-pdf-icon">📄 PDF koppelen</span>
+            </label>
+            <a id="doc-intentie-pdf-link" class="doc-open-btn" style="display:none;background:#FCEBEB;color:#791F1F;" href="#" target="_blank">📄 PDF openen</a>
+          </div>
+        </div>
+        <div class="doc-kaart">
+          <div class="doc-laag-badge" style="background:#FAEEDA;color:#633806;">Laag B</div>
+          <div class="doc-kaart-naam">Checklist oprichting coöperatie</div>
+          <div class="doc-kaart-omschrijving">Stap voor stap: notaris → KvK → SBB → sectorinstituut → salarisadministratie → eerste leerling.</div>
+          <div class="doc-kaart-links">
+            
+            <label class="doc-koppel-btn" style="background:#FCEBEB;color:#791F1F;" title="Klik om Checklist oprichting coöperatie (PDF) te koppelen">
+              <input type="file" id="doc-checklist-pdf" accept=".pdf" style="display:none" onchange="koppelDoc(this,'doc-checklist-pdf-link','PDF')">
+              <span id="doc-checklist-pdf-icon">📄 PDF koppelen</span>
+            </label>
+            <a id="doc-checklist-pdf-link" class="doc-open-btn" style="display:none;background:#FCEBEB;color:#791F1F;" href="#" target="_blank">📄 PDF openen</a>
+          </div>
+        </div>
+        <div class="doc-kaart">
+          <div class="doc-laag-badge" style="background:#FAEEDA;color:#633806;">Laag B</div>
+          <div class="doc-kaart-naam">Opdrachtenovereenkomst holding → coöperatie</div>
+          <div class="doc-kaart-omschrijving">Directeursrol, taken, rapportagemomenten, tegenstrijdig belang — voor bij de notaris.</div>
+          <div class="doc-kaart-links">
+            
+            <label class="doc-koppel-btn" style="background:#FCEBEB;color:#791F1F;" title="Klik om Opdrachtenovereenkomst holding → coöperatie (PDF) te koppelen">
+              <input type="file" id="doc-opdracht-pdf" accept=".pdf" style="display:none" onchange="koppelDoc(this,'doc-opdracht-pdf-link','PDF')">
+              <span id="doc-opdracht-pdf-icon">📄 PDF koppelen</span>
+            </label>
+            <a id="doc-opdracht-pdf-link" class="doc-open-btn" style="display:none;background:#FCEBEB;color:#791F1F;" href="#" target="_blank">📄 PDF openen</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="doc-laag">
+      <div class="doc-laag-titel" style="background:#EAF3DE;color:#27500A;">Laag C — Overeenkomsten</div>
+      <div class="doc-grid">
+        <div class="doc-kaart">
+          <div class="doc-laag-badge" style="background:#EAF3DE;color:#27500A;">Laag C</div>
+          <div class="doc-kaart-naam">Samenwerkingsovereenkomst stichting ↔ coöperatie</div>
+          <div class="doc-kaart-omschrijving">Rollen, werkgroepdeelname directeur, rapportage, onafhankelijkheid, afstemmingsoverleg.</div>
+          <div class="doc-kaart-links">
+            <label class="doc-koppel-btn" style="background:#FCEBEB;color:#791F1F;" title="Klik om te koppelen">
+              <input type="file" id="doc-sok-pdf" accept=".pdf" style="display:none" onchange="koppelDoc(this,'doc-sok-pdf-link','PDF')">
+              <span id="doc-sok-pdf-icon">📄 PDF koppelen</span>
+            </label>
+            <a id="doc-sok-pdf-link" class="doc-open-btn" style="display:none;background:#FCEBEB;color:#791F1F;" href="#" target="_blank">📄 PDF openen</a>
+          </div>
+        </div>
+        <div class="doc-kaart">
+          <div class="doc-laag-badge" style="background:#EAF3DE;color:#27500A;">Laag C</div>
+          <div class="doc-kaart-naam">Arbeidsovereenkomst BBL-leerling (sjabloon)</div>
+          <div class="doc-kaart-omschrijving">Sjabloon voor alle sectoren — CAO-verwijzing, BPV, proeftijd, loonschaal.</div>
+          <div class="doc-kaart-links">
+            
+            <label class="doc-koppel-btn" style="background:#FCEBEB;color:#791F1F;" title="Klik om Arbeidsovereenkomst BBL-leerling (sjabloon) (PDF) te koppelen">
+              <input type="file" id="doc-arbeids-pdf" accept=".pdf" style="display:none" onchange="koppelDoc(this,'doc-arbeids-pdf-link','PDF')">
+              <span id="doc-arbeids-pdf-icon">📄 PDF koppelen</span>
+            </label>
+            <a id="doc-arbeids-pdf-link" class="doc-open-btn" style="display:none;background:#FCEBEB;color:#791F1F;" href="#" target="_blank">📄 PDF openen</a>
+          </div>
+        </div>
+        <div class="doc-kaart">
+          <div class="doc-laag-badge" style="background:#EAF3DE;color:#27500A;">Laag C</div>
+          <div class="doc-kaart-naam">Plaatsingsovereenkomst lid-bedrijf (sjabloon)</div>
+          <div class="doc-kaart-omschrijving">Wie, wanneer, POB, arbo-verantwoordelijkheid werkvloer, tarief, ziektebepaling, opzegtermijn.</div>
+          <div class="doc-kaart-links">
+            
+            <label class="doc-koppel-btn" style="background:#FCEBEB;color:#791F1F;" title="Klik om Plaatsingsovereenkomst lid-bedrijf (sjabloon) (PDF) te koppelen">
+              <input type="file" id="doc-plaatsing-pdf" accept=".pdf" style="display:none" onchange="koppelDoc(this,'doc-plaatsing-pdf-link','PDF')">
+              <span id="doc-plaatsing-pdf-icon">📄 PDF koppelen</span>
+            </label>
+            <a id="doc-plaatsing-pdf-link" class="doc-open-btn" style="display:none;background:#FCEBEB;color:#791F1F;" href="#" target="_blank">📄 PDF openen</a>
+          </div>
+        </div>
+        <div class="doc-kaart">
+          <div class="doc-laag-badge" style="background:#EAF3DE;color:#27500A;">Laag C</div>
+          <div class="doc-kaart-naam">Overeenkomst van opdracht gepensioneerde POB</div>
+          <div class="doc-kaart-omschrijving">Geen arbeidsovereenkomst, AOW-veilig, SBB-registratie, vergoeding en uren.</div>
+          <div class="doc-kaart-links">
+            
+            <label class="doc-koppel-btn" style="background:#FCEBEB;color:#791F1F;" title="Klik om Overeenkomst van opdracht gepensioneerde POB (PDF) te koppelen">
+              <input type="file" id="doc-pob-pdf" accept=".pdf" style="display:none" onchange="koppelDoc(this,'doc-pob-pdf-link','PDF')">
+              <span id="doc-pob-pdf-icon">📄 PDF koppelen</span>
+            </label>
+            <a id="doc-pob-pdf-link" class="doc-open-btn" style="display:none;background:#FCEBEB;color:#791F1F;" href="#" target="_blank">📄 PDF openen</a>
+          </div>
+        </div>
+        <div class="doc-kaart">
+          <div class="doc-laag-badge" style="background:#EAF3DE;color:#27500A;">Laag C</div>
+          <div class="doc-kaart-naam">Declaratieformulier POB</div>
+          <div class="doc-kaart-omschrijving">Maandelijks declaratieformulier voor praktijkopleiders — uren, leerling, handtekening.</div>
+          <div class="doc-kaart-links">
+            
+            <label class="doc-koppel-btn" style="background:#FCEBEB;color:#791F1F;" title="Klik om Declaratieformulier POB (PDF) te koppelen">
+              <input type="file" id="doc-declaratie-pdf" accept=".pdf" style="display:none" onchange="koppelDoc(this,'doc-declaratie-pdf-link','PDF')">
+              <span id="doc-declaratie-pdf-icon">📄 PDF koppelen</span>
+            </label>
+            <a id="doc-declaratie-pdf-link" class="doc-open-btn" style="display:none;background:#FCEBEB;color:#791F1F;" href="#" target="_blank">📄 PDF openen</a>
+          </div>
+        </div>
+        <div class="doc-kaart">
+          <div class="doc-laag-badge" style="background:#EAF3DE;color:#27500A;">Laag C</div>
+          <div class="doc-kaart-naam">Dienstverleningsovereenkomst BPV</div>
+          <div class="doc-kaart-omschrijving">Bedrijf levert eigen vakman als begeleider — uren, vergoeding, opzegtermijn.</div>
+          <div class="doc-kaart-links">
+            
+            <label class="doc-koppel-btn" style="background:#FCEBEB;color:#791F1F;" title="Klik om Dienstverleningsovereenkomst BPV (PDF) te koppelen">
+              <input type="file" id="doc-bpv-pdf" accept=".pdf" style="display:none" onchange="koppelDoc(this,'doc-bpv-pdf-link','PDF')">
+              <span id="doc-bpv-pdf-icon">📄 PDF koppelen</span>
+            </label>
+            <a id="doc-bpv-pdf-link" class="doc-open-btn" style="display:none;background:#FCEBEB;color:#791F1F;" href="#" target="_blank">📄 PDF openen</a>
+          </div>
+        </div>
+        <div class="doc-kaart">
+          <div class="doc-laag-badge" style="background:#EAF3DE;color:#27500A;">Laag C</div>
+          <div class="doc-kaart-naam">Serviceovereenkomst werkenden N3/N4</div>
+          <div class="doc-kaart-omschrijving">Servicedienst — medewerker met vaste baan wil BBL-diploma halen, coöperatie regelt de administratie.</div>
+          <div class="doc-kaart-links">
+            
+            <label class="doc-koppel-btn" style="background:#FCEBEB;color:#791F1F;" title="Klik om Serviceovereenkomst werkenden N3/N4 (PDF) te koppelen">
+              <input type="file" id="doc-service-pdf" accept=".pdf" style="display:none" onchange="koppelDoc(this,'doc-service-pdf-link','PDF')">
+              <span id="doc-service-pdf-icon">📄 PDF koppelen</span>
+            </label>
+            <a id="doc-service-pdf-link" class="doc-open-btn" style="display:none;background:#FCEBEB;color:#791F1F;" href="#" target="_blank">📄 PDF openen</a>
+          </div>
+        </div>
+        <div class="doc-kaart">
+          <div class="doc-laag-badge" style="background:#EAF3DE;color:#27500A;">Laag C</div>
+          <div class="doc-kaart-naam">Partnerovereenkomst brancheaansluiting (sjabloon)</div>
+          <div class="doc-kaart-omschrijving">Sjabloon voor aansluiting bij brancheorganisatie per sectortafel — TechNext, Infracampus, STL.</div>
+          <div class="doc-kaart-links">
+            
+            <label class="doc-koppel-btn" style="background:#FCEBEB;color:#791F1F;" title="Klik om Partnerovereenkomst brancheaansluiting (sjabloon) (PDF) te koppelen">
+              <input type="file" id="doc-partner-pdf" accept=".pdf" style="display:none" onchange="koppelDoc(this,'doc-partner-pdf-link','PDF')">
+              <span id="doc-partner-pdf-icon">📄 PDF koppelen</span>
+            </label>
+            <a id="doc-partner-pdf-link" class="doc-open-btn" style="display:none;background:#FCEBEB;color:#791F1F;" href="#" target="_blank">📄 PDF openen</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="doc-laag">
+      <div class="doc-laag-titel" style="background:#EEEDFE;color:#3C3489;">Laag D — Financiën & subsidies</div>
+      <div class="doc-grid">
+        <div class="doc-kaart">
+          <div class="doc-laag-badge" style="background:#EEEDFE;color:#3C3489;">Laag D</div>
+          <div class="doc-kaart-naam">Begroting jaar 1 (Excel)</div>
+          <div class="doc-kaart-omschrijving">Volledig begrotingsmodel jaar 1 — twee tabbladen, kostprijsformule, subsidies verwerkt.</div>
+          <div class="doc-kaart-links">
+            <label class="doc-koppel-btn" style="background:#FCEBEB;color:#791F1F;" title="Klik om te koppelen">
+              <input type="file" id="doc-begroting-pdf" accept=".pdf" style="display:none" onchange="koppelDoc(this,'doc-begroting-pdf-link','PDF')">
+              <span id="doc-begroting-pdf-icon">📄 PDF koppelen</span>
+            </label>
+            <a id="doc-begroting-pdf-link" class="doc-open-btn" style="display:none;background:#FCEBEB;color:#791F1F;" href="#" target="_blank">📄 PDF openen</a>
+          </div>
+        </div>
+        <div class="doc-kaart">
+          <div class="doc-laag-badge" style="background:#EEEDFE;color:#3C3489;">Laag D</div>
+          <div class="doc-kaart-naam">Subsidieoverzicht per sector</div>
+          <div class="doc-kaart-omschrijving">Per sector: sectorinstituut, subsidiesoorten, aanvraagprocedure en deadlines.</div>
+          <div class="doc-kaart-links">
+            
+            <label class="doc-koppel-btn" style="background:#FCEBEB;color:#791F1F;" title="Klik om Subsidieoverzicht per sector (PDF) te koppelen">
+              <input type="file" id="doc-subsidie-pdf" accept=".pdf" style="display:none" onchange="koppelDoc(this,'doc-subsidie-pdf-link','PDF')">
+              <span id="doc-subsidie-pdf-icon">📄 PDF koppelen</span>
+            </label>
+            <a id="doc-subsidie-pdf-link" class="doc-open-btn" style="display:none;background:#FCEBEB;color:#791F1F;" href="#" target="_blank">📄 PDF openen</a>
+          </div>
+        </div>
+        <div class="doc-kaart">
+          <div class="doc-laag-badge" style="background:#EEEDFE;color:#3C3489;">Laag D</div>
+          <div class="doc-kaart-naam">Kwartaalrapportage sjabloon (TCW)</div>
+          <div class="doc-kaart-omschrijving">Sjabloon voor de kwartaalrapportage aan de stichting als penvoerder van de TCW Regiodeal.</div>
+          <div class="doc-kaart-links">
+            
+            <label class="doc-koppel-btn" style="background:#FCEBEB;color:#791F1F;" title="Klik om Kwartaalrapportage sjabloon (TCW) (PDF) te koppelen">
+              <input type="file" id="doc-kwartaal-pdf" accept=".pdf" style="display:none" onchange="koppelDoc(this,'doc-kwartaal-pdf-link','PDF')">
+              <span id="doc-kwartaal-pdf-icon">📄 PDF koppelen</span>
+            </label>
+            <a id="doc-kwartaal-pdf-link" class="doc-open-btn" style="display:none;background:#FCEBEB;color:#791F1F;" href="#" target="_blank">📄 PDF openen</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="doc-laag">
+      <div class="doc-laag-titel" style="background:#F1EFE8;color:#444441;">Huisstijl</div>
+      <div class="doc-grid">
+        <div class="doc-kaart">
+          <div class="doc-laag-badge" style="background:#F1EFE8;color:#444441;">Laag HS</div>
+          <div class="doc-kaart-naam">Briefpapier</div>
+          <div class="doc-kaart-omschrijving">Officieel briefpapier in de huisstijl van de coöperatie — voor correspondentie.</div>
+          <div class="doc-kaart-links">
+            
+            <label class="doc-koppel-btn" style="background:#FCEBEB;color:#791F1F;" title="Klik om Briefpapier (PDF) te koppelen">
+              <input type="file" id="doc-brief-pdf" accept=".pdf" style="display:none" onchange="koppelDoc(this,'doc-brief-pdf-link','PDF')">
+              <span id="doc-brief-pdf-icon">📄 PDF koppelen</span>
+            </label>
+            <a id="doc-brief-pdf-link" class="doc-open-btn" style="display:none;background:#FCEBEB;color:#791F1F;" href="#" target="_blank">📄 PDF openen</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="highlight-groen">
+      <strong>Alle 22 documenten zijn gereed.</strong> Koppel jouw eigen versies via de knoppen hierboven. De koppelingen blijven actief zolang dit tabblad open is — bij een nieuwe sessie koppel je opnieuw.
+    </div>
+
+    <script>
+      function koppelDoc(input, linkId, label) {
+        const file = input.files[0];
+        if (!file) return;
+        const url = URL.createObjectURL(file);
+        const link = document.getElementById(linkId);
+        const icon_span = document.getElementById(input.id + '-icon');
+        link.href = url;
+        link.style.display = 'inline-flex';
+        icon_span.textContent = '✓ Gekoppeld';
+        input.parentElement.style.opacity = '0.5';
+        input.parentElement.title = 'Reeds gekoppeld — ' + file.name;
+      }
+    </script>
+
+  </section>
+
+<!-- AFSLUITING PREVIEW -->
+  <div class="afsluiting">
+    <h2>De volledige documentenset is compleet.</h2>
+    <p>Alle documenten van de Coöperatie Vakschool Weerterland U.A. — van statuten tot arbeidsovereenkomst, van HH-reglement tot subsidieoverzicht — staan hierboven klaar om te openen.</p>
+    <p>Rode draad: klein beginnen, solide bouwen, vraaggestuurd groeien — naar een zelfstandige coöperatie op 1 januari 2029.</p>
+  </div>
+
+</main>
+
+<script>
+  // Scroll progress
+  window.addEventListener('scroll', () => {
+    const el = document.getElementById('progress');
+    const pct = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+    el.style.width = Math.min(pct, 100) + '%';
+  });
+
+  // Actieve nav item
+  const items = document.querySelectorAll('.nav-item');
+  const sections = document.querySelectorAll('section, .hero');
+
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        items.forEach(i => i.classList.remove('actief'));
+        const id = e.target.id;
+        const match = document.querySelector(`.nav-item[href="#${id}"]`);
+        if (match) match.classList.add('actief');
+      }
+    });
+  }, { threshold: 0.3 });
+
+  sections.forEach(s => obs.observe(s));
+
+  // Inklapbare jaarbalkjes
+  function toggleJaar(header) {
+    const body = header.nextElementSibling;
+    const toggle = header.querySelector('.jaar-balk-toggle');
+    body.classList.toggle('open');
+    toggle.style.transform = body.classList.contains('open') ? 'rotate(180deg)' : '';
+  }
+</script>
+
+</body>
+</html>
