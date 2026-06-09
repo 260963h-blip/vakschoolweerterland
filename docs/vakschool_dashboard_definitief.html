@@ -1,0 +1,1982 @@
+<!DOCTYPE html>
+<html lang="nl" xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vakschool Weerterland — Financieel Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+:root {
+  --blauw:       #1B2A4A;
+  --blauw-mid:   #2C4270;
+  --blauw-licht: #EDF0F7;
+  --oranje:      #C04E20;
+  --oranje-licht:#F7EDE6;
+  --oranje-mid:  #E06030;
+  --groen:       #1A7A3C;
+  --groen-licht: #E6F4EC;
+  --rood:        #B92D2D;
+  --rood-licht:  #FCEAEA;
+  --geel:        #7A5500;
+  --geel-licht:  #FEF7E0;
+  --grijs-0:     #F5F4F1;
+  --grijs-1:     #EFEFEC;
+  --grijs-2:     #E2E0DB;
+  --grijs-3:     #C8C6C0;
+  --grijs-4:     #9A9890;
+  --grijs-5:     #5E5C56;
+  --tekst:       #1A1814;
+  --tekst-sub:   #5A5650;
+  --wit:         #FFFFFF;
+  --rand:        #DDDBD5;
+  --font:        'DM Sans', system-ui, sans-serif;
+  --radius:      8px;
+  --radius-groot:14px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font);background:var(--grijs-0);color:var(--tekst);font-size:14px;line-height:1.55;min-height:100vh;}
+
+/* ── HEADER ── */
+.hdr{background:var(--blauw);color:#fff;position:sticky;top:0;z-index:200;box-shadow:0 2px 16px rgba(27,42,74,0.35);}
+.hdr-inner{display:flex;align-items:stretch;height:56px;}
+.hdr-brand{background:var(--oranje);padding:0 22px;display:flex;align-items:center;gap:10px;flex-shrink:0;}
+.hdr-brand svg{width:28px;height:28px;}
+.hdr-brand-naam{font-size:13px;font-weight:600;color:#fff;white-space:nowrap;line-height:1.2;}
+.hdr-brand-sub{font-size:10px;color:rgba(255,255,255,0.75);letter-spacing:.04em;text-transform:uppercase;}
+.hdr-title{padding:0 20px;font-size:14px;font-weight:500;color:#fff;flex:1;display:flex;align-items:center;letter-spacing:.01em;}
+.hdr-sc{padding:0 12px;display:flex;align-items:center;gap:8px;border-left:1px solid rgba(255,255,255,0.15);}
+.hdr-sc label{font-size:11px;color:rgba(255,255,255,0.7);}
+.hdr-sc select{background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.25);color:#fff;padding:4px 8px;border-radius:5px;font-size:12px;font-family:var(--font);}
+.hdr-sc select option{background:var(--blauw-mid);}
+.hdr-sc-btn{background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);color:#fff;padding:4px 10px;border-radius:5px;font-size:11px;cursor:pointer;font-family:var(--font);}
+.hdr-export{background:var(--oranje);border:none;color:#fff;padding:0 20px;font-size:12px;font-weight:600;cursor:pointer;font-family:var(--font);letter-spacing:.03em;flex-shrink:0;border-left:2px solid rgba(0,0,0,0.1);}
+.hdr-export:hover{background:var(--oranje-mid);}
+
+/* ── NAV TABS ── */
+.nav-tabs{background:var(--wit);border-bottom:2px solid var(--grijs-1);display:flex;padding:0 20px;overflow-x:auto;}
+.nav-tab{padding:13px 18px;border:none;background:transparent;color:var(--grijs-5);font-size:13px;font-weight:500;cursor:pointer;white-space:nowrap;border-bottom:3px solid transparent;margin-bottom:-2px;display:flex;align-items:center;gap:7px;font-family:var(--font);transition:color .15s;}
+.nav-tab:hover{color:var(--blauw);}
+.nav-tab.on{color:var(--blauw);border-bottom-color:var(--oranje);font-weight:600;}
+.tnr{width:21px;height:21px;border-radius:50%;background:var(--grijs-1);color:var(--grijs-5);font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+.nav-tab.on .tnr{background:var(--oranje);color:#fff;}
+.tsoon{background:var(--oranje-licht);color:var(--oranje);font-size:10px;padding:2px 7px;border-radius:99px;font-weight:600;}
+
+/* ── PAGES ── */
+.pg{display:none;}.pg.on{display:block;}
+.cont{max-width:1440px;margin:0 auto;padding:22px 20px;}
+
+/* ── SECTIES ── */
+.sec{margin-bottom:26px;}
+.sec-t{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.09em;color:var(--grijs-4);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+.sec-t::after{content:'';flex:1;height:1px;background:var(--grijs-2);}
+
+/* ── KAART ── */
+.kaart{background:var(--wit);border:1px solid var(--rand);border-radius:var(--radius-groot);padding:16px;box-shadow:0 1px 6px rgba(27,42,74,0.06);}
+.kaart-t{font-size:12px;font-weight:600;color:var(--tekst);margin-bottom:10px;display:flex;align-items:center;gap:6px;}
+.kaart-sub{font-size:11px;color:var(--grijs-4);margin:-6px 0 10px;}
+
+/* ── JAAR OVERZICHT ── */
+.jaar-ov-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:22px;}
+.jov{background:var(--wit);border:1.5px solid var(--rand);border-radius:var(--radius-groot);padding:14px;cursor:pointer;transition:all .15s;}
+.jov:hover{border-color:var(--blauw-mid);}
+.jov.on{border-color:var(--blauw);background:var(--blauw-licht);}
+.jov-nr{font-size:10px;font-weight:600;color:var(--grijs-4);text-transform:uppercase;letter-spacing:.07em;margin-bottom:4px;}
+.jov-lln{font-size:28px;font-weight:600;color:var(--blauw);line-height:1;}
+.jov-sub{font-size:11px;color:var(--grijs-4);margin-top:3px;}
+.jov-res{font-size:11px;font-weight:600;margin-top:5px;}
+.jov-dots{display:flex;gap:2px;flex-wrap:wrap;margin-top:8px;}
+.mdot{width:8px;height:8px;border-radius:50%;}
+
+/* ── JAAR TABS ── */
+.jtabs{display:flex;gap:3px;margin-bottom:14px;background:var(--wit);border:1px solid var(--rand);border-radius:var(--radius);padding:4px;width:fit-content;}
+.jtab{padding:6px 16px;border:none;background:transparent;border-radius:6px;font-size:12px;font-weight:500;color:var(--grijs-5);cursor:pointer;font-family:var(--font);transition:all .12s;white-space:nowrap;}
+.jtab:hover{background:var(--grijs-1);}
+.jtab.on{background:var(--blauw);color:#fff;font-weight:600;}
+.jlln-b{font-size:10px;background:rgba(255,255,255,0.25);padding:1px 5px;border-radius:99px;margin-left:3px;}
+.jtab:not(.on) .jlln-b{background:var(--grijs-2);color:var(--grijs-5);}
+
+/* ── INVOER GRID ── */
+.invoer-grid{display:grid;grid-template-columns:1fr 350px;gap:16px;align-items:start;}
+@media(max-width:960px){.invoer-grid{grid-template-columns:1fr;}}
+
+/* ── MIX GRID ── */
+.mix-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:8px;}
+.lk{border:1.5px solid var(--rand);border-radius:var(--radius);padding:11px;background:var(--grijs-0);transition:all .15s;}
+.lk.heeft{border-color:var(--blauw);background:var(--blauw-licht);box-shadow:0 0 0 3px rgba(27,42,74,0.08);}
+.lk-kleur{width:26px;height:4px;border-radius:2px;margin-bottom:7px;}
+.lk-naam{font-size:12px;font-weight:600;margin-bottom:1px;}
+.lk-loon{font-size:11px;color:var(--grijs-4);margin-bottom:7px;}
+.lk-lj{display:flex;align-items:center;gap:4px;margin-bottom:7px;}
+.lk-lj label{font-size:10px;color:var(--grijs-4);min-width:44px;}
+.lk-lj select{font-size:11px;padding:2px 5px;border:1px solid var(--rand);border-radius:5px;background:var(--wit);color:var(--tekst);flex:1;font-family:var(--font);}
+.teller{display:flex;align-items:center;gap:6px;}
+.tbtn{width:27px;height:27px;border:1.5px solid var(--rand);border-radius:6px;background:var(--wit);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-weight:300;transition:all .1s;}
+.tbtn:hover{background:var(--blauw);border-color:var(--blauw);color:#fff;}
+.tcnt{font-size:18px;font-weight:600;min-width:22px;text-align:center;color:var(--blauw);}
+.lk:not(.heeft) .tcnt{color:var(--grijs-3);}
+
+/* ── AANNAMES ── */
+.ann-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px;}
+.ann{display:flex;flex-direction:column;gap:2px;padding:8px;background:var(--grijs-0);border-radius:6px;border:1px solid var(--grijs-2);}
+.ann-lbl{font-size:10px;color:var(--grijs-4);font-weight:600;text-transform:uppercase;letter-spacing:.04em;}
+.ann-inp{font-size:13px;font-weight:600;color:var(--blauw);border:none;background:transparent;width:100%;font-family:monospace;}
+.ann-inp:focus{outline:none;}
+.ann-e{font-size:10px;color:var(--grijs-3);}
+
+/* ── SETTINGS ── */
+.sett{display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--grijs-1);gap:10px;}
+.sett:last-child{border-bottom:none;}
+.sett-lbl{font-size:12px;color:var(--tekst-sub);flex:1;}
+.pill{display:flex;border:1px solid var(--rand);border-radius:6px;overflow:hidden;}
+.pill button{padding:4px 10px;border:none;background:var(--wit);font-size:11px;color:var(--grijs-5);cursor:pointer;font-family:var(--font);transition:all .1s;}
+.pill button.on{background:var(--blauw);color:#fff;font-weight:600;}
+.pill button.on-o{background:var(--oranje);color:#fff;font-weight:600;}
+
+/* ── KPI ZIJBALK ── */
+.kpi-rij{display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:1px solid var(--grijs-1);font-size:12px;}
+.kpi-rij:last-child{border-bottom:none;}
+
+/* ── ALERTS ── */
+.alerts{display:flex;flex-direction:column;gap:6px;margin-bottom:18px;}
+.alert{display:flex;align-items:flex-start;gap:9px;padding:9px 13px;border-radius:var(--radius);font-size:12px;line-height:1.45;}
+.alert.rood{background:var(--rood-licht);border-left:3px solid var(--rood);color:var(--rood);}
+.alert.oranje{background:var(--oranje-licht);border-left:3px solid var(--oranje);color:var(--oranje);}
+.alert.geel{background:var(--geel-licht);border-left:3px solid #E0A020;color:var(--geel);}
+.alert.groen{background:var(--groen-licht);border-left:3px solid var(--groen);color:var(--groen);}
+
+/* ── NOTITIES ── */
+.notitie{display:flex;gap:10px;padding:6px 0;border-bottom:1px solid var(--grijs-1);font-size:12px;}
+.notitie:last-child{border-bottom:none;}
+.nnr{width:22px;height:22px;border-radius:50%;background:var(--blauw);color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.nnr.rood{background:var(--rood);}
+.nnr.oranje{background:var(--oranje);}
+.ntxt{color:var(--tekst-sub);line-height:1.4;}
+
+/* ── TOTAALREGEL ── */
+.totregel{display:flex;justify-content:space-between;align-items:center;margin-top:14px;padding-top:12px;border-top:1px solid var(--grijs-2);flex-wrap:wrap;gap:8px;}
+.totregel-info{font-size:12px;color:var(--grijs-4);}
+.btn-kop{font-size:11px;padding:4px 10px;border:1px solid var(--rand);background:var(--wit);border-radius:5px;cursor:pointer;color:var(--grijs-5);font-family:var(--font);}
+
+/* ══ TABELLEN ══ */
+.tbl-wrap{overflow-x:auto;margin-top:4px;}
+table.ft{width:100%;border-collapse:collapse;font-size:12.5px;}
+table.ft th{font-size:11px;font-weight:600;color:var(--grijs-4);padding:6px 9px;border-bottom:1.5px solid var(--grijs-2);text-align:right;white-space:nowrap;background:var(--grijs-0);}
+table.ft th.lh{text-align:left;}
+table.ft td{padding:5px 9px;border-bottom:1px solid var(--grijs-1);color:var(--tekst);vertical-align:top;}
+table.ft td.r{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;}
+table.ft tr.grp td{background:var(--blauw);color:#fff;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:5px 9px;}
+table.ft tr.sub td:first-child{padding-left:22px;color:var(--tekst-sub);}
+table.ft tr.sub2 td:first-child{padding-left:36px;color:var(--grijs-4);font-size:12px;}
+table.ft tr.stot td{font-weight:600;border-top:1px solid var(--grijs-2);background:var(--grijs-0);}
+table.ft tr.stot td.r{color:var(--blauw);}
+table.ft tr.totaal td{font-weight:600;background:var(--blauw);color:#fff !important;}
+table.ft tr.baten-grp td{background:var(--oranje);color:#fff;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:5px 9px;}
+table.ft tr.baten-sub td:first-child{padding-left:22px;color:var(--tekst-sub);}
+table.ft tr.baten-stot td{font-weight:600;border-top:1px solid var(--grijs-2);background:var(--oranje-licht);}
+table.ft tr.baten-stot td.r{color:var(--oranje);}
+table.ft tr.baten-tot td{font-weight:600;background:var(--oranje);color:#fff !important;}
+table.ft tr.res-pos td{font-weight:600;background:var(--groen-licht);}
+table.ft tr.res-pos td.r{color:var(--groen);}
+table.ft tr.res-neg td{font-weight:600;background:var(--rood-licht);}
+table.ft tr.res-neg td.r{color:var(--rood);}
+td.g{color:var(--groen)!important;font-weight:500;}
+td.r2{color:var(--rood)!important;}
+td.o{color:var(--oranje)!important;}
+td.b{color:var(--blauw)!important;}
+
+/* ── EXPLOIT KAARTEN ── */
+.exp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:20px;}
+.exp-k{background:var(--wit);border:1.5px solid var(--rand);border-radius:var(--radius-groot);padding:14px;border-left:4px solid var(--grijs-3);}
+.exp-k.b{border-left-color:var(--blauw);}
+.exp-k.o{border-left-color:var(--oranje);}
+.exp-k.g{border-left-color:var(--groen);}
+.exp-k.r{border-left-color:var(--rood);}
+.exp-lbl{font-size:11px;color:var(--grijs-4);margin-bottom:3px;}
+.exp-val{font-size:19px;font-weight:600;color:var(--tekst);font-variant-numeric:tabular-nums;line-height:1.2;}
+.exp-sub{font-size:11px;color:var(--grijs-4);margin-top:2px;}
+
+/* ── LEEG ── */
+.leeg{text-align:center;padding:60px 20px;color:var(--grijs-3);}
+.leeg .ico{font-size:40px;margin-bottom:10px;}
+.leeg p{font-size:13px;line-height:1.6;max-width:420px;margin:0 auto;color:var(--grijs-4);}
+
+/* ── INFO BANNER ── */
+.info-banner{background:var(--blauw-licht);border:1px solid rgba(27,42,74,0.15);border-radius:var(--radius);padding:11px 15px;margin-bottom:18px;display:flex;gap:10px;align-items:flex-start;}
+.info-banner-ico{color:var(--blauw);font-size:16px;flex-shrink:0;}
+.info-banner-t{font-size:12px;color:var(--blauw);line-height:1.5;}
+
+/* ══ CASHFLOW CSS ══ */
+.cf-kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:10px;margin-bottom:16px;}
+.cf-k{background:var(--wit);border:1.5px solid var(--rand);border-radius:var(--radius-groot);padding:13px;border-left:4px solid var(--grijs-3);}
+.cf-k.b{border-left-color:var(--blauw);}
+.cf-k.o{border-left-color:var(--oranje);}
+.cf-k.g{border-left-color:var(--groen);}
+.cf-k.r{border-left-color:var(--rood);}
+.cf-k .lbl{font-size:11px;color:var(--grijs-4);margin-bottom:3px;}
+.cf-k .val{font-size:18px;font-weight:600;font-variant-numeric:tabular-nums;line-height:1.2;}
+.cf-k .sub{font-size:11px;color:var(--grijs-4);margin-top:2px;}
+table.ft th.cf-btw{background:rgba(192,78,32,0.08);}
+table.ft td.cf-neg{color:var(--rood);font-weight:500;}
+table.ft td.cf-pos{color:var(--groen);font-weight:500;}
+table.ft td.cf-nul{color:var(--grijs-3);}
+table.ft tr.cf-saldo td{background:var(--blauw);color:#fff;font-weight:600;}
+table.ft tr.cf-saldo td.rood-saldo{background:var(--rood);}
+table.ft tr.cf-warn td{background:var(--rood-licht);color:var(--rood);font-size:11px;font-style:italic;}
+
+/* ── BEWERKBARE KOSTENPOSTEN ── */
+.kp-inp{font-size:12px;font-weight:600;color:var(--blauw);border:none;border-bottom:1.5px dashed rgba(27,42,74,0.25);background:transparent;width:72px;text-align:right;font-family:monospace;padding:0 2px;}
+.kp-inp:focus{outline:none;border-bottom-color:var(--blauw);}
+.kp-inp:hover{border-bottom-color:var(--blauw);}
+table.ft td.edit-cel{padding:3px 6px;}
+.kp-badge{display:inline-block;font-size:9px;padding:1px 5px;border-radius:3px;background:rgba(27,42,74,0.08);color:var(--blauw);margin-left:4px;vertical-align:middle;font-weight:600;letter-spacing:.04em;}
+.kp-badge.offerte{background:rgba(192,78,32,0.1);color:var(--oranje);}
+/* ── TCW WERKGROEPEN INVOER ── */
+.tcw-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px;}
+.tcw-rij{display:flex;align-items:center;gap:6px;padding:7px 10px;background:var(--grijs-0);border:1px solid var(--grijs-2);border-radius:6px;}
+.tcw-rij label{font-size:11px;color:var(--grijs-5);flex:1;line-height:1.3;}
+.tcw-inp{font-size:12px;font-weight:600;color:var(--blauw);border:1px solid var(--grijs-2);border-radius:4px;background:var(--wit);width:64px;text-align:right;padding:2px 5px;font-family:monospace;}
+.tcw-inp:focus{outline:none;border-color:var(--blauw);}
+.tcw-eenheid{font-size:10px;color:var(--grijs-3);min-width:28px;}
+.tcw-totaal{font-size:12px;font-weight:600;color:var(--oranje);min-width:80px;text-align:right;}
+
+/* ── HANDLEIDING PANEEL ── */
+.hdl-wrap{display:grid;grid-template-columns:260px 1fr;gap:16px;align-items:start;}
+@media(max-width:1100px){.hdl-wrap{grid-template-columns:1fr;}}
+.hdl{position:sticky;top:70px;background:var(--wit);border:1.5px solid rgba(27,42,74,0.15);border-radius:var(--radius-groot);overflow:hidden;box-shadow:0 2px 10px rgba(27,42,74,0.07);}
+.hdl-hdr{background:var(--blauw);color:#fff;padding:10px 14px;display:flex;align-items:center;gap:8px;}
+.hdl-hdr-ico{font-size:16px;flex-shrink:0;}
+.hdl-hdr-t{font-size:12px;font-weight:600;line-height:1.3;}
+.hdl-hdr-sub{font-size:10px;opacity:.75;margin-top:1px;}
+.hdl-body{padding:12px 14px;max-height:calc(100vh - 150px);overflow-y:auto;}
+.hdl-stap{display:flex;gap:10px;padding:8px 0;border-bottom:1px solid var(--grijs-1);}
+.hdl-stap:last-child{border-bottom:none;}
+.hdl-stap-nr{width:22px;height:22px;border-radius:50%;background:var(--oranje);color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.hdl-stap-nr.groen{background:var(--groen);}
+.hdl-stap-nr.grijs{background:var(--grijs-3);}
+.hdl-stap-body{flex:1;}
+.hdl-stap-t{font-size:12px;font-weight:600;color:var(--tekst);margin-bottom:2px;}
+.hdl-stap-tx{font-size:11px;color:var(--tekst-sub);line-height:1.55;}
+.hdl-tip{margin-top:10px;padding:8px 10px;background:var(--oranje-licht);border-radius:6px;font-size:11px;color:var(--oranje-diep);line-height:1.5;border-left:3px solid var(--oranje);}
+.hdl-tip.blauw{background:var(--blauw-licht);color:var(--blauw-diep);border-left-color:var(--blauw);}
+.hdl-link{display:flex;align-items:center;gap:5px;margin-top:8px;font-size:11px;color:var(--blauw);cursor:pointer;font-weight:500;}
+.hdl-link:hover{text-decoration:underline;}
+</style>
+
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:_dlc_DocId msdt:dt="string">N36ZD6P3VSNZ-1124819296-13984</mso:_dlc_DocId>
+<mso:_dlc_DocIdItemGuid msdt:dt="string">e9e3f0e5-8176-464a-9bc6-5a00c847d82e</mso:_dlc_DocIdItemGuid>
+<mso:_dlc_DocIdUrl msdt:dt="string">https://askgroupeu.sharepoint.com/sites/HRM/_layouts/15/DocIdRedir.aspx?ID=N36ZD6P3VSNZ-1124819296-13984, N36ZD6P3VSNZ-1124819296-13984</mso:_dlc_DocIdUrl>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="hdr">
+  <div class="hdr-inner">
+    <div class="hdr-brand">
+      <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="0" y="0" width="4" height="28" rx="1" fill="white" opacity="0.9"/>
+        <polygon points="6,2 13,22 17,22 20,8 17,2" fill="white"/>
+        <polygon points="17,2 20,8 23,22 27,22 28,2 25,2 21,16 20,8" fill="rgba(255,255,255,0.55)"/>
+      </svg>
+      <div>
+        <div class="hdr-brand-naam">Vakschool Weerterland</div>
+        <div class="hdr-brand-sub">Coöperatie U.A.</div>
+      </div>
+    </div>
+    <div class="hdr-title">Financieel Dashboard — Intern Werkdocument</div>
+    <div class="hdr-sc">
+      <label>Scenario:</label>
+      <select id="sc-sel" onchange="laadSc(this.value)">
+        <option value="tcw">TCW Basisplan (KPI)</option>
+        <option value="worst">Worst case — 3 lln jr 1</option>
+        <option value="opt">Optimistisch — 7 lln jr 1</option>
+      </select>
+      <button class="hdr-sc-btn" onclick="nieuwSc()">+ Nieuw</button>
+    </div>
+    <button class="hdr-export" onclick="exporteer()">↓ Exporteer JSON</button>
+  </div>
+</header>
+
+<!-- TABS -->
+<nav class="nav-tabs">
+  <button class="nav-tab on" onclick="setTab('invoer',this)"><span class="tnr">①</span>Invoer &amp; Scenario's</button>
+  <button class="nav-tab" onclick="setTab('kosten',this)"><span class="tnr">②</span>Kosten</button>
+  <button class="nav-tab" onclick="setTab('inkomsten',this)"><span class="tnr">③</span>Inkomsten</button>
+  <button class="nav-tab" onclick="setTab('exploitatie',this)"><span class="tnr">④</span>Exploitatie</button>
+  <button class="nav-tab" onclick="setTab('cashflow',this)"><span class="tnr">⑤</span>Cashflow jaar 1</button>
+  <button class="nav-tab" onclick="setTab('investering',this)"><span class="tnr">⑥</span>Investeringsbegroting</button>
+</nav>
+
+<!-- ══ PAGINA 1: INVOER ══ -->
+<div id="pg-invoer" class="pg on">
+<div class="cont">
+  <div class="hdl-wrap">
+  <div class="hdl">
+  <div class="hdl-hdr"><div class="hdl-hdr-ico">📘</div><div><div class="hdl-hdr-t">Handleiding</div><div class="hdl-hdr-sub">① Invoer &amp; Scenario's</div></div></div>
+  <div class="hdl-body">
+    <div class="hdl-stap"><div class="hdl-stap-nr">1</div><div class="hdl-stap-body"><div class="hdl-stap-t">Kies een scenario</div><div class="hdl-stap-tx">Selecteer bovenin een bestaand scenario of maak een nieuw scenario aan. Het TCW Basisplan is vooringevuld met de officiële KPI-aantallen uit de Regiodeal.</div></div></div>
+    <div class="hdl-stap"><div class="hdl-stap-nr">2</div><div class="hdl-stap-body"><div class="hdl-stap-t">Stel de leerling-mix in</div><div class="hdl-stap-tx">Klik op een jaar in het overzicht bovenaan. Gebruik de + en − knoppen om per leeftijdsgroep leerlingen toe te voegen. Kies per kaartje ook het leerjaar van de leerling — dit bepaalt de ledenbijdrage.</div></div></div>
+    <div class="hdl-stap"><div class="hdl-stap-nr">3</div><div class="hdl-stap-body"><div class="hdl-stap-t">Stel het schoolmodel in</div><div class="hdl-stap-tx">Kies <strong>BBL standaard</strong> (3 dgn werk / 2 dgn school) of <strong>ECP</strong> (3 dgn werk / 1 dag school + 1 ECP-praktijkdag via CRAFT). ECP levert extra OOM-subsidie van €1.730 per BBL-leerling.</div></div></div>
+    <div class="hdl-stap"><div class="hdl-stap-nr">4</div><div class="hdl-stap-body"><div class="hdl-stap-t">Controleer de aannames</div><div class="hdl-stap-tx">De financiële aannames rechts zijn allemaal aanpasbaar. Begin met de standaardwaarden en verfijn later met werkelijke offertes. Let op: CAO-indexatie van 3% per jaar is al verwerkt.</div></div></div>
+    <div class="hdl-stap"><div class="hdl-stap-nr groen">5</div><div class="hdl-stap-body"><div class="hdl-stap-t">Bekijk het beoordelingsrapport</div><div class="hdl-stap-tx">Scroll naar beneden voor het automatisch gegenereerde oordeel. Het rapport beoordeelt de onderbouwing en haalbaarheid op basis van je invoer.</div></div></div>
+    <div class="hdl-stap"><div class="hdl-stap-nr groen">6</div><div class="hdl-stap-body"><div class="hdl-stap-t">Kopieer naar volgend jaar</div><div class="hdl-stap-tx">Gebruik de knop "Kopieer naar volgend jaar" als startpunt — pas daarna aan voor groei of wijzigingen in de mix.</div></div></div>
+    <div class="hdl-tip">💡 <strong>Tip:</strong> Stel eerst jaar 1 volledig in. Pas dan jaren 2–5 aan. Jaren 6–10 zijn bedoeld als langetermijnperspectief na de TCW-periode.</div>
+    <div class="hdl-tip blauw">📋 <strong>Notitie #1 &amp; #9:</strong> Elk lid-bedrijf = 1 leerling in de startfase. Leerlingen mogen pas ingevoerd worden als er een getekende intentieverklaring van het bijbehorende bedrijf is.</div>
+  </div>
+</div>
+  <div>
+  <div class="alerts" id="alerts"></div>
+  <div class="info-banner">
+    <div class="info-banner-ico">📋</div>
+    <div class="info-banner-t"><strong>10 accountantsnotities actief.</strong> Rode markeringen = actie vereist vóór oprichting · Oranje = aandachtspunt bestuur · Groen = in orde.</div>
+  </div>
+  <div class="sec"><div class="sec-t">Meerjarenoverzicht — klik om jaar te bewerken</div><div class="jaar-ov-grid" id="jov"></div></div>
+  <div class="sec">
+    <div class="sec-t">Leerling-mix per jaar</div>
+    <div class="jtabs" id="jtabs"></div>
+    <div class="invoer-grid">
+      <div class="kaart">
+        <div class="kaart-t">🎓 Leerlingen — <span id="jtitel">Jaar 1</span></div>
+        <div class="kaart-sub" id="jsub"></div>
+        <div class="mix-grid" id="mxgrid"></div>
+        <div class="totregel">
+          <div class="totregel-info">Totaal: <strong style="color:var(--blauw)" id="totlln">0</strong> lln · Gem. bruto/mnd: <strong id="gemloon">—</strong> · BBL: <strong style="color:var(--blauw)" id="totbbl">0</strong> · Volw.: <strong style="color:var(--oranje)" id="totvol">0</strong></div>
+          <button class="btn-kop" onclick="kopieer()">Kopieer naar volgend jaar →</button>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <div class="kaart">
+          <div class="kaart-t">⚙️ Instellingen</div>
+          <div class="sett"><div class="sett-lbl">Schoolmodel</div><div class="pill" id="sw-school"><button class="on" onclick="setSc2('bbl',this)">BBL (2 dgn)</button><button onclick="setSc2('ecp',this)">ECP (1+1)</button></div></div>
+          <div class="sett"><div class="sett-lbl">Scenario-naam</div><input type="text" id="sc-naam" value="TCW Basisplan (KPI)" style="font-size:12px;border:1px solid var(--rand);border-radius:5px;padding:3px 7px;width:148px;font-family:var(--font);"></div>
+          <div class="sett"><div class="sett-lbl">Huidig jaar</div><div style="font-size:12px;font-weight:600;color:var(--blauw)" id="hjlabel">Jaar 1 — 2026</div></div>
+        </div>
+        <div class="kaart">
+          <div class="kaart-t">💶 Financiële aannames</div>
+          <div class="ann-grid">
+            <div class="ann"><div class="ann-lbl">Wervingskosten</div><input class="ann-inp" id="a-werv" type="number" value="8500" oninput="render()"><div class="ann-e">€ per medewerker</div></div>
+            <div class="ann"><div class="ann-lbl">Vaste ledenbijdrage</div><input class="ann-inp" id="a-basis" type="number" value="500" oninput="render()"><div class="ann-e">€ per bedrijf/jaar</div></div>
+            <div class="ann"><div class="ann-lbl">Factureerb. uren</div><input class="ann-inp" id="a-uren" type="number" value="1020" oninput="render()"><div class="ann-e">uur/leerling/jaar</div></div>
+            <div class="ann"><div class="ann-lbl">CAO-indexatie</div><input class="ann-inp" id="a-cao" type="number" value="3" oninput="render()"><div class="ann-e">% per jaar</div></div>
+            <div class="ann"><div class="ann-lbl">Reserveopslag</div><input class="ann-inp" id="a-res" type="number" value="5" oninput="render()"><div class="ann-e">% op kostprijs</div></div>
+            <div class="ann"><div class="ann-lbl">Voorfinanciering</div><input class="ann-inp" id="a-vf" type="number" value="15000" oninput="render()"><div class="ann-e">€ lening holding</div></div>
+          </div>
+        </div>
+        <div class="kaart"><div class="kaart-t">📊 KPI's — <span id="kpijlbl">Jaar 1</span></div><div id="kpizij"></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="sec"><div class="sec-t">Actiepunten accountant</div><div class="kaart"><div id="notities"></div></div></div>
+
+  <!-- ══ ACCOUNTANTSVERKLARING ══ -->
+  <div class="sec" id="sec-oordeel">
+    <div class="sec-t">Beoordelingsrapport — indicatieve begroting</div>
+    <div style="background:var(--wit);border:1.5px solid var(--rand);border-radius:var(--radius-groot);overflow:hidden;box-shadow:0 2px 12px rgba(27,42,74,0.08);">
+
+      <!-- Header rapport -->
+      <div style="background:var(--blauw);color:#fff;padding:16px 20px;display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px;">
+        <div>
+          <div style="font-size:15px;font-weight:600;margin-bottom:3px;">Indicatieve Begroting — Coöperatie Vakschool Weerterland U.A.</div>
+          <div style="font-size:12px;opacity:.8;">Opgesteld ter ondersteuning van de oprichting en besluitvorming</div>
+        </div>
+        <div style="text-align:right;">
+          <div style="font-size:11px;opacity:.7;">Datum rapport</div>
+          <div style="font-size:13px;font-weight:500;" id="rapp-datum"></div>
+          <div style="font-size:11px;opacity:.7;margin-top:4px;">Scenario</div>
+          <div style="font-size:12px;font-weight:500;" id="rapp-scenario"></div>
+        </div>
+      </div>
+
+      <div style="padding:20px;display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+
+        <!-- Linker kolom -->
+        <div>
+          <!-- Aard van de begroting -->
+          <div style="margin-bottom:16px;">
+            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--grijs-4);margin-bottom:8px;">Aard en doel van dit document</div>
+            <div style="font-size:12px;color:var(--tekst-sub);line-height:1.7;">
+              Deze begroting is een <strong style="color:var(--tekst)">indicatief financieel model</strong> dat is opgesteld
+              ter ondersteuning van de oprichting van de Coöperatie Vakschool Weerterland U.A.
+              Het document dient als <em>richtinggevend kader</em> voor besluitvorming door het bestuur
+              en de leden, en als toetsingskader voor de accountant bij de definitieve begroting na oprichting.<br><br>
+              Een indicatieve begroting geeft een <strong style="color:var(--tekst)">gewaardeerd oordeel</strong> over de
+              financiële haalbaarheid op basis van de best beschikbare informatie. Het is geen garantie
+              en geen jaarrekening. De werkelijke uitkomsten zullen afwijken — de vraag is niet óf er
+              afwijkingen zijn, maar of de richting klopt en de risico's zijn onderkend.
+            </div>
+          </div>
+
+          <!-- Kwaliteit van de input -->
+          <div style="margin-bottom:16px;">
+            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--grijs-4);margin-bottom:8px;">Kwaliteit van de gebruikte aannames</div>
+            <div id="oordeel-aannames" style="font-size:12px;line-height:1.6;"></div>
+          </div>
+        </div>
+
+        <!-- Rechter kolom -->
+        <div>
+          <!-- Kernbevindingen -->
+          <div style="margin-bottom:16px;">
+            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--grijs-4);margin-bottom:8px;">Kernbevindingen huidig scenario</div>
+            <div id="oordeel-bevindingen" style="font-size:12px;line-height:1.7;"></div>
+          </div>
+
+          <!-- Voorbehouden -->
+          <div>
+            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--grijs-4);margin-bottom:8px;">Voorbehouden &amp; randvoorwaarden</div>
+            <div style="font-size:12px;color:var(--tekst-sub);line-height:1.7;">
+              Dit oordeel is geldig onder de volgende randvoorwaarden:
+              <ul style="margin:6px 0 0 16px;display:flex;flex-direction:column;gap:3px;">
+                <li>Leerlingaantallen conform TCW KPI's worden gerealiseerd</li>
+                <li>RVO- en OOM-subsidieregelingen blijven ongewijzigd van kracht</li>
+                <li>CAO-indexatie bedraagt maximaal <span id="vb-cao"></span>% per jaar</li>
+                <li>Facturatie en betaling verlopen conform notitie #2 (HH-reglement)</li>
+                <li>Voorfinanciering van <span id="vb-vf"></span> is beschikbaar vóór oprichting</li>
+                <li>Grote kostenposten worden vóór oprichting voorzien van offertes</li>
+                <li>De begroting wordt jaarlijks herzien door het bestuur en de accountant</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Eindoordeel balk -->
+      <div id="eindoordeel-balk" style="padding:14px 20px;display:flex;align-items:center;gap:14px;border-top:1px solid var(--grijs-2);">
+        <div id="eindoordeel-icoon" style="font-size:28px;flex-shrink:0;"></div>
+        <div>
+          <div id="eindoordeel-titel" style="font-size:13px;font-weight:600;margin-bottom:3px;"></div>
+          <div id="eindoordeel-tekst" style="font-size:12px;line-height:1.5;"></div>
+        </div>
+      </div>
+
+      <!-- Ondertekening -->
+      <div style="padding:12px 20px;background:var(--grijs-0);border-top:1px solid var(--grijs-2);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
+        <div style="font-size:11px;color:var(--grijs-4);">
+          Opgesteld met: Financieel Dashboard Vakschool Weerterland v1.0 &nbsp;·&nbsp;
+          Alle berekeningen zijn gebaseerd op de door de gebruiker ingevoerde aannames.
+        </div>
+        <div style="display:flex;gap:8px;">
+          <button onclick="window.print()" style="font-size:11px;padding:5px 12px;border:1px solid var(--rand);background:var(--wit);border-radius:5px;cursor:pointer;font-family:var(--font);color:var(--grijs-5);">🖨 Afdrukken</button>
+          <button onclick="exporteer()" style="font-size:11px;padding:5px 12px;border:none;background:var(--blauw);color:#fff;border-radius:5px;cursor:pointer;font-family:var(--font);font-weight:600;">↓ Exporteer JSON</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+</div><!-- /hdl content -->
+</div><!-- /hdl-wrap -->
+</div>
+</div>
+
+<!-- ══ PAGINA 2: KOSTEN ══ -->
+<div id="pg-kosten" class="pg">
+<div class="cont">
+  <div class="hdl-wrap">
+  <div class="hdl">
+  <div class="hdl-hdr"><div class="hdl-hdr-ico">📘</div><div><div class="hdl-hdr-t">Handleiding</div><div class="hdl-hdr-sub">② Kosten</div></div></div>
+  <div class="hdl-body">
+    <div class="hdl-stap"><div class="hdl-stap-nr">1</div><div class="hdl-stap-body"><div class="hdl-stap-t">Lees de indicatieve waarden</div><div class="hdl-stap-tx">Alle kostenposten zijn vooringevuld met marktconforme schattingen. De tabel toont kosten per leerling én totaal voor het geselecteerde jaar. Wisselen van jaar via de tabbladen bovenaan de tabel.</div></div></div>
+    <div class="hdl-stap"><div class="hdl-stap-nr">2</div><div class="hdl-stap-body"><div class="hdl-stap-t">Vervang met werkelijke bedragen</div><div class="hdl-stap-tx">Gebruik het paneel <em>rechts</em> om offertebedragen in te vullen zodra je ze hebt. Begin bovenaan met <strong>Huisvesting</strong> (kan nul zijn) en werk naar beneden. Elke wijziging is direct zichtbaar.</div></div></div>
+    <div class="hdl-stap"><div class="hdl-stap-nr">3</div><div class="hdl-stap-body"><div class="hdl-stap-t">Let op de offerte-badges</div><div class="hdl-stap-tx">Posten met een oranje <span style="font-size:10px;padding:1px 5px;border-radius:3px;background:rgba(192,78,32,0.1);color:var(--oranje);font-weight:600">offerte</span> badge vereisen een offerte van een externe partij. Prioriteit: accountant, notaris, verzekeringen, juridisch advies.</div></div></div>
+    <div class="hdl-stap"><div class="hdl-stap-nr">4</div><div class="hdl-stap-body"><div class="hdl-stap-t">Groep A &amp; B niet aanpasbaar</div><div class="hdl-stap-tx">Loonkosten en werkgeverslasten worden automatisch berekend vanuit de leerlingmix en de actuele CAO-lonen (art. 33c BBL). Pas deze aan via tabblad ①.</div></div></div>
+    <div class="hdl-stap"><div class="hdl-stap-nr groen">5</div><div class="hdl-stap-body"><div class="hdl-stap-t">Huisvesting: nul is valide</div><div class="hdl-stap-tx">Als alle lessen plaatsvinden bij de lidbedrijven, zijn de huisvestingskosten nul. Houd dan wel een pm-reservering aan van minstens €500 per leerling voor onverwachte locatiekosten.</div></div></div>
+    <div class="hdl-tip">💡 <strong>Tip:</strong> Het beoordelingsrapport (tabblad ①) toont automatisch hoe hoog de kwaliteit van de aannames is op basis van het percentage ingevulde offerte-posten.</div>
+    <div class="hdl-tip blauw">📋 <strong>Notitie #5:</strong> Alle kostenposten stijgen jaarlijks mee met de CAO-indexatie. Het tarief wordt automatisch bijgesteld — dit geldt ook voor de ledenbijdrage.</div>
+  </div>
+</div>
+  <div>
+  <div style="display:grid;grid-template-columns:1fr 360px;gap:16px;align-items:start;">
+    <div>
+      <div class="sec"><div class="sec-t">Volledig kostenoverzicht — alle jaren</div>
+      <div class="jtabs" id="jtabs-k"></div>
+      <div class="kaart"><div class="tbl-wrap"><table class="ft" id="tbl-kosten"></table></div></div>
+      </div>
+    </div>
+    <div style="position:sticky;top:70px;">
+      <div class="sec"><div class="sec-t">Kostenposten aanpassen</div>
+      <div class="kaart" style="max-height:calc(100vh - 120px);overflow-y:auto;">
+        <div style="font-size:11px;color:var(--oranje);margin-bottom:10px;padding:6px 8px;background:var(--oranje-licht);border-radius:5px;">
+          Vul hier werkelijke offertes en tarieven in. Oranje <span class="kp-badge offerte">offerte</span> = vraag offerte op. Wijzigingen worden direct zichtbaar in de tabel.
+        </div>
+        <div id="kp-invoer"></div>
+      </div>
+      </div>
+    </div>
+  </div>
+</div><!-- /kosten inner -->
+</div><!-- /hdl content -->
+</div><!-- /hdl-wrap -->
+</div>
+</div>
+
+<!-- ══ PAGINA 3: INKOMSTEN ══ -->
+<div id="pg-inkomsten" class="pg">
+<div class="cont">
+  <div class="hdl-wrap">
+  <div class="hdl">
+  <div class="hdl-hdr"><div class="hdl-hdr-ico">📘</div><div><div class="hdl-hdr-t">Handleiding</div><div class="hdl-hdr-sub">③ Inkomsten</div></div></div>
+  <div class="hdl-body">
+    <div class="hdl-stap"><div class="hdl-stap-nr">1</div><div class="hdl-stap-body"><div class="hdl-stap-t">Plaatsingsvergoeding is de hoofdpost</div><div class="hdl-stap-tx">Het uurtarief wordt automatisch berekend: totale lasten minus alle subsidies en ledenbijdragen, gedeeld door de factureerbare uren, plus reserveopslag. Dit tarief moet marktconform zijn — vergelijk met het TCW-referentietarief van €86/uur.</div></div></div>
+    <div class="hdl-stap"><div class="hdl-stap-nr">2</div><div class="hdl-stap-body"><div class="hdl-stap-t">Controleer de subsidies</div><div class="hdl-stap-tx">RVO en OOM zijn het meest kritisch. Controleer of het crebo-nummer van de opleiding recht geeft op de praktijkleersubsidie. Vraag dit na bij Gilde Opleidingen vóór oprichting.</div></div></div>
+    <div class="hdl-stap"><div class="hdl-stap-nr">3</div><div class="hdl-stap-body"><div class="hdl-stap-t">TCW werkgroepinkomsten invullen</div><div class="hdl-stap-tx">Gebruik het paneel rechts. Vul per persoon de naam in (klik op de tekst), het aantal declarabele uren en het tarief. Standaard: €86/uur conform het RIF MBO-tarief. Deze inkomsten gelden <strong>alleen t/m 31-12-2028</strong>.</div></div></div>
+    <div class="hdl-stap"><div class="hdl-stap-nr">4</div><div class="hdl-stap-body"><div class="hdl-stap-t">Ledenbijdrage: 25% per leerjaar</div><div class="hdl-stap-tx">De ledenbijdrage is gebaseerd op 25% van de marktconforme wervingskosten (€8.500) per leerjaar. Een leerling in jaar 2 brengt dus twee keer het jaarbedrag op. Dit is de zakelijke onderbouwing richting bedrijven.</div></div></div>
+    <div class="hdl-stap"><div class="hdl-stap-nr groen">5</div><div class="hdl-stap-body"><div class="hdl-stap-t">Loonkostensubsidie gemeente</div><div class="hdl-stap-tx">Alleen relevant als de zij-instromer (26+) vanuit een uitkering instroomt. Schakelaar staat in tabblad ④. Zet hem uit als dit niet van toepassing is — anders is de begroting te optimistisch.</div></div></div>
+    <div class="hdl-tip">💡 <strong>Tip:</strong> Het exploitatieresultaat onderaan de tabel is het snelste signaal. Groen = kostendekkend bij dit scenario. Rood = bijstellen nodig.</div>
+    <div class="hdl-tip blauw">📋 <strong>Notitie #6:</strong> Test altijd het scenario "zonder RVO" en "zonder OOM" in tabblad ④ voordat je de begroting presenteert aan de leden.</div>
+  </div>
+</div>
+  <div>
+  <div style="display:grid;grid-template-columns:1fr 360px;gap:16px;align-items:start;">
+    <div>
+      <div class="sec"><div class="sec-t">Volledig inkomstenoverzicht — alle jaren</div>
+      <div class="jtabs" id="jtabs-i"></div>
+      <div class="kaart"><div class="tbl-wrap"><table class="ft" id="tbl-ink"></table></div></div>
+      </div>
+    </div>
+    <div style="position:sticky;top:70px;">
+      <div class="sec"><div class="sec-t">TCW werkgroepinkomsten</div>
+      <div class="kaart">
+        <div style="font-size:11px;color:var(--blauw);margin-bottom:10px;padding:6px 8px;background:var(--blauw-licht);border-radius:5px;line-height:1.5;">
+          Uren declareerbaar via TCW Regiodeal-subsidie. Standaardtarief €86/uur (landelijk MBO RIF-tarief). Vul naam, uren en tarief in — totaal stroomt in als inkomst coöperatie.
+        </div>
+        <div id="tcw-invoer"></div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px;padding-top:8px;border-top:1px solid var(--grijs-2);">
+          <span style="font-size:12px;color:var(--grijs-4)">Totaal TCW inkomsten jaar 1</span>
+          <span style="font-size:16px;font-weight:600;color:var(--oranje)" id="tcw-totaal-lbl">—</span>
+        </div>
+        <div style="margin-top:8px;padding:7px 9px;background:var(--oranje-licht);border-radius:5px;font-size:11px;color:var(--oranje);line-height:1.5;">
+          Deze inkomsten zijn alleen geldig zolang de TCW Regiodeal loopt (t/m 31-12-2028). Bouw ze niet structureel in na 2028.
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</div><!-- /ink inner -->
+</div><!-- /hdl content -->
+</div><!-- /hdl-wrap -->
+</div>
+</div>
+
+<!-- ══ PAGINA 4: EXPLOITATIE ══ -->
+<div id="pg-exploitatie" class="pg">
+<div class="cont">
+  <div class="hdl-wrap">
+  <div class="hdl">
+  <div class="hdl-hdr"><div class="hdl-hdr-ico">📘</div><div><div class="hdl-hdr-t">Handleiding</div><div class="hdl-hdr-sub">④ Exploitatie</div></div></div>
+  <div class="hdl-body">
+    <div class="hdl-stap"><div class="hdl-stap-nr">1</div><div class="hdl-stap-body"><div class="hdl-stap-t">Lees het 10-jarenoverzicht</div><div class="hdl-stap-tx">De tabel toont alle jaren naast elkaar. Kijk in de eerste rij naar de leerlingaantallen — kloppen die met jullie ambitie? Rood in het exploitatieresultaat betekent bijstellen, niet stoppen.</div></div></div>
+    <div class="hdl-stap"><div class="hdl-stap-nr">2</div><div class="hdl-stap-body"><div class="hdl-stap-t">Test subsidierisico's</div><div class="hdl-stap-tx">Gebruik de oranje schakelaar bovenaan. Test minimaal "Zonder RVO" en "Zonder OOM" apart. Als het model dan nog draait, is de coöperatie robuust. Dit is wat het bestuur jaarlijks aan de ALV moet presenteren (notitie #6).</div></div></div>
+    <div class="hdl-stap"><div class="hdl-stap-nr">3</div><div class="hdl-stap-body"><div class="hdl-stap-t">Loonkostensubsidie gemeente</div><div class="hdl-stap-tx">Zet deze uit als zij-instromers geen uitkeringsgerechtigden zijn. De begroting moet ook zonder deze subsidie levensvatbaar zijn — het is een bonus, geen pijler.</div></div></div>
+    <div class="hdl-stap"><div class="hdl-stap-nr">4</div><div class="hdl-stap-body"><div class="hdl-stap-t">Reserveopbouw volgen</div><div class="hdl-stap-tx">De rij "Reserve cumulatief" toont wanneer de reserve de norm bereikt (2 maanden loonkosten). Groen = norm gehaald. Geel = nog niet op niveau. Bespreek dit jaarlijks in de ALV.</div></div></div>
+    <div class="hdl-stap"><div class="hdl-stap-nr">5</div><div class="hdl-stap-body"><div class="hdl-stap-t">Minimumdrempel break-even</div><div class="hdl-stap-tx">De rij "Min. lln break-even" toont het minimum aantal leerlingen waarbij de coöperatie kostendekkend draait. Groen = huidig aantal boven drempel. Rood = gevaar. Zorg dat de intentieverklaringen dit aantal borgen.</div></div></div>
+    <div class="hdl-stap"><div class="hdl-stap-nr groen">6</div><div class="hdl-stap-body"><div class="hdl-stap-t">Na 2028: TCW-inkomsten vervallen</div><div class="hdl-stap-tx">Vanaf jaar 4 (2029) zijn er geen TCW werkgroepinkomsten meer. Controleer of het model dan nog steeds positief is. Zo niet: extra leerlingen of lagere overhead zijn de twee knoppen om aan te draaien.</div></div></div>
+    <div class="hdl-tip">💡 <strong>Tip:</strong> De KPI-kaartjes bovenaan geven per jaar het snelste overzicht. Klik ze door om te zien hoe het tarief en resultaat zich ontwikkelen.</div>
+    <div class="hdl-tip blauw">📋 <strong>Beslisregel bestuur:</strong> Als het resultaat in jaar 3 negatief is bij het subsidierisico-scenario "zonder beide", moet het tarief omhoog of moeten er meer leerlingen worden geplaatst.</div>
+  </div>
+</div>
+  <div>
+  <div class="sec"><div class="sec-t">Exploitatieoverzicht — 10 jaar</div>
+  <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:12px;padding:10px 14px;background:var(--oranje-licht);border-radius:var(--radius);border-left:3px solid var(--oranje);">
+    <span style="font-size:12px;font-weight:600;color:var(--oranje);">Punt 5 — Subsidierisico:</span>
+    <div class="pill" id="sw-subsrisico"><button class="on" onclick="setSubsRisico('volledig',this)">Volledig</button><button onclick="setSubsRisico('geen_rvo',this)">Zonder RVO</button><button onclick="setSubsRisico('geen_oom',this)">Zonder OOM</button><button onclick="setSubsRisico('geen_beide',this)">Zonder beide</button></div>
+    <span style="font-size:12px;font-weight:600;color:var(--oranje);margin-left:10px;">Punt 6 — Loonkostensubsidie:</span>
+    <div class="pill" id="sw-lks"><button class="on" onclick="setLKS(true,this)">Actief</button><button onclick="setLKS(false,this)">Niet actief</button></div>
+  </div>
+  <div class="exp-grid" id="exp-kpis"></div>
+  <div class="kaart"><div class="tbl-wrap"><table class="ft" id="tbl-exp"></table></div>
+  <div style="margin-top:14px;padding:10px 12px;background:var(--oranje-licht);border-radius:var(--radius);font-size:11px;color:var(--oranje);line-height:1.5;" id="exp-notitie"></div>
+  </div>
+  </div>
+</div><!-- /exp inner -->
+</div><!-- /hdl content -->
+</div><!-- /hdl-wrap -->
+</div>
+</div>
+
+<!-- ══ PAGINA 5: CASHFLOW ══ -->
+<div id="pg-cashflow" class="pg">
+<div class="cont">
+  <div class="hdl-wrap">
+  <div class="hdl">
+  <div class="hdl-hdr"><div class="hdl-hdr-ico">📘</div><div><div class="hdl-hdr-t">Handleiding</div><div class="hdl-hdr-sub">⑤ Cashflow jaar 1</div></div></div>
+  <div class="hdl-body">
+    <div class="hdl-stap"><div class="hdl-stap-nr">1</div><div class="hdl-stap-body"><div class="hdl-stap-t">Start met de voorfinanciering</div><div class="hdl-stap-tx">Het beginsaldo is de voorfinanciering die je instelt bij de aannames in tabblad ①. Dit is het bedrag dat de directeur als achtergestelde lening inbrengt via de holding vóór oprichting. Stel dit in voordat je de cashflow beoordeelt.</div></div></div>
+    <div class="hdl-stap"><div class="hdl-stap-nr">2</div><div class="hdl-stap-body"><div class="hdl-stap-t">Let op het laagste banksaldo</div><div class="hdl-stap-tx">Dit is de enige maatstaf die telt. Een rood vak = negatief saldo in die maand = de voorfinanciering is onvoldoende. Verhoog dan de voorfinanciering totdat alle vakken positief zijn.</div></div></div>
+    <div class="hdl-stap"><div class="hdl-stap-nr">3</div><div class="hdl-stap-body"><div class="hdl-stap-t">Test verzuim en betaalgedrag</div><div class="hdl-stap-tx">Gebruik de schakelaars bovenaan. Test het worst-case scenario: hoog verzuim + vertraagd betaalgedrag. Als het saldo dan positief blijft, is de cashflow robuust. Zo niet — dit is je buffer die je nodig hebt.</div></div></div>
+    <div class="hdl-stap"><div class="hdl-stap-nr">4</div><div class="hdl-stap-body"><div class="hdl-stap-t">BTW apart reserveren</div><div class="hdl-stap-tx">De BTW-rij onderaan de tabel toont wat je elke maand ontvangt aan BTW. Dit geld staat op je rekening maar is niet van de coöperatie — het is een schuld aan de Belastingdienst. Reserveer dit op een aparte rekening.</div></div></div>
+    <div class="hdl-stap"><div class="hdl-stap-nr">5</div><div class="hdl-stap-body"><div class="hdl-stap-t">RVO komt pas in augustus</div><div class="hdl-stap-tx">De praktijkleersubsidie van de RVO wordt één keer per jaar uitbetaald, doorgaans in augustus. Tot die tijd draait de coöperatie op eigen middelen. Dit is de hoofdreden waarom de voorfinanciering kritisch is.</div></div></div>
+    <div class="hdl-stap"><div class="hdl-stap-nr groen">6</div><div class="hdl-stap-body"><div class="hdl-stap-t">Lees het accountantsoordeel</div><div class="hdl-stap-tx">Onderaan de pagina staat een automatisch oordeel over de cashflow. Groen = voldoende gedekt. Geel = krap. Rood = actie vereist. De tekst geeft aan wat je moet doen.</div></div></div>
+    <div class="hdl-tip">💡 <strong>Tip:</strong> De cashflow is alleen voor jaar 1. Vanaf jaar 2 is de coöperatie in de regel stabieler omdat de reserve dan deels is opgebouwd.</div>
+    <div class="hdl-tip blauw">📋 <strong>Notitie #2 &amp; #4:</strong> Factuurmoment (week 3) en betaaltermijn vastleggen in HH-reglement. BTW op aparte bankrekening — nooit uitgeven.</div>
+  </div>
+</div>
+  <div>
+  <div class="sec"><div class="sec-t">Cashflow jaar 1 — maandoverzicht banksaldo</div>
+
+  <!-- KPI balk -->
+  <div class="cf-kpi-grid" id="cf-kpis"></div>
+
+  <!-- Scenario schakelaar normaal/worst -->
+  <div style="display:flex;gap:8px;align-items:center;margin-bottom:14px;flex-wrap:wrap;">
+    <span style="font-size:12px;color:var(--grijs-4);">Verzuimscenario:</span>
+    <div class="pill" id="sw-verzuim">
+      <button class="on" onclick="setVerzuim('normaal',this)">Normaal (5%)</button>
+      <button onclick="setVerzuim('hoog',this)">Hoog (15%)</button>
+      <button onclick="setVerzuim('nul',this)">Geen verzuim</button>
+    </div>
+    <span style="font-size:12px;color:var(--grijs-4);margin-left:8px;">Betaalgedrag bedrijven:</span>
+    <div class="pill" id="sw-beta">
+      <button class="on" onclick="setBeta('goed',this)">Stipt (conform HH)</button>
+      <button onclick="setBeta('laat',this)">1 mnd vertraagd</button>
+    </div>
+  </div>
+
+  <!-- Balksaldo chart -->
+  <div class="kaart" style="margin-bottom:16px;">
+    <div class="kaart-t">📊 Banksaldoverloop jaar 1 — maand per maand</div>
+    <div style="position:relative;height:200px;">
+      <canvas id="cf-chart" role="img" aria-label="Banksaldoverloop per maand jaar 1"></canvas>
+    </div>
+    <div id="cf-chart-legend" style="display:flex;flex-wrap:wrap;gap:14px;margin-top:10px;font-size:12px;color:var(--grijs-4);"></div>
+  </div>
+
+  <!-- Cashflow tabel -->
+  <div class="kaart">
+    <div class="tbl-wrap">
+      <table class="ft" id="tbl-cf"></table>
+    </div>
+  </div>
+
+  <!-- Notitie box -->
+  <div style="margin-top:14px;padding:14px 16px;background:var(--groen-licht);border-radius:var(--radius);border-left:4px solid var(--groen);" id="cf-notitie"></div>
+
+  </div>
+</div>
+</div>
+
+</div><!-- /cf inner -->
+</div><!-- /hdl-wrap -->
+</div>
+</div>
+
+<!-- ══ PAGINA 6: INVESTERINGSBEGROTING ══ -->
+<div id="pg-investering" class="pg">
+<div class="cont">
+  <div class="hdl-wrap">
+  <div class="hdl">
+  <div class="hdl-hdr"><div class="hdl-hdr-ico">📘</div><div><div class="hdl-hdr-t">Handleiding</div><div class="hdl-hdr-sub">⑥ Investeringsbegroting</div></div></div>
+  <div class="hdl-body">
+    <div class="hdl-stap"><div class="hdl-stap-nr">1</div><div class="hdl-stap-body"><div class="hdl-stap-t">Wanneer gebruik je dit?</div><div class="hdl-stap-tx">Zodra de coöperatie overweegt te investeren in een vaste locatie, machines, ICT of inrichting. De eerste jaren is dit tabblad waarschijnlijk leeg — dat is correct en intentioneel.</div></div></div>
+    <div class="hdl-stap"><div class="hdl-stap-nr">2</div><div class="hdl-stap-body"><div class="hdl-stap-t">Voeg een investering toe</div><div class="hdl-stap-tx">Vul omschrijving, categorie, bedrag, uitvoeringsdatum en afschrijvingstermijn in. De datum bepaalt het jaar van kasuitstroom. De termijn bepaalt de jaarlijkse exploitatielast.</div></div></div>
+    <div class="hdl-stap"><div class="hdl-stap-nr">3</div><div class="hdl-stap-body"><div class="hdl-stap-t">Kasuitstroom vs afschrijving</div><div class="hdl-stap-tx"><strong>Kasuitstroom</strong> = geld verlaat de rekening in het uitvoeringsjaar. <strong>Afschrijving</strong> = jaarlijkse last in de exploitatie. Voer de afschrijving handmatig in bij tabblad ② onder huisvesting.</div></div></div>
+    <div class="hdl-stap"><div class="hdl-stap-nr">4</div><div class="hdl-stap-body"><div class="hdl-stap-t">Toekomstige investeringen plannen</div><div class="hdl-stap-tx">Voer ook geplande maar nog onzekere investeringen in met een toekomstige datum. Zo heb je altijd een realistisch beeld van de kasuitstroom over de komende 10 jaar.</div></div></div>
+    <div class="hdl-stap"><div class="hdl-stap-nr groen">5</div><div class="hdl-stap-body"><div class="hdl-stap-t">Categorieën</div><div class="hdl-stap-tx">Gebruik consistent: Huisvesting (pand), Machines &amp; equipment, ICT, Inrichting &amp; meubilair, Leermiddelen. Dit helpt bij verantwoording richting bestuur en ALV.</div></div></div>
+    <div class="hdl-tip">💡 Standaard afschrijvingstermijnen: gebouwinrichting 5–7 jr · machines 5 jr · ICT 3 jr · meubilair 5 jr. Overleg met accountant.</div>
+    <div class="hdl-tip blauw">📋 <strong>Notitie #11:</strong> Machine/equipment vergoeding aan bedrijven vastleggen in HH-reglement vóór gebruik. Zonder afspraak geen grondslag voor betaling.</div>
+  </div>
+</div>
+  <div>
+  <div class="info-banner"><div class="info-banner-ico">🏗️</div><div class="info-banner-t"><strong>Investeringsbegroting</strong> — voer toekomstige investeringen in met uitvoeringsdatum. Investeringen worden als eenmalige kasuitstroom verwerkt en als jaarlijkse afschrijving in de exploitatie.</div></div>
+  <div class="sec"><div class="sec-t">Investering toevoegen</div>
+  <div class="kaart" style="margin-bottom:14px;">
+    <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr auto;gap:8px;align-items:end;flex-wrap:wrap;">
+      <div class="ann"><div class="ann-lbl">Omschrijving</div><input type="text" id="inv-omschr" placeholder="bijv. Inrichting praktijkruimte" style="font-size:13px;border:1px solid var(--rand);border-radius:5px;padding:5px 7px;width:100%;font-family:var(--font);"></div>
+      <div class="ann"><div class="ann-lbl">Categorie</div><select id="inv-cat" style="font-size:12px;padding:5px 6px;border:1px solid var(--rand);border-radius:5px;width:100%;font-family:var(--font);"><option value="huisvesting">Huisvesting</option><option value="equipment">Machines & equipment</option><option value="ict">ICT & software</option><option value="inrichting">Inrichting & meubilair</option><option value="leermiddelen">Leermiddelen</option><option value="overig">Overig</option></select></div>
+      <div class="ann"><div class="ann-lbl">Bedrag (€)</div><input type="number" id="inv-bedrag" placeholder="0" style="font-size:13px;font-weight:600;color:var(--blauw);border:1px solid var(--rand);border-radius:5px;padding:5px 7px;width:100%;font-family:monospace;"></div>
+      <div class="ann"><div class="ann-lbl">Uitvoeringsdatum</div><input type="month" id="inv-datum" value="2026-09" style="font-size:12px;border:1px solid var(--rand);border-radius:5px;padding:5px 7px;width:100%;font-family:var(--font);"></div>
+      <div class="ann"><div class="ann-lbl">Afschr. termijn</div><select id="inv-afschr" style="font-size:12px;padding:5px 6px;border:1px solid var(--rand);border-radius:5px;width:100%;font-family:var(--font);"><option value="3">3 jaar</option><option value="5" selected>5 jaar</option><option value="7">7 jaar</option><option value="10">10 jaar</option><option value="0">Niet afschrijven</option></select></div>
+      <button onclick="voegInvToe()" style="background:var(--blauw);color:#fff;border:none;border-radius:var(--radius);padding:0 16px;font-size:13px;font-weight:600;cursor:pointer;font-family:var(--font);height:38px;white-space:nowrap;align-self:end;">+ Toevoegen</button>
+    </div>
+  </div></div>
+  <div class="sec"><div class="sec-t">Geplande investeringen</div>
+  <div class="kaart" style="margin-bottom:14px;"><div class="tbl-wrap"><table class="ft" id="tbl-inv-lijst"></table></div></div></div>
+  <div class="sec"><div class="sec-t">Effect op exploitatie — afschrijvingen per jaar (10 jaar)</div>
+  <div class="kaart"><div class="tbl-wrap"><table class="ft" id="tbl-inv-effect"></table></div>
+  <div style="margin-top:10px;font-size:11px;color:var(--grijs-4);line-height:1.6;" id="inv-notitie"></div>
+  </div></div><!-- /inv inner -->
+</div><!-- /hdl-wrap -->
+
+</div><!-- /inv inner -->
+</div><!-- /hdl-wrap --></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+// ═══════════════════════════════════════
+//  STAMDATA
+// ═══════════════════════════════════════
+const GR=[
+  {id:'l16',label:'16 jaar',          mnd:1102,kleur:'#93C5FD',bbl:true },
+  {id:'l17',label:'17 jaar',          mnd:1245,kleur:'#60A5FA',bbl:true },
+  {id:'l18',label:'18 jaar',          mnd:1475,kleur:'#3B82F6',bbl:true },
+  {id:'l19',label:'19 jaar',          mnd:1738,kleur:'#2563EB',bbl:true },
+  {id:'l20',label:'20 jaar',          mnd:2095,kleur:'#1D4ED8',bbl:true },
+  {id:'l21',label:'21–25 jaar',       mnd:2857,kleur:'#F59E0B',bbl:false},
+  {id:'l26',label:'26+ (zij-instroom)',mnd:2857,kleur:'#C04E20',bbl:false},
+];
+const JJ=[{nr:1,lbl:'Jaar 1',jaar:2026,tcw:5},{nr:2,lbl:'Jaar 2',jaar:2027,tcw:8},{nr:3,lbl:'Jaar 3',jaar:2028,tcw:12},{nr:4,lbl:'Jaar 4',jaar:2029,tcw:16},{nr:5,lbl:'Jaar 5',jaar:2030,tcw:20},{nr:6,lbl:'Jaar 6',jaar:2031,tcw:20},{nr:7,lbl:'Jaar 7',jaar:2032,tcw:20},{nr:8,lbl:'Jaar 8',jaar:2033,tcw:20},{nr:9,lbl:'Jaar 9',jaar:2034,tcw:20},{nr:10,lbl:'Jaar 10',jaar:2035,tcw:20}];
+const NOT=[
+  {nr:1,kl:'rood',  t:'Inleg leerbedrijven',              tx:'Contractueel vastleggen als voorwaarde lidmaatschap. Betaalmoment vóór startdatum eerste leerling.'},
+  {nr:2,kl:'rood',  t:'Facturatie & betaling',            tx:'Factuur in 3e week lopende maand. Betaaltermijn = salarisbetaaldatum lidbedrijf. Opnemen in HH-reglement.'},
+  {nr:3,kl:'rood',  t:'Aanloopverliezen voorfinanciering',tx:'Worst case jaar 1 doorrekenen. Bedrag als voorfinanciering door oprichters inbrengen bij oprichting.'},
+  {nr:4,kl:'oranje',t:'Cashflow & BTW',                   tx:'Cashflow maandoverzicht (stap 3). BTW apart reserveren op separate bankrekening. Fiscale positie checken.'},
+  {nr:5,kl:'oranje',t:'Tariefindexatie',                  tx:'HH-reglement: tarief stijgt automatisch conform CAO. Bestuur stelt tarief vast vóór 1 november.'},
+  {nr:6,kl:'oranje',t:'Subsidieafhankelijkheid',          tx:'Bestuur legt jaarlijks scenarioanalyse voor aan ALV bij dreigende wijziging RVO/OOM.'},
+  {nr:7,kl:'oranje',t:'Directeurskosten',                 tx:'Jaar 1 via TCW-declaratie. Directeursbedrag opnemen in kostprijstarief — voorkomt tariefschok jaar 2.'},
+  {nr:8,kl:'rood',  t:'Reserveopbouw & opstartlening',    tx:'Opstartkosten via achtergestelde lening holding directeur. Vastleggen bij notaris en accountant.'},
+  {nr:9,kl:'rood',  t:'Minimumbezetting & intentieverklaring',tx:'Minimumdrempel berekenen. 1-op-1 lid/leerling startfase. Getekende intentieverklaring vóór oprichting.'},
+  {nr:10,kl:'rood', t:'Kascommissie & governance',        tx:'Kascommissie in HH-reglement: min. 2 leden zonder bestuursfunctie. Tweede handtekening bij financiële besluiten.'},
+  {nr:11,kl:'oranje',t:'Huisvesting & machine/equipment vergoeding', tx:'In HH-reglement opnemen: vergoedingsregeling voor bedrijven die lesruimte, machines of equipment beschikbaar stellen. Tarieven per dagdeel vastleggen. Recht op vergoeding geldt alleen bij bewezen gebruik via aanwezigheidsregistratie. Nulvariant (volledig op bedrijven) is valide mits als pm-post gereserveerd.'},
+];
+
+// ═══════════════════════════════════════
+//  STATE
+// ═══════════════════════════════════════
+let hj=1, school='bbl';
+let mix={};
+JJ.forEach(j=>{mix[j.nr]={};GR.forEach(g=>mix[j.nr][g.id]={n:0,lj:1});});
+
+function vulTCW(){
+  mix[1]['l17']={n:5,lj:1};
+  mix[2]['l17']={n:5,lj:2};mix[2]['l18']={n:3,lj:1};
+  mix[3]['l17']={n:5,lj:3};mix[3]['l18']={n:3,lj:2};mix[3]['l19']={n:4,lj:1};
+  mix[4]['l18']={n:3,lj:3};mix[4]['l19']={n:4,lj:2};mix[4]['l20']={n:5,lj:1};mix[4]['l26']={n:4,lj:1};
+  mix[5]['l19']={n:4,lj:3};mix[5]['l20']={n:5,lj:2};mix[5]['l26']={n:5,lj:2};mix[5]['l21']={n:6,lj:1};
+  mix[6]['l20']={n:6,lj:2};mix[6]['l21']={n:8,lj:1};mix[6]['l26']={n:6,lj:2};
+  mix[7]['l21']={n:10,lj:2};mix[7]['l26']={n:6,lj:2};mix[7]['l20']={n:4,lj:3};
+  mix[8]['l21']={n:10,lj:2};mix[8]['l26']={n:6,lj:2};mix[8]['l20']={n:4,lj:3};
+  mix[9]['l21']={n:12,lj:2};mix[9]['l26']={n:8,lj:2};
+  mix[10]['l21']={n:12,lj:2};mix[10]['l26']={n:8,lj:2};
+}
+vulTCW();
+
+// ═══════════════════════════════════════
+//  HELPERS
+// ═══════════════════════════════════════
+
+// ═══════════════════════════════════════
+//  BEWERKBARE KOSTENPOSTEN (offerte-invoer)
+// ═══════════════════════════════════════
+// Elke post heeft: waarde per eenheid + of het vast of variabel is
+// 'f' = vast (ongeacht lln), 'v' = per leerling, 'p' = % van loonsom
+// jaar1Only: true = alleen jaar 1
+const KP = {
+  // C - Verzuim
+  avl:         {lbl:'AVL aansprakelijkheid/leerling', v:150,    type:'v', eenheid:'€/lln'},
+  verzPct:     {lbl:'Verzuimverzekering (% loonsom)', v:1.4,    type:'p', eenheid:'% loonsom'},
+  // D - Salarisadministratie
+  lonadm:      {lbl:'Loonadministratie per leerling',  v:175,   type:'v', eenheid:'€/lln'},
+  loonHeff:    {lbl:'Loonheffing & mutaties/lln',      v:50,    type:'v', eenheid:'€/lln'},
+  archief:     {lbl:'Archief & AO sjablonen/lln',      v:30,    type:'v', eenheid:'€/lln'},
+  // E - POB
+  pobVergPer:  {lbl:'POB vergoeding per POB-FTE',      v:1800,  type:'f_pob', eenheid:'€/POB'},
+  pobScholJ1:  {lbl:'POB scholing jaar 1 per POB-FTE', v:400,   type:'f_pob', eenheid:'€/POB'},
+  pobScholJ2:  {lbl:'POB scholing jaar 2+ per POB-FTE',v:100,   type:'f_pob', eenheid:'€/POB'},
+  pobReis:     {lbl:'POB reiskosten per POB-FTE',      v:200,   type:'f_pob', eenheid:'€/POB'},
+  // F - Organisatie
+  dirJaar2:    {lbl:'Directeur vergoeding jaar 2',     v:8000,  type:'f', eenheid:'€/jr'},
+  dirJaar3:    {lbl:'Directeur vergoeding jaar 3',     v:12000, type:'f', eenheid:'€/jr'},
+  dirJaar45:   {lbl:'Directeur vergoeding jaar 4–5',   v:15000, type:'f', eenheid:'€/jr'},
+  bestuur:     {lbl:'Bestuursvergoeding totaal',       v:1800,  type:'f', eenheid:'€/jr'},
+  vergadering: {lbl:'Vergader- & reiskosten bestuur',  v:600,   type:'f', eenheid:'€/jr'},
+  // G - Accountant
+  accountant:  {lbl:'Jaarrekening & controle',         v:2500,  type:'f', eenheid:'€/jr', offerte:true},
+  jrExtraJr2:  {lbl:'Toeslag jaar 2+',                 v:500,   type:'f', eenheid:'€/jr'},
+  btxAdv:      {lbl:'Belastingadvies / BTW',           v:400,   type:'f', eenheid:'€/jr', offerte:true},
+  // H - Juridisch
+  arbRecht12:  {lbl:'Arbeidsrecht advies jaar 1–2',    v:1500,  type:'f', eenheid:'€/jr', offerte:true},
+  arbRecht35:  {lbl:'Arbeidsrecht advies jaar 3+',     v:800,   type:'f', eenheid:'€/jr', offerte:true},
+  hrBeleid:    {lbl:'HR-beleid sjablonen (jaar 1)',    v:600,   type:'f', eenheid:'€ eenm.', jaar1Only:true},
+  geschillen:  {lbl:'Geschillenafhandeling',           v:300,   type:'f', eenheid:'€/jr'},
+  // I - Verzekeringen
+  avb:         {lbl:'AVB aansprakelijkheid',           v:600,   type:'f', eenheid:'€/jr', offerte:true},
+  rbv:         {lbl:'Rechtsbijstand arbeidsrecht',     v:350,   type:'f', eenheid:'€/jr', offerte:true},
+  do_:         {lbl:'Bestuurdersaansprakelijkheid D&O',v:400,   type:'f', eenheid:'€/jr', offerte:true},
+  // L - Huisvesting & leeromgeving (nieuw)
+  huurRuimte:  {lbl:'Huur lesruimte / lokaal',             v:0,    type:'f', eenheid:'€/mnd', offerte:true, huis:true},
+  gwl:         {lbl:'Gas, water & licht',                  v:0,    type:'f', eenheid:'€/mnd', offerte:true, huis:true},
+  schoonmaak:  {lbl:'Schoonmaak & onderhoud',              v:0,    type:'f', eenheid:'€/mnd', offerte:true, huis:true},
+  internet:    {lbl:'Internet & telecom ruimte',           v:0,    type:'f', eenheid:'€/mnd', huis:true},
+  inrichting:  {lbl:'Afschrijving inrichting (per jaar)',  v:0,    type:'f', eenheid:'€/jr',  huis:true},
+  machineVerg: {lbl:'Vergoeding machine/equipment gebruik',v:0,    type:'v', eenheid:'€/lln/dag', huis:true},
+  machineDagen:{lbl:'Aantal dagen machine/equip. gebruik', v:0,    type:'f', eenheid:'dgn/jr', huis:true},
+  materiaal:   {lbl:'Verbruiksmateriaal & gereedschap',    v:0,    type:'v', eenheid:'€/lln/jr', huis:true},
+  overigHuis:  {lbl:'Overige locatiekosten',               v:0,    type:'f', eenheid:'€/jr',  huis:true},
+  // J - Exploitatie
+  bank:        {lbl:'Bankkosten',                      v:240,   type:'f', eenheid:'€/jr'},
+  kantoor:     {lbl:'Kantoor & drukwerk jaar 1',       v:300,   type:'f', eenheid:'€/jr'},
+  tel:         {lbl:'Telefoon & communicatie',         v:480,   type:'f', eenheid:'€/jr'},
+  repr:        {lbl:'Sectortafeloverleggen jaar 1',    v:400,   type:'f', eenheid:'€/jr'},
+  soft:        {lbl:'Software & digitaal',             v:360,   type:'f', eenheid:'€/jr'},
+  // K - Opstart
+  notaris:     {lbl:'Notaris oprichtingsakte',         v:1500,  type:'f', eenheid:'€ eenm.', jaar1Only:true, offerte:true},
+  kvk:         {lbl:'KvK-inschrijving',                v:50,    type:'f', eenheid:'€ eenm.', jaar1Only:true},
+  sbbErk:      {lbl:'SBB-erkenning',                  v:200,   type:'f', eenheid:'€ eenm.', jaar1Only:true},
+  oomLid:      {lbl:'OOM-lidmaatschap (jaarlijks)',    v:450,   type:'f', eenheid:'€/jr', offerte:true},
+  jur0:        {lbl:'Juridisch advies statuten',       v:800,   type:'f', eenheid:'€ eenm.', jaar1Only:true, offerte:true},
+  web:         {lbl:'Website & huisstijl',             v:600,   type:'f', eenheid:'€ eenm.', jaar1Only:true, offerte:true},
+};
+function kp(id){return KP[id]?KP[id].v:0;}
+
+// TCW werkgroep inkomsten state
+const TCW = {
+  dir:   {lbl:'Directeur uren TCW werkgroepen', uren:80,  tarief:86},
+  lid1:  {lbl:'Lid werkgroep 1 (naam invullen)', uren:40, tarief:86},
+  lid2:  {lbl:'Lid werkgroep 2 (naam invullen)', uren:40, tarief:86},
+  lid3:  {lbl:'Lid werkgroep 3 (naam invullen)', uren:20, tarief:86},
+  lid4:  {lbl:'Lid werkgroep 4 (naam invullen)', uren:0,  tarief:86},
+};
+function tcwTotaal(){return Object.values(TCW).reduce((s,t)=>s+t.uren*t.tarief,0);}
+
+function eu(n){if(n===0)return'—';const neg=n<0;const abs=Math.abs(Math.round(n));return(neg?'- ':'')+' € '+abs.toLocaleString('nl-NL');}
+function a(id){return parseFloat(document.getElementById(id)?.value)||0;}
+function totLln(j){return GR.reduce((s,g)=>s+(mix[j][g.id].n||0),0);}
+function totBBL(j){return GR.filter(g=>g.bbl).reduce((s,g)=>s+(mix[j][g.id].n||0),0);}
+function totVol(j){return totLln(j)-totBBL(j);}
+function caoF(j){return Math.pow(1+a('a-cao')/100,j-1);}
+function brutoJaar(j){return GR.reduce((s,g)=>s+(mix[j][g.id].n||0)*g.mnd*caoF(j)*12*1.08,0);}
+function gemMnd(j){const l=totLln(j);if(!l)return 0;return Math.round(GR.reduce((s,g)=>s+(mix[j][g.id].n||0)*g.mnd*caoF(j),0)/l);}
+
+// KOSTEN DETAILBEREKENING
+function kostenDetail(j){
+  const lln=totLln(j); if(!lln)return null;
+  const bj=brutoJaar(j);
+  const brutoExclVak=bj/1.08;
+  const vakGeld=brutoExclVak*0.08;
+  const vakToesl=brutoExclVak*0.0508;
+  const ww=bj*0.027; const zvw=bj*0.0657; const wga=bj*0.005; const awf=bj*0.077; const sectorH=bj*0.0058;
+  const wgTotaal=ww+zvw+wga+awf+sectorH;
+  const verzuimEr=bj*(kp('verzPct')/100*0.57); // eigenrisico deel
+  const wia=bj*(kp('verzPct')/100*0.43);        // WIA deel
+  const avl=kp('avl')*lln;
+  const verzTotaal=verzuimEr+wia+avl;
+  const lonadm=kp('lonadm')*lln;
+  const loonHeff=kp('loonHeff')*lln;
+  const archief=kp('archief')*lln;
+  const salaTotaal=lonadm+loonHeff+archief;
+  const pobFte=lln*0.5;
+  const pobVerg=pobFte*kp('pobVergPer');
+  const pobSchol=pobFte*(j===1?kp('pobScholJ1'):kp('pobScholJ2'));
+  const pobReis=pobFte*kp('pobReis');
+  const pobTotaal=Math.round(pobVerg+pobSchol+pobReis);
+  const dir=j===1?0:j===2?kp('dirJaar2'):j===3?kp('dirJaar3'):kp('dirJaar45');
+  const best=j===1?0:kp('bestuur');
+  const verg=kp('vergadering');
+  const orgTotaal=dir+best+verg;
+  const acc=kp('accountant')+(j>1?kp('jrExtraJr2'):0)+1000; // +1000 kwartaalrapportages
+  const btxAdv=kp('btxAdv');
+  const accTotaal=acc+btxAdv;
+  const arbRecht=j<=2?kp('arbRecht12'):kp('arbRecht35');
+  const hrBel=j===1?kp('hrBeleid'):0;
+  const gesch=kp('geschillen');
+  const jurTotaal=arbRecht+hrBel+gesch;
+  const avb=kp('avb'); const rbv=kp('rbv'); const do_=kp('do_');
+  const oomLid=kp('oomLid');
+  const insTotaal=avb+rbv+do_;
+  const sectorKosten=oomLid;
+  const bank=kp('bank');
+  const kantoor=kp('kantoor')+(j-1)*50;
+  const tel=kp('tel');
+  const repr=kp('repr')+(j-1)*100;
+  const soft=kp('soft');
+  const expTotaal=bank+kantoor+tel+repr+soft;
+  const notaris=j===1?kp('notaris'):0;
+  const kvk=j===1?kp('kvk'):0;
+  const sbb=j===1?kp('sbbErk'):0;
+  const jur0=j===1?kp('jur0'):0;
+  const web=j===1?kp('web'):0;
+  const opstartTotaal=notaris+kvk+sbb+jur0+web;
+  // L - Huisvesting & leeromgeving (volledig aanpasbaar)
+  const huurJaar=kp('huurRuimte')*12;
+  const gwlJaar=kp('gwl')*12;
+  const schoonmaakJaar=kp('schoonmaak')*12;
+  const internetJaar=kp('internet')*12;
+  const inrichtingJaar=kp('inrichting');
+  const machineJaar=Math.round(kp('machineVerg')*kp('machineDagen')*lln);
+  const materiaalJaar=Math.round(kp('materiaal')*lln);
+  const overigHuisJaar=kp('overigHuis');
+  const huisTotaal=huurJaar+gwlJaar+schoonmaakJaar+internetJaar+inrichtingJaar+machineJaar+materiaalJaar+overigHuisJaar;
+  const overigeVast=orgTotaal+accTotaal+jurTotaal+insTotaal+sectorKosten+expTotaal+opstartTotaal+huisTotaal;
+  const onv=Math.round(overigeVast*0.03);
+  const totaal=bj+wgTotaal+verzTotaal+salaTotaal+pobTotaal+overigeVast+onv;
+  return{bj,brutoExclVak,vakGeld,vakToesl,ww,zvw,wga,awf,sectorH,wgTotaal,verzuimEr,wia,avl,verzTotaal,lonadm,loonHeff,archief,salaTotaal,pobFte,pobVerg,pobSchol,pobReis,pobTotaal,dir,best,verg,orgTotaal,acc,btxAdv,accTotaal,arbRecht,hrBel,gesch,jurTotaal,avb,rbv,do_,oomLid,sectorKosten,insTotaal,bank,kantoor,tel,repr,soft,expTotaal,notaris,kvk,sbb,jur0,web,opstartTotaal,huurJaar,gwlJaar,schoonmaakJaar,internetJaar,inrichtingJaar,machineJaar,materiaalJaar,overigHuisJaar,huisTotaal,overigeVast,onv,totaal,lln};
+}
+
+// INKOMSTEN DETAIL
+function inkDetail(j){
+  const lln=totLln(j); if(!lln)return null;
+  const bbl=totBBL(j); const vol=totVol(j);
+  const uren=a('a-uren'); const res=1+a('a-res')/100;
+  const werv=a('a-werv'); const basis=a('a-basis');
+  const perjr=Math.round(werv*0.25);
+  const kd=kostenDetail(j);
+  const rvoF=(subsidieRisico==='geen_rvo'||subsidieRisico==='geen_beide')?0:1;
+  const oomF=(subsidieRisico==='geen_oom'||subsidieRisico==='geen_beide')?0:1;
+  const lksF=lksActief?1:0;
+  const rvo=Math.round(bbl*2700*0.95*rvoF);
+  const oomBasis=Math.round(bbl*2700*oomF);
+  const oomEcp=school==='ecp'&&j<=3?Math.round(bbl*1730):0;
+  const oomBonus=j>=2?Math.round(bbl*200):0;
+  const oomDiploma=j>=3?Math.round(bbl*500*0.8):0;
+  const oomTotaal=oomBasis+oomEcp+oomBonus+oomDiploma;
+  const lks=Math.round(vol*1500*lksF);
+  const totSubs=rvo+oomTotaal+lks;
+  const llnBijdr=GR.reduce((s,g)=>s+(mix[j][g.id].n||0)*perjr*(mix[j][g.id].lj||1),0);
+  const basisBijdr=basis*lln;
+  const ledenTotaal=llnBijdr+basisBijdr;
+  const netto=kd.totaal-totSubs-ledenTotaal;
+  const tarief=netto>0?Math.ceil((netto/lln/uren)*res):0;
+  const plaatsVerg=tarief*uren*lln;
+  const service=lln>=3?lln*150:0;
+  const uwv=vol*200;
+  const tcw=j<=3?tcwTotaal():0;
+  const totBaten=plaatsVerg+rvo+oomTotaal+lks+ledenTotaal+service+uwv+tcw;
+  return{lln,bbl,vol,rvo,oomBasis,oomEcp,oomBonus,oomDiploma,oomTotaal,lks,totSubs,llnBijdr,basisBijdr,ledenTotaal,tarief,plaatsVerg,service,uwv,tcw,totBaten,perjr};
+}
+
+function totLasten(j){const k=kostenDetail(j);return k?k.totaal:0;}
+function totBaten2(j){const i=inkDetail(j);return i?i.totBaten:0;}
+function resultaat(j){return totBaten2(j)-totLasten(j);}
+
+// ═══════════════════════════════════════
+//  RENDER INVOER
+// ═══════════════════════════════════════
+function renderJtabs(idEl,actief,onClick){
+  const el=document.getElementById(idEl);
+  if(!el)return;
+  el.innerHTML=JJ.map(j=>`<button class="jtab ${j.nr===actief?'on':''}" onclick="${onClick}(${j.nr})">${j.lbl}<span class="jlln-b">${totLln(j.nr)}</span></button>`).join('');
+}
+function renderJOv(){
+  document.getElementById('jov').innerHTML=JJ.map(j=>{
+    const lln=totLln(j.nr),res=resultaat(j.nr);
+    const dots=GR.filter(g=>(mix[j.nr][g.id].n||0)>0).flatMap(g=>Array(mix[j.nr][g.id].n).fill(`<div class="mdot" style="background:${g.kleur}"></div>`)).join('');
+    return`<div class="jov ${j.nr===hj?'on':''}" onclick="setJ(${j.nr})">
+      <div class="jov-nr">${j.lbl} — ${j.jaar}</div>
+      <div class="jov-lln">${lln}</div><div class="jov-sub">leerlingen</div>
+      <div class="jov-res" style="color:${lln===0?'var(--grijs-3)':res>=0?'var(--groen)':'var(--rood)'}">${lln===0?'—':eu(res)}</div>
+      <div class="jov-dots">${dots}</div></div>`;
+  }).join('');
+}
+function renderMix(){
+  document.getElementById('mxgrid').innerHTML=GR.map(g=>{
+    const st=mix[hj][g.id];const n=st.n||0;const lj=st.lj||1;
+    const loon=Math.round(g.mnd*caoF(hj));
+    return`<div class="lk ${n>0?'heeft':''}" id="lk-${g.id}">
+      <div class="lk-kleur" style="background:${g.kleur}"></div>
+      <div class="lk-naam">${g.label}</div>
+      <div class="lk-loon">€ ${loon.toLocaleString('nl-NL')}/mnd bruto</div>
+      <div class="lk-lj"><label>Leerjaar</label><select onchange="setLj('${g.id}',this.value)">${[1,2,3,4].map(i=>`<option value="${i}"${lj===i?' selected':''}>${i}</option>`).join('')}</select></div>
+      <div class="teller"><button class="tbtn" onclick="delta('${g.id}',-1)">−</button><span class="tcnt" id="cnt-${g.id}">${n}</span><button class="tbtn" onclick="delta('${g.id}',1)">+</button></div>
+    </div>`;
+  }).join('');
+}
+function renderTotaal(){
+  const j=hj,lln=totLln(j);
+  document.getElementById('totlln').textContent=lln;
+  document.getElementById('gemloon').textContent=lln?'€ '+gemMnd(j).toLocaleString('nl-NL'):'—';
+  document.getElementById('totbbl').textContent=totBBL(j);
+  document.getElementById('totvol').textContent=totVol(j);
+  document.getElementById('jtitel').textContent=JJ[j-1].lbl;
+  document.getElementById('kpijlbl').textContent=JJ[j-1].lbl;
+  document.getElementById('hjlabel').textContent=`Jaar ${j} — ${JJ[j-1].jaar}`;
+  document.getElementById('jsub').textContent=`TCW KPI: ${JJ[j-1].tcw} leerlingen  ·  Huidig: ${lln} leerlingen`;
+}
+function renderKPI(){
+  const j=hj,lln=totLln(j);
+  const items=[
+    {lbl:'Leerlingen',val:lln,kleur:'var(--blauw)'},
+    {lbl:'BBL / Volwassen',val:totBBL(j)+' / '+totVol(j),kleur:'var(--tekst)'},
+    {lbl:'Uurtarief',val:lln?(()=>{const i=inkDetail(j);return i?'€ '+i.tarief+',—/uur':'—'})():'—',kleur:'var(--blauw)'},
+    {lbl:'Totale lasten',val:eu(totLasten(j)),kleur:'var(--tekst)'},
+    {lbl:'Subsidies',val:eu(lln?(()=>{const i=inkDetail(j);return i?i.totSubs:0})():0),kleur:'var(--groen)'},
+    {lbl:'Ledenbijdrage',val:eu(lln?(()=>{const i=inkDetail(j);return i?i.ledenTotaal:0})():0),kleur:'var(--oranje)'},
+    {lbl:'Resultaat',val:eu(resultaat(j)),kleur:lln===0?'var(--grijs-3)':resultaat(j)>=0?'var(--groen)':'var(--rood)'},
+  ];
+  document.getElementById('kpizij').innerHTML=items.map(i=>`<div class="kpi-rij"><span style="color:var(--grijs-4)">${i.lbl}</span><span style="font-weight:600;color:${i.kleur}">${i.val}</span></div>`).join('');
+}
+function renderAlerts(){
+  const w=[];const lln1=totLln(1);const res1=resultaat(1);const vf=a('a-vf');
+  const subs1=lln1>0?(()=>{const i=inkDetail(1);return i?i.totSubs:0})():0;
+  const bat1=totBaten2(1);
+  const subsPct=bat1>0?subs1/bat1*100:0;
+  if(lln1===0)w.push({kl:'rood',ico:'⚠️',t:'Geen leerlingen in jaar 1. Voeg leerlingen toe om de berekening te starten.'});
+  else if(lln1<4)w.push({kl:'rood',ico:'⚠️',t:`<strong>Minder dan 4 leerlingen jaar 1</strong> — mogelijk te laag voor kostendekkende exploitatie.`});
+  if(lln1>0&&res1<0)w.push({kl:'oranje',ico:'💶',t:`<strong>Jaar 1: tekort van ${eu(res1)}.</strong> Notitie #3 & #8: als voorfinanciering via achtergestelde lening holding inbrengen.`});
+  if(lln1>0&&vf<Math.abs(res1)&&res1<0)w.push({kl:'rood',ico:'🔴',t:`<strong>Voorfinanciering te laag.</strong> Tekort is ${eu(res1)}, ingesteld bedrag is ${eu(vf)}. Verhoog de voorfinanciering.`});
+  if(subsPct>40)w.push({kl:'geel',ico:'📊',t:`<strong>Subsidieafhankelijkheid ${Math.round(subsPct)}%.</strong> Notitie #6: bestuur legt jaarlijks scenarioanalyse voor aan ALV.`});
+  if(lln1>0&&res1>=0)w.push({kl:'groen',ico:'✅',t:`<strong>Jaar 1 kostendekkend:</strong> ${eu(res1)} positief resultaat.`});
+  document.getElementById('alerts').innerHTML=w.map(x=>`<div class="alert ${x.kl}"><div style="flex-shrink:0">${x.ico}</div><div>${x.t}</div></div>`).join('');
+}
+function renderNotities(){
+  document.getElementById('notities').innerHTML=NOT.map(n=>`<div class="notitie"><div class="nnr ${n.kl}">${n.nr}</div><div class="ntxt"><strong>${n.t}</strong> — ${n.tx}</div></div>`).join('');
+}
+
+// ═══════════════════════════════════════
+//  RENDER KOSTEN TABEL
+// ═══════════════════════════════════════
+function renderKosten(){
+  renderJtabs('jtabs-k',hj,'setJK');
+  const j=hj; const k=kostenDetail(j);
+  if(!k){document.getElementById('tbl-kosten').innerHTML=`<tr><td colspan="3" style="text-align:center;padding:30px;color:var(--grijs-4)">Voeg leerlingen toe om kosten te berekenen</td></tr>`;return;}
+  const lln=k.lln;
+  function rij(kls,lbl,plln,tot,info='',badge=''){
+    const badgeHtml=badge==='offerte'?'<span class="kp-badge offerte" style="margin-left:4px">offerte</span>':'';
+    const td=(v,extra='')=>`<td class="r ${extra}">${eu(v)}</td>`;
+    return`<tr class="${kls}"><td${kls==='sub2'?' style="padding-left:36px;color:var(--grijs-4);font-size:12px;"':kls==='sub'?' style="padding-left:22px;color:var(--tekst-sub)"':''}>${lbl}${badgeHtml}${info?` <span style="font-size:10px;color:var(--grijs-3)">(${info})</span>`:''}</td>${td(plln)}${td(tot)}</tr>`;
+  }
+  let h=`<thead><tr><th class="lh" style="width:50%">Kostenpost</th><th>Per leerling</th><th>Totaal jaar ${j}</th></tr></thead><tbody>`;
+  h+=`<tr class="grp"><td colspan="3">A. Loonkosten leerlingen</td></tr>`;
+  h+=rij('sub2','Bruto maandloon × 12 maanden',Math.round(k.brutoExclVak/lln),k.brutoExclVak,'excl. vak.geld');
+  h+=rij('sub2','Vakantiegeld (8%)',Math.round(k.vakGeld/lln),k.vakGeld);
+  h+=rij('sub2','Vakantietoeslag (5,08%)',Math.round(k.vakToesl/lln),k.vakToesl);
+  h+=rij('stot','Subtotaal bruto loon',Math.round(k.bj/lln),k.bj);
+  h+=`<tr class="grp"><td colspan="3">B. Werkgeverslasten (over bruto loon)</td></tr>`;
+  h+=rij('sub2','WW-premie (2,70%)',Math.round(k.ww/lln),k.ww);
+  h+=rij('sub2','ZVW werkgever (6,57%)',Math.round(k.zvw/lln),k.zvw);
+  h+=rij('sub2','WGA arbeidsongeschiktheid (0,50%)',Math.round(k.wga/lln),k.wga);
+  h+=rij('sub2','AWF (7,70%)',Math.round(k.awf/lln),k.awf);
+  h+=rij('sub2','Sectorheffing / Ufo (0,58%)',Math.round(k.sectorH/lln),k.sectorH);
+  h+=rij('stot','Subtotaal werkgeverslasten',Math.round(k.wgTotaal/lln),k.wgTotaal);
+  h+=`<tr class="grp"><td colspan="3">C. Verzuim &amp; risico leerlingen</td></tr>`;
+  h+=rij('sub2','Verzuimverzekering eigenrisico dag 1–13 (0,8%)',Math.round(k.verzuimEr/lln),k.verzuimEr);
+  h+=rij('sub2','WIA-dekking jaar 2+ (0,6%)',Math.round(k.wia/lln),k.wia);
+  h+=rij('sub2','Aansprakelijkheid leerling (AVL) — €150/lln',150,k.avl);
+  h+=rij('stot','Subtotaal verzuim & risico',Math.round(k.verzTotaal/lln),k.verzTotaal);
+  h+=`<tr class="grp"><td colspan="3">D. Salarisadministratie</td></tr>`;
+  h+=rij('sub2','Loonadministratie €175/lln',175,k.lonadm);
+  h+=rij('sub2','Loonheffingsaangifte & mutaties €50/lln',50,k.loonHeff);
+  h+=rij('sub2','Archief & arbeidsovereenkomsten €30/lln',30,k.archief);
+  h+=rij('stot','Subtotaal salarisadministratie',Math.round(k.salaTotaal/lln),k.salaTotaal);
+  h+=`<tr class="grp"><td colspan="3">E. Praktijkopleiders (0,5 POB per leerling)</td></tr>`;
+  h+=rij('sub2',`${k.pobFte.toFixed(1)} POB-equivalenten — vergoeding €1.800/POB`,Math.round(k.pobVerg/lln),k.pobVerg);
+  h+=rij('sub2','Scholing SBB-certificering per POB',Math.round(k.pobSchol/lln),k.pobSchol);
+  h+=rij('sub2','Reiskosten begeleiding €200/POB',Math.round(k.pobReis/lln),k.pobReis);
+  h+=rij('stot','Subtotaal praktijkopleiders',Math.round(k.pobTotaal/lln),k.pobTotaal);
+  h+=`<tr class="grp"><td colspan="3">F. Organisatie &amp; bestuur</td></tr>`;
+  h+=rij('sub','Vergoeding directeur (opdrachtenovereenkomst)',Math.round(k.dir/lln),k.dir,j===1?'jaar 1 via TCW':'');
+  h+=rij('sub','Bestuursvergoeding (3 bestuurders)',Math.round(k.best/lln),k.best);
+  h+=rij('sub','Vergader- & reiskosten bestuur',Math.round(k.verg/lln),k.verg);
+  h+=rij('stot','Subtotaal organisatie & bestuur',Math.round(k.orgTotaal/lln),k.orgTotaal);
+  h+=`<tr class="grp"><td colspan="3">G. Accountant &amp; administratie</td></tr>`;
+  h+=rij('sub','Jaarrekening & accountantscontrole',Math.round(k.acc/lln),k.acc);
+  h+=rij('sub','Belastingadvies / BTW-aangifte',Math.round(k.btxAdv/lln),k.btxAdv);
+  h+=rij('stot','Subtotaal accountant & administratie',Math.round(k.accTotaal/lln),k.accTotaal);
+  h+=`<tr class="grp"><td colspan="3">H. Juridisch &amp; HR</td></tr>`;
+  h+=rij('sub','Arbeidsrechtelijk advies',Math.round(k.arbRecht/lln),k.arbRecht);
+  h+=rij('sub','HR-beleid & arbeidsovereenkomst sjablonen',Math.round(k.hrBel/lln),k.hrBel,j===1?'eenmalig':'');
+  h+=rij('sub','Klachten- & geschillenafhandeling',Math.round(k.gesch/lln),k.gesch);
+  h+=rij('stot','Subtotaal juridisch & HR',Math.round(k.jurTotaal/lln),k.jurTotaal);
+  h+=`<tr class="grp"><td colspan="3">I. Verzekeringen coöperatie</td></tr>`;
+  h+=rij('sub','AVB — aansprakelijkheid bestuur & bedrijf',Math.round(k.avb/lln),k.avb);
+  h+=rij('sub','Rechtsbijstandverzekering arbeidsrecht',Math.round(k.rbv/lln),k.rbv);
+  h+=rij('sub','Bestuurdersaansprakelijkheid (D&O)',Math.round(k.do_/lln),k.do_);
+  h+=rij('stot','Subtotaal verzekeringen',Math.round(k.insTotaal/lln),k.insTotaal);
+  h+=`<tr class="grp"><td colspan="3">J. Exploitatiekosten</td></tr>`;
+  h+=rij('sub','Bankkosten & betalingsverkeer',Math.round(k.bank/lln),k.bank);
+  h+=rij('sub','Kantoor & drukwerk',Math.round(k.kantoor/lln),k.kantoor);
+  h+=rij('sub','Telefoon & communicatie directeur',Math.round(k.tel/lln),k.tel);
+  h+=rij('sub','Sectortafeloverleggen & representatie',Math.round(k.repr/lln),k.repr);
+  h+=rij('sub','Software & digitaal (salarisportaal)',Math.round(k.soft/lln),k.soft);
+  h+=rij('stot','Subtotaal exploitatie',Math.round(k.expTotaal/lln),k.expTotaal);
+  if(j===1){
+    h+=`<tr class="grp"><td colspan="3">K. Eenmalige opstartkosten</td></tr>`;
+    h+=rij('sub','Notaris — oprichtingsakte coöperatie',k.notaris,k.notaris,'eenmalig');
+    h+=rij('sub','KvK-inschrijving',k.kvk,k.kvk,'eenmalig');
+    h+=rij('sub','SBB-erkenning als leerbedrijf',k.sbb,k.sbb,'eenmalig');
+    h+=rij('sub','Juridisch advies statuten & reglementen',k.jur0,k.jur0,'eenmalig');
+    h+=rij('sub','Website & huisstijl basispakket',k.web,k.web,'eenmalig');
+    h+=rij('stot','Subtotaal opstartkosten',k.opstartTotaal,k.opstartTotaal);
+  }
+  // Huisvesting altijd tonen — ook bij nul (dan invulbaar)
+  h+=`<tr class="grp"><td colspan="3">L. Huisvesting &amp; leeromgeving</td></tr>`;
+  h+=`<tr class="sub"><td colspan="3" style="padding:4px 9px 6px 22px;">
+    <div style="font-size:11px;color:var(--oranje);padding:5px 8px;background:var(--oranje-licht);border-radius:4px;line-height:1.5;">
+      ⚙️ Vul werkelijke bedragen in via het paneel rechts. Bij volledig gebruik van bedrijfsruimten kan dit €0 zijn.
+      Vergoeding machine/equipment: vastleggen in HH-reglement (notitie #11).
+    </div>
+  </td></tr>`;
+  h+=rij('sub2','Huur lesruimte (€'+kp('huurRuimte').toLocaleString('nl-NL')+'/mnd × 12)',Math.round(k.huurJaar/lln),k.huurJaar,'','offerte');
+  h+=rij('sub2','Gas, water & licht (€'+kp('gwl').toLocaleString('nl-NL')+'/mnd × 12)',Math.round(k.gwlJaar/lln),k.gwlJaar);
+  h+=rij('sub2','Schoonmaak & onderhoud (€'+kp('schoonmaak').toLocaleString('nl-NL')+'/mnd × 12)',Math.round(k.schoonmaakJaar/lln),k.schoonmaakJaar,'','offerte');
+  h+=rij('sub2','Internet & telecom ruimte',Math.round(k.internetJaar/lln),k.internetJaar);
+  h+=rij('sub2','Afschrijving inrichting (per jaar)',Math.round(k.inrichtingJaar/lln),k.inrichtingJaar);
+  h+=rij('sub2','Vergoeding machine/equipment ('+kp('machineDagen')+' dgn × €'+kp('machineVerg')+'/lln)',Math.round(k.machineJaar/lln),k.machineJaar);
+  h+=rij('sub2','Verbruiksmateriaal & gereedschap per leerling',kp('materiaal'),k.materiaalJaar);
+  h+=rij('sub2','Overige locatiekosten',Math.round(k.overigHuisJaar/lln),k.overigHuisJaar);
+  h+=rij('stot','Subtotaal huisvesting & leeromgeving',Math.round(k.huisTotaal/lln),k.huisTotaal);
+
+  h+=`<tr class="grp"><td colspan="3">M. Onvoorzien</td></tr>`;
+  h+=rij('sub','Reservering onvoorzien (3% vaste overhead)',Math.round(k.onv/lln),k.onv);
+  h+=`<tr class="totaal"><td>TOTAAL LASTEN</td><td class="r">€ ${Math.round(k.totaal/lln).toLocaleString('nl-NL')}</td><td class="r">€ ${Math.round(k.totaal).toLocaleString('nl-NL')}</td></tr>`;
+  h+=`</tbody>`;
+  document.getElementById('tbl-kosten').innerHTML=h;
+}
+
+// ═══════════════════════════════════════
+//  RENDER INKOMSTEN TABEL
+// ═══════════════════════════════════════
+function renderInkomsten(){
+  renderJtabs('jtabs-i',hj,'setJI');
+  const j=hj; const k=kostenDetail(j); const ink=inkDetail(j);
+  if(!k||!ink){document.getElementById('tbl-ink').innerHTML=`<tr><td colspan="3" style="text-align:center;padding:30px;color:var(--grijs-4)">Voeg leerlingen toe</td></tr>`;return;}
+  const lln=k.lln;
+  function rij(kls,lbl,plln,tot,kleur=''){
+    return`<tr class="${kls}"><td${kls==='baten-sub'?' style="padding-left:22px;color:var(--tekst-sub)"':''}>${lbl}</td><td class="r ${kleur}">${eu(plln)}</td><td class="r ${kleur}">${eu(tot)}</td></tr>`;
+  }
+  let h=`<thead><tr><th class="lh" style="width:50%">Inkomstenbron</th><th>Per leerling</th><th>Totaal jaar ${j}</th></tr></thead><tbody>`;
+  h+=`<tr class="baten-grp"><td colspan="3">1. Plaatsingsvergoeding (hoofdinkomst)</td></tr>`;
+  h+=rij('baten-sub',`Kostprijstarief — €${ink.tarief},—/uur × ${a('a-uren')} uur × ${lln} leerlingen`,ink.tarief*a('a-uren'),ink.plaatsVerg,'g');
+  h+=rij('baten-stot','Subtotaal plaatsingsvergoeding',ink.tarief*a('a-uren'),ink.plaatsVerg,'g');
+  h+=`<tr class="baten-grp"><td colspan="3">2. Subsidie Praktijkleren — RVO</td></tr>`;
+  h+=rij('baten-sub','Praktijkleersubsidie RVO (max. €2.700/lln, 95% aanwezigheid)',Math.round(ink.rvo/lln),ink.rvo,'g');
+  h+=rij('baten-stot','Subtotaal RVO',Math.round(ink.rvo/lln),ink.rvo,'g');
+  h+=`<tr class="baten-grp"><td colspan="3">3. Sectorsubsidie — OOM / OTIB</td></tr>`;
+  h+=rij('baten-sub','Leerwerkbijdrage OOM basis (€2.700/lln)',Math.round(ink.oomBasis/lln),ink.oomBasis,'g');
+  if(school==='ecp'&&j<=3)h+=rij('baten-sub','OOM scholingspool ECP (€1.730/lln)',Math.round(ink.oomEcp/lln),ink.oomEcp,'g');
+  if(j>=2)h+=rij('baten-sub','Voortgangsbonus (€200/lln, jaar 2+)',Math.round(ink.oomBonus/lln),ink.oomBonus,'g');
+  if(j>=3)h+=rij('baten-sub','Diplomabonus (€500 × 80%, jaar 3+)',Math.round(ink.oomDiploma/lln),ink.oomDiploma,'g');
+  h+=rij('baten-stot','Subtotaal sectorsubsidie',Math.round(ink.oomTotaal/lln),ink.oomTotaal,'g');
+  if(ink.lks>0){
+    h+=`<tr class="baten-grp"><td colspan="3">4. Loonkostensubsidie gemeente (zij-instromers)</td></tr>`;
+    h+=rij('baten-sub','Loonkostensubsidie (indicatief €1.500/volw. lln)',Math.round(ink.lks/lln),ink.lks,'g');
+    h+=rij('baten-stot','Subtotaal loonkostensubsidie',Math.round(ink.lks/lln),ink.lks,'g');
+  }
+  h+=`<tr class="baten-grp"><td colspan="3">5. Ledenbijdrage bedrijven</td></tr>`;
+  h+=rij('baten-sub',`Leerlingvergoeding (25% × leerjaar × €${a('a-werv').toLocaleString('nl-NL')} wervingskosten)`,Math.round(ink.llnBijdr/lln),ink.llnBijdr,'o');
+  h+=rij('baten-sub',`Vaste basisvergoeding (€${a('a-basis').toLocaleString('nl-NL')}/bedrijf/jaar)`,a('a-basis'),ink.basisBijdr,'o');
+  h+=rij('baten-stot','Subtotaal ledenbijdrage',Math.round(ink.ledenTotaal/lln),ink.ledenTotaal,'o');
+  h+=`<tr class="baten-grp"><td colspan="3">6. TCW Regiodeal werkgroepinkomsten</td></tr>`;
+  Object.entries(TCW).forEach(([k,t])=>{
+    if(t.uren>0)h+=rij('baten-sub',`${t.lbl} — ${t.uren} uur × €${t.tarief}`,t.uren*t.tarief,t.uren*t.tarief,'b');
+  });
+  const tcwT=tcwTotaal();
+  h+=rij('baten-stot','Subtotaal TCW werkgroepen (declarabel t/m 2028)',Math.round(tcwT/lln),tcwT,'b');
+  h+=`<tr class="baten-grp"><td colspan="3">7. Overige inkomsten</td></tr>`;
+  h+=rij('baten-sub','Servicefee servicedienst werkenden (pm)',lln>=3?150:0,ink.service,'g');
+  h+=rij('baten-sub','UWV-regelingen zij-instroom (pm)',200,ink.uwv,'g');
+  h+=rij('baten-stot','Subtotaal overig',Math.round((ink.service+ink.uwv)/lln),ink.service+ink.uwv,'g');
+  h+=`<tr class="baten-tot"><td>TOTAAL BATEN</td><td class="r">€ ${Math.round(ink.totBaten/lln).toLocaleString('nl-NL')}</td><td class="r">€ ${Math.round(ink.totBaten).toLocaleString('nl-NL')}</td></tr>`;
+  const res=resultaat(j);
+  h+=`<tr class="${res>=0?'res-pos':'res-neg'}"><td>Exploitatieresultaat</td><td class="r">${eu(Math.round(res/lln))}</td><td class="r">${eu(res)}</td></tr>`;
+  h+=`</tbody>`;
+  document.getElementById('tbl-ink').innerHTML=h;
+}
+
+// ═══════════════════════════════════════
+//  RENDER EXPLOITATIE
+// ═══════════════════════════════════════
+function renderExploitatie(){
+  // KPI kaartjes per jaar
+  const kpis=JJ.map(j=>{
+    const llnK=totLln(j.nr),res=resultaat(j.nr),ink=inkDetail(j.nr);
+    return`<div class="exp-k ${llnK===0?'':'b'}">
+      <div class="exp-lbl">${j.lbl} — ${j.jaar}</div>
+      <div class="exp-val" style="color:${llnK===0?'var(--grijs-3)':res>=0?'var(--groen)':'var(--rood)'}">${eu(res)}</div>
+      <div class="exp-sub">${lln} lln · ${ink?'€ '+ink.tarief+'/uur':'—'}</div>
+    </div>`;
+  }).join('');
+  document.getElementById('exp-kpis').innerHTML=kpis;
+
+  // Grote tabel alle jaren naast elkaar
+  let h=`<thead><tr><th class="lh" style="width:36%">Post</th>`;
+  JJ.forEach(j=>h+=`<th>${j.lbl}<br><span style="font-weight:400;font-size:10px">${totLln(j.nr)} lln</span></th>`);
+  h+=`</tr></thead><tbody>`;
+
+  const rij=(kls,lbl,fn,kleur='')=>{
+    let r=`<tr class="${kls}"><td>${lbl}</td>`;
+    JJ.forEach(j=>{const v=fn(j.nr);r+=`<td class="r ${kleur}">${eu(v)}</td>`;});
+    return r+'</tr>';
+  };
+
+  h+=`<tr class="grp"><td colspan="6">LASTEN</td></tr>`;
+  h+=rij('sub','Bruto loonkosten leerlingen',j=>{const k=kostenDetail(j);return k?k.bj:0;});
+  h+=rij('sub','Werkgeverslasten',j=>{const k=kostenDetail(j);return k?k.wgTotaal:0;});
+  h+=rij('sub','Verzuim & risico',j=>{const k=kostenDetail(j);return k?k.verzTotaal:0;});
+  h+=rij('sub','Salarisadministratie',j=>{const k=kostenDetail(j);return k?k.salaTotaal:0;});
+  h+=rij('sub','Praktijkopleiders (0,5 POB/lln)',j=>{const k=kostenDetail(j);return k?k.pobTotaal:0;});
+  h+=rij('sub','Organisatie & bestuur',j=>{const k=kostenDetail(j);return k?k.orgTotaal:0;});
+  h+=rij('sub','Accountant & administratie',j=>{const k=kostenDetail(j);return k?k.accTotaal:0;});
+  h+=rij('sub','Juridisch & HR',j=>{const k=kostenDetail(j);return k?k.jurTotaal:0;});
+  h+=rij('sub','Verzekeringen coöperatie',j=>{const k=kostenDetail(j);return k?k.insTotaal:0;});
+  h+=rij('sub','Exploitatiekosten',j=>{const k=kostenDetail(j);return k?k.expTotaal:0;});
+  h+=rij('sub','Opstartkosten (jaar 1 eenmalig)',j=>{const k=kostenDetail(j);return k?k.opstartTotaal:0;});
+  h+=rij('sub','Huisvesting & leeromgeving',j=>{const k=kostenDetail(j);return k?k.huisTotaal:0;});
+  h+=rij('sub','Onvoorzien (3%)',j=>{const k=kostenDetail(j);return k?k.onv:0;});
+  h+=rij('totaal','TOTAAL LASTEN',j=>totLasten(j));
+
+  h+=`<tr class="baten-grp"><td colspan="6">BATEN</td></tr>`;
+  h+=rij('baten-sub','Plaatsingsvergoeding',j=>{const i=inkDetail(j);return i?i.plaatsVerg:0;},'g');
+  h+=rij('baten-sub','RVO praktijkleersubsidie',j=>{const i=inkDetail(j);return i?i.rvo:0;},'g');
+  h+=rij('baten-sub','OOM sectorsubsidie (totaal)',j=>{const i=inkDetail(j);return i?i.oomTotaal:0;},'g');
+  h+=rij('baten-sub','Loonkostensubsidie gemeente',j=>{const i=inkDetail(j);return i?i.lks:0;},'g');
+  h+=rij('baten-sub','Ledenbijdrage bedrijven',j=>{const i=inkDetail(j);return i?i.ledenTotaal:0;},'o');
+  h+=rij('baten-sub','TCW werkgroepinkomsten (t/m 2028)',j=>{const i=inkDetail(j);return i?i.tcw:0;},'b');
+  h+=rij('baten-sub','Overige inkomsten',j=>{const i=inkDetail(j);return i?i.service+i.uwv:0;},'g');
+  h+=rij('baten-tot','TOTAAL BATEN',j=>totBaten2(j));
+
+  // Uurtarief rij
+  let rTarief=`<tr class="stot"><td>Uurtarief plaatsingsvergoeding</td>`;
+  JJ.forEach(j=>{const i=inkDetail(j);rTarief+=`<td class="r b">${i?'€ '+i.tarief+',—':'—'}</td>`;});
+  h+=rTarief+'</tr>';
+
+  // Resultaat
+  let rRes=`<tr><td style="font-weight:600">Exploitatieresultaat</td>`;
+  JJ.forEach(j=>{const res=resultaat(j);const llnE=totLln(j);rRes+=`<td class="r" style="font-weight:600;color:${llnE===0?'var(--grijs-3)':res>=0?'var(--groen)':'var(--rood)'}">${eu(res)}</td>`;});
+  h+=rRes+'</tr>';
+
+  // Cumulatief resultaat
+  let cum=0;
+  let rCum=`<tr><td style="font-weight:600;color:var(--grijs-5);font-size:12px">Cumulatief resultaat</td>`;
+  JJ.forEach(j=>{cum+=resultaat(j);const llnC=totLln(j);rCum+=`<td class="r" style="font-size:12px;color:${llnC===0?'var(--grijs-3)':cum>=0?'var(--groen)':'var(--rood)'}">${eu(cum)}</td>`;});
+  h+=rCum+'</tr>';
+
+  // Reserve opbouw (punt 8)
+  let reserve2=a('a-vf');
+  let rReserve=`<tr><td style="font-size:12px;color:var(--grijs-5)">Reserve cumulatief<br><span style="font-size:10px;opacity:.7">norm = 2 mnd loonkosten</span></td>`;
+  JJ.forEach(j=>{
+    const llnR=totLln(j.nr); const k2=kostenDetail(j.nr);
+    reserve2+=Math.max(0,resultaat(j.nr));
+    const norm=k2?Math.round(k2.bj/6):0;
+    const ok=reserve2>=norm&&norm>0;
+    rReserve+=`<td class="r" style="font-size:11px;color:${lln===0?'var(--grijs-3)':ok?'var(--groen)':'var(--geel)'}">
+      ${llnR===0?'—':eu(reserve2)}<br><span style="font-size:9px;opacity:.6">norm:${llnR>0?eu(norm):'?'}</span></td>`;
+  });
+  h+=rRes+'</tr>';
+  // Minimum leerlingen break-even (punt 9)
+  let rMin=`<tr><td style="font-size:12px;color:var(--grijs-5)">Min. lln break-even</td>`;
+  JJ.forEach(j=>{
+    const llnM=totLln(j.nr);const k3=kostenDetail(j.nr);const ink3=inkDetail(j.nr);
+    if(!k3||!ink3){rMin+=`<td class="r cf-nul">—</td>`;return;}
+    const vasteK=k3.orgTotaal+k3.accTotaal+k3.jurTotaal+k3.insTotaal+k3.sectorKosten+k3.expTotaal+(j.nr===1?k3.opstartTotaal:0)+k3.huisTotaal+k3.onv;
+    const varPerLln=lln>0?(k3.totaal-vasteK)/lln:0;
+    const bPLln=ink3.tarief*a('a-uren');
+    const minLln=bPLln>varPerLln?Math.ceil(vasteK/(bPLln-varPerLln)):null;
+    rMin+=`<td class="r" style="font-size:11px;font-weight:600;color:${!minLln?'var(--grijs-3)':llnM>=minLln?'var(--groen)':'var(--rood)'}">
+      ${minLln||'?'}<br><span style="font-size:9px;opacity:.6;font-weight:400">nu:${llnM}</span></td>`;
+  });
+  h+=rMin+'</tr>';
+
+  h+=`</tbody>`;
+  document.getElementById('tbl-exp').innerHTML=h;
+
+  // Notitie onder tabel
+  const minBrk=JJ.findIndex(j=>resultaat(j.nr)>=0);
+  document.getElementById('exp-notitie').innerHTML=`
+    <strong>Notitie #6 — Subsidieafhankelijkheid:</strong> Als de RVO-subsidie wegvalt, stijgt het uurtarief met ca. €${JJ.map(j=>{const i=inkDetail(j.nr);if(!i||!totLln(j.nr))return 0;return Math.ceil(i.rvo/totLln(j.nr)/a('a-uren'));}).join(' / €')} per jaar.
+    &nbsp;·&nbsp; <strong>Notitie #5 — Indexatie:</strong> Bij 3% CAO-stijging per jaar stijgt het tarief automatisch mee conform HH-reglement.
+    &nbsp;·&nbsp; <strong>Break-even:</strong> ${minBrk>=0?`Eerste positief resultaat in ${JJ[minBrk].lbl}`:'Nog geen positief resultaat in 5 jaar — controleer de mix.'}.`;
+}
+
+
+// ═══════════════════════════════════════
+//  RENDER KOSTENPOSTEN INVOER PANEEL
+// ═══════════════════════════════════════
+function renderKPInvoer(){
+  const groepen=[
+    {titel:'L — Huisvesting & leeromgeving',keys:['huurRuimte','gwl','schoonmaak','internet','inrichting','machineVerg','machineDagen','materiaal','overigHuis']},
+    {titel:'C — Verzuim & risico',      keys:['avl','verzPct']},
+    {titel:'D — Salarisadministratie',  keys:['lonadm','loonHeff','archief']},
+    {titel:'E — Praktijkopleiders',     keys:['pobVergPer','pobScholJ1','pobScholJ2','pobReis']},
+    {titel:'F — Organisatie & bestuur', keys:['dirJaar2','dirJaar3','dirJaar45','bestuur','vergadering']},
+    {titel:'G — Accountant',            keys:['accountant','jrExtraJr2','btxAdv']},
+    {titel:'H — Juridisch & HR',        keys:['arbRecht12','arbRecht35','hrBeleid','geschillen']},
+    {titel:'I — Verzekeringen',         keys:['avb','rbv','do_']},
+    {titel:'Sectororganisatie',          keys:['oomLid']},
+    {titel:'J — Exploitatiekosten',     keys:['bank','kantoor','tel','repr','soft']},
+    {titel:'K — Opstartkosten',         keys:['notaris','kvk','sbbErk','jur0','web']},
+  ];
+  let h='';
+  groepen.forEach(g=>{
+    h+=`<div style="margin-bottom:12px;">
+      <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--grijs-4);margin-bottom:6px;padding-bottom:3px;border-bottom:1px solid var(--grijs-2)">${g.titel}</div>`;
+    g.keys.forEach(key=>{
+      const p=KP[key];
+      const offBadge=p.offerte?'<span class="kp-badge offerte">offerte</span>':'';
+      const j1Badge=p.jaar1Only?'<span class="kp-badge">jaar 1</span>':'';
+      h+=`<div style="display:flex;align-items:center;gap:6px;padding:4px 0;border-bottom:1px solid var(--grijs-1);">
+        <div style="flex:1;font-size:11px;color:var(--tekst-sub);line-height:1.3">${p.lbl}${offBadge}${j1Badge}</div>
+        <input class="kp-inp" type="number" value="${p.v}" data-kp="${key}"
+          oninput="KP['${key}'].v=parseFloat(this.value)||0;renderKosten();renderInkomsten();renderExploitatie();">
+        <span style="font-size:10px;color:var(--grijs-3);min-width:50px;text-align:right">${p.eenheid}</span>
+      </div>`;
+    });
+    h+='</div>';
+  });
+  const el=document.getElementById('kp-invoer');
+  if(el)el.innerHTML=h;
+}
+
+// ═══════════════════════════════════════
+//  RENDER TCW WERKGROEPEN INVOER
+// ═══════════════════════════════════════
+function renderTCWInvoer(){
+  let h='';
+  Object.keys(TCW).forEach(key=>{
+    const t=TCW[key];
+    const totTCW=t.uren*t.tarief;
+    h+=`<div style="border:1px solid var(--grijs-2);border-radius:6px;padding:8px 10px;margin-bottom:6px;">
+      <input type="text" value="${t.lbl}" data-tcw="${key}" data-field="lbl"
+        oninput="TCW['${key}'].lbl=this.value;renderTCWInvoer();"
+        style="font-size:12px;font-weight:600;color:var(--tekst);border:none;background:transparent;width:100%;margin-bottom:6px;font-family:var(--font);">
+      <div style="display:flex;gap:8px;align-items:center;">
+        <div style="display:flex;align-items:center;gap:4px;flex:1;">
+          <span style="font-size:10px;color:var(--grijs-4);min-width:28px">uren</span>
+          <input class="tcw-inp" type="number" value="${t.uren}" min="0"
+            oninput="TCW['${key}'].uren=parseFloat(this.value)||0;renderTCWInvoer();renderInkomsten();renderExploitatie();">
+        </div>
+        <div style="display:flex;align-items:center;gap:4px;flex:1;">
+          <span style="font-size:10px;color:var(--grijs-4);min-width:38px">€/uur</span>
+          <input class="tcw-inp" type="number" value="${t.tarief}" min="0"
+            oninput="TCW['${key}'].tarief=parseFloat(this.value)||0;renderTCWInvoer();renderInkomsten();renderExploitatie();">
+        </div>
+        <div class="tcw-totaal">${totTCW>0?'€ '+totTCW.toLocaleString('nl-NL'):'—'}</div>
+      </div>
+    </div>`;
+  });
+  const el=document.getElementById('tcw-invoer');
+  if(el)el.innerHTML=h;
+  const lbl=document.getElementById('tcw-totaal-lbl');
+  const tot=tcwTotaal();
+  if(lbl)lbl.textContent=tot>0?'€ '+tot.toLocaleString('nl-NL'):'—';
+}
+
+// ═══════════════════════════════════════
+//  HOOFD RENDER
+// ═══════════════════════════════════════
+function render(){
+  renderOordeel();
+  renderJtabs('jtabs',hj,'setJ');
+  renderJOv();
+  renderMix();
+  renderTotaal();
+  renderKPI();
+  renderAlerts();
+  const actief=document.querySelector('.nav-tab.on');
+  if(actief){
+    const txt=actief.textContent;
+    if(txt.includes('Kosten'))renderKosten();
+    else if(txt.includes('Inkomsten'))renderInkomsten();
+    else if(txt.includes('Exploitatie'))renderExploitatie();
+  }
+}
+
+// ═══════════════════════════════════════
+//  EVENTS
+// ═══════════════════════════════════════
+
+function setJ(nr){hj=nr;render();}
+function setJK(nr){hj=nr;renderKosten();}
+function setJI(nr){hj=nr;renderInkomsten();}
+function delta(id,d){mix[hj][id].n=Math.max(0,(mix[hj][id].n||0)+d);render();}
+function setLj(id,v){mix[hj][id].lj=parseInt(v);render();}
+function setSc2(v,btn){school=v;document.querySelectorAll('#sw-school button').forEach(b=>b.className='');btn.className=v==='ecp'?'on-o':'on';render();}
+function kopieer(){if(hj>=5)return;GR.forEach(g=>mix[hj+1][g.id]={...mix[hj][g.id]});setJ(hj+1);}
+function nieuwSc(){const n=prompt('Naam nieuw scenario:','Nieuw scenario');if(n)document.getElementById('sc-naam').value=n;}
+function laadSc(v){
+  JJ.forEach(j=>{mix[j.nr]={};GR.forEach(g=>mix[j.nr][g.id]={n:0,lj:1});});
+  if(v==='tcw'){vulTCW();document.getElementById('sc-naam').value='TCW Basisplan (KPI)';}
+  else if(v==='worst'){mix[1]['l17']={n:3,lj:1};document.getElementById('sc-naam').value='Worst case';}
+  else if(v==='opt'){mix[1]['l17']={n:7,lj:1};document.getElementById('sc-naam').value='Optimistisch';}
+  hj=1;render();
+}
+function exporteer(){
+  // Exporteer alle ingevulde data inclusief KP offertebedragen en TCW uren
+  const kpExport={};Object.keys(KP).forEach(k=>kpExport[k]=KP[k].v);
+  const tcwExport={};Object.keys(TCW).forEach(k=>tcwExport[k]={lbl:TCW[k].lbl,uren:TCW[k].uren,tarief:TCW[k].tarief});
+  const kpExp={};Object.keys(KP).forEach(k=>kpExp[k]=KP[k].v);
+  const tcwExp={};Object.keys(TCW).forEach(k=>tcwExp[k]={lbl:TCW[k].lbl,uren:TCW[k].uren,tarief:TCW[k].tarief});
+  const invExp=INVESTERINGEN.map(i=>({...i}));
+  const data={scenario:document.getElementById('sc-naam').value,school,mix,
+    aannames:{werv:a('a-werv'),basis:a('a-basis'),uren:a('a-uren'),cao:a('a-cao'),res:a('a-res'),vf:a('a-vf')},
+    kostenposten:kpExp,tcwWerkgroepen:tcwExp,investeringen:invExp,
+    kostenposten:kpExport,
+    tcwWerkgroepen:tcwExport,
+    berekeningen:JJ.map(j=>({jaar:j.nr,lln:totLln(j.nr),lasten:Math.round(totLasten(j.nr)),baten:Math.round(totBaten2(j.nr)),resultaat:Math.round(resultaat(j.nr)),tarief:(inkDetail(j.nr)||{tarief:0}).tarief}))};
+  const el=document.createElement('a');
+  el.href=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));
+  el.download='vakschool_'+Date.now()+'.json';el.click();
+}
+
+
+// ═══════════════════════════════════════
+//  CASHFLOW JAAR 1
+// ═══════════════════════════════════════
+let verzuimSc='normaal', betaSc='goed';
+let subsidieRisico='volledig';
+let lksActief=true;
+let cfChart=null;
+
+function setVerzuim(v,btn){verzuimSc=v;document.querySelectorAll('#sw-verzuim button').forEach(b=>b.className='');btn.className='on';renderCashflow();}
+function setBeta(v,btn){betaSc=v;document.querySelectorAll('#sw-beta button').forEach(b=>b.className='');btn.className='on';renderCashflow();}
+function setSubsRisico(v,btn){subsidieRisico=v;document.querySelectorAll('#sw-subsrisico button').forEach(b=>b.className='');btn.className='on';renderExploitatie();}
+function setLKS(v,btn){lksActief=v;document.querySelectorAll('#sw-lks button').forEach(b=>b.className='');btn.className='on';renderExploitatie();}
+
+function renderCashflow(){
+  const lln=totLln(1); if(!lln){
+    document.getElementById('tbl-cf').innerHTML='<tr><td colspan="13" style="text-align:center;padding:30px;color:var(--grijs-4)">Voeg leerlingen toe in tabblad ① om de cashflow te berekenen</td></tr>';
+    document.getElementById('cf-kpis').innerHTML='';
+    document.getElementById('cf-notitie').innerHTML='';
+    return;
+  }
+  const k=kostenDetail(1), ink=inkDetail(1);
+  if(!k||!ink)return;
+
+  // Aannames cashflow
+  const verzuimPct={'normaal':0.05,'hoog':0.15,'nul':0}[verzuimSc];
+  const vf=a('a-vf');
+  const startSaldo=vf; // Voorfinanciering = beginsaldo
+
+  // Start: september 2026 = maand 1 (leerlingen starten in sept)
+  const MAANDEN=['sep','okt','nov','dec','jan','feb','mrt','apr','mei','jun','jul','aug'];
+  const MAANDEN_LANG=['September','Oktober','November','December','Januari','Februari','Maart','April','Mei','Juni','Juli','Augustus'];
+
+  // Maandelijkse kosten (gelijkmatig verdeeld tenzij anders)
+  const loonMnd=Math.round(k.bj/12);          // loon elke maand
+  const wgMnd=Math.round(k.wgTotaal/12);       // werkgeverslasten elke maand
+  const salaMnd=Math.round(k.salaTotaal/12);   // salariskantoor per maand
+  const pobMnd=Math.round(k.pobTotaal/12);     // POB per maand
+  const expMnd=Math.round(k.expTotaal/12);     // kantoor/exp per maand
+  const huisMnd=Math.round(k.huisTotaal/12);   // huisvesting per maand (gelijkmatig)
+
+  // Eenmalige kosten
+  const opstartMnd=[k.opstartTotaal,0,0,0,0,0,0,0,0,0,0,0]; // alles in september
+  // Verzuimverzekering: betaald per kwartaal (dec, mrt, jun, sept) — hier: dec, mrt, jun
+  const verzMnd=[0,0,0,Math.round(k.verzTotaal/4),0,0,Math.round(k.verzTotaal/4),0,0,Math.round(k.verzTotaal/4),0,Math.round(k.verzTotaal/4)];
+  // Verzekeringen coöperatie: eenmalig januari (maand 4 = index 4 van 0-11 = jan=index 4)
+  const insMnd=[0,0,0,0,k.insTotaal,0,0,0,0,0,0,0];
+  // Accountant: één factuur in december (maand 3 = index 3)
+  const accMnd=[0,0,0,k.accTotaal,0,0,0,0,0,0,0,0];
+  const jurMnd=[0,0,k.jurTotaal,0,0,0,0,0,0,0,0,0]; // juridisch in november
+  const orgMnd=[0,0,0,0,0,0,0,0,0,0,0,0]; // directeur via TCW jaar 1
+
+  // BTW: coöperatie int 21% BTW over plaatsingsvergoeding, draagt kwartaal af
+  // kwartalen: okt-dec (afdracht jan), jan-mrt (afdracht apr), apr-jun (afdracht jul), jul-aug (afdracht sep)
+  const mndPlV=Math.round(ink.plaatsVerg/12); // plaatsingsvergoeding per maand
+  const btwPerMnd=Math.round(mndPlV*0.21);
+  // BTW-afdracht maanden (indices 4=jan, 7=apr, 10=jul, 0=volgende periode)
+  const btwAfdracht=[0,0,0,0,btwPerMnd*3,0,0,btwPerMnd*3,0,0,btwPerMnd*3,0]; // vereenvoudigd
+
+  // INKOMSTEN PER MAAND
+  // Facturatie: factuur 3e week lopende maand, betaling conform salaris = zelfde maand of volgende
+  // betaSc='goed' = ontvangst zelfde maand | betaSc='laat' = ontvangst maand erna
+  const facturatieBase=Math.round(ink.plaatsVerg/12); // excl BTW
+
+  // Verzuimkorting: bij hoog verzuim minder uren gefactureerd
+  const facturatieNetto=Math.round(facturatieBase*(1-verzuimPct));
+  const btwOntvangen=Math.round(facturatieNetto*0.21);
+
+  // OOM subsidie: ontvangst april (maand 7 = index 7)
+  const oomMnd=[0,0,0,0,0,0,0,ink.oomTotaal,0,0,0,0];
+  // RVO subsidie: ontvangst augustus (maand 11 = index 11 = aug)
+  const rvoMnd=[0,0,0,0,0,0,0,0,0,0,0,ink.rvo];
+  // Ledenbijdrage: ontvangst september (start, maand 0)
+  const ledenMnd=[ink.ledenTotaal,0,0,0,0,0,0,0,0,0,0,0];
+
+  // Bouw maandoverzicht
+  let saldo=startSaldo;
+  let rows=[];
+  let saldoPerMnd=[];
+  let laagsteSaldo=startSaldo, laagsteMaand=-1;
+  let cumulVf=0;
+
+  for(let m=0;m<12;m++){
+    const betaLag = betaSc==='laat'?1:0;
+    const factIn = m>=betaLag ? facturatieNetto : 0;
+    const btwIn  = m>=betaLag ? btwOntvangen : 0;
+
+    const uitLoon    = loonMnd + wgMnd;
+    const uitSala    = salaMnd;
+    const uitPob     = pobMnd;
+    const uitExp     = expMnd;
+    const uitOpst    = opstartMnd[m];
+    const uitVerz    = verzMnd[m];
+    const uitIns     = insMnd[m];
+    const uitAcc     = accMnd[m];
+    const uitJur     = jurMnd[m];
+    const uitBtwAfd  = btwAfdracht[m];
+
+    const uitHuis = huisMnd;
+    const totUit = uitLoon+uitSala+uitPob+uitExp+uitHuis+uitOpst+uitVerz+uitIns+uitAcc+uitJur+uitBtwAfd;
+
+    const inkOOM  = oomMnd[m];
+    const inkRVO  = rvoMnd[m];
+    const inkLeden= ledenMnd[m];
+    const totIn   = factIn+inkOOM+inkRVO+inkLeden;
+
+    const netto = totIn - totUit;
+    saldo += netto;
+    saldoPerMnd.push(saldo);
+
+    if(saldo < laagsteSaldo){laagsteSaldo=saldo;laagsteMaand=m;}
+
+    rows.push({m,naam:MAANDEN[m],lang:MAANDEN_LANG[m],
+      factIn,btwIn,inkOOM,inkRVO,inkLeden,totIn,
+      uitLoon,uitSala,uitPob,uitExp,uitHuis,uitOpst,uitVerz,uitIns,uitAcc,uitJur,uitBtwAfd,totUit,
+      netto,saldo});
+  }
+
+  // ── TABEL ──
+  let h=`<thead><tr><th class="lh" style="min-width:160px">Post</th>`;
+  MAANDEN.forEach((m,i)=>{
+    const isQ=[3,6,9,11].includes(i); // kwartaal afdracht maanden
+    h+=`<th${isQ?' class="cf-btw"':''}>${m}</th>`;
+  });
+  h+=`</tr></thead><tbody>`;
+
+  function cfRij(kls,lbl,fn,kleur=''){
+    let r=`<tr class="${kls}"><td>${lbl}</td>`;
+    rows.forEach(row=>{const v=fn(row);
+      const kl=v===0?'cf-nul':kleur==='pos'?'cf-pos':kleur==='neg'?'cf-neg':'';
+      r+=`<td class="r ${kl}">${v===0?'—':eu(v)}</td>`;
+    });
+    return r+'</tr>';
+  }
+
+  h+=`<tr class="grp"><td colspan="13">INKOMSTEN</td></tr>`;
+  h+=cfRij('sub','Plaatsingsvergoeding (excl. BTW)',r=>r.factIn,'pos');
+  h+=cfRij('sub','BTW ontvangen (21%)',r=>r.btwIn,'pos');
+  h+=cfRij('sub','OOM sectorsubsidie (ontvangst april)',r=>r.inkOOM,'pos');
+  h+=cfRij('sub','RVO praktijkleersubsidie (ontvangst augustus)',r=>r.inkRVO,'pos');
+  h+=cfRij('sub','Ledenbijdrage bedrijven (ontvangst september)',r=>r.inkLeden,'pos');
+  h+=cfRij('baten-stot','TOTAAL INKOMSTEN',r=>r.totIn,'pos');
+
+  h+=`<tr class="grp"><td colspan="13">UITGAVEN</td></tr>`;
+  h+=cfRij('sub','Loon + werkgeverslasten (dag 25)',r=>r.uitLoon,'neg');
+  h+=cfRij('sub','Salarisadministratie',r=>r.uitSala,'neg');
+  h+=cfRij('sub','Huisvesting & leeromgeving',r=>r.uitHuis,'neg');
+  h+=cfRij('sub','Praktijkopleiders (POB)',r=>r.uitPob,'neg');
+  h+=cfRij('sub','Exploitatiekosten',r=>r.uitExp,'neg');
+  h+=cfRij('sub','Opstartkosten (eenmalig sept)',r=>r.uitOpst,'neg');
+  h+=cfRij('sub','Verzuimverzekering (per kwartaal)',r=>r.uitVerz,'neg');
+  h+=cfRij('sub','Verzekeringen coöperatie (jan)',r=>r.uitIns,'neg');
+  h+=cfRij('sub','Accountant (dec)',r=>r.uitAcc,'neg');
+  h+=cfRij('sub','Juridisch & HR (nov)',r=>r.uitJur,'neg');
+  h+=cfRij('sub cf-btw','BTW-afdracht (kwartaal) — notitie #4',r=>r.uitBtwAfd,'neg');
+  h+=cfRij('totaal','TOTAAL UITGAVEN',r=>r.totUit,'neg');
+
+  // Netto per maand — geen totaalkolom, cashflow is cumulatief
+  let nettoTot=0;
+  rows.forEach(row=>{nettoTot+=row.netto;});
+  h+=`<tr><td style="font-weight:600;color:var(--grijs-4);font-size:11px;font-style:italic">Netto cashflow (informatief — geen optelling)</td>`;
+  rows.forEach(row=>{
+    h+=`<td class="r ${row.netto>=0?'cf-pos':'cf-neg'}" style="font-weight:500">${eu(row.netto)}</td>`;
+  });
+  h+=`</tr>`;
+
+  // Saldo rij — dít is de echte cashflowpositie
+  h+=`<tr class="cf-saldo"><td>▶ BANKSALDO EINDE MAAND</td>`;
+  rows.forEach(row=>{
+    const cls=row.saldo<0?'rood-saldo':'';
+    h+=`<td class="r ${cls}">${eu(row.saldo)}</td>`;
+  });
+  h+=`</tr>`;
+
+  // Waarschuwing rijen
+  rows.forEach(row=>{
+    if(row.saldo<0){
+      h+=`<tr class="cf-warn"><td colspan="13">⚠ ${row.lang}: banksaldo negatief — tekort van ${eu(Math.abs(row.saldo))}. Notitie #3: voorfinanciering ophogen of inkomsten naar voren halen.</td></tr>`;
+    }
+  });
+
+  // BTW reservering herinnering
+  h+=`<tr style="background:rgba(192,78,32,0.05)"><td style="font-size:11px;color:var(--oranje);padding-left:10px">📋 Notitie #4 — Reserveer BTW apart (aparte bankrekening)</td>`;
+  rows.forEach(r=>{h+=`<td class="r" style="font-size:11px;color:var(--oranje)">${r.btwIn>0?eu(r.btwIn):'—'}</td>`;});
+  h+=`</tr>`;
+  h+=`</tbody>`;
+  document.getElementById('tbl-cf').innerHTML=h;
+
+  // ── CHART ──
+  if(cfChart)cfChart.destroy();
+  const ctx=document.getElementById('cf-chart').getContext('2d');
+  cfChart=new Chart(ctx,{
+    type:'bar',
+    data:{
+      labels:MAANDEN,
+      datasets:[
+        {label:'Banksaldo',data:saldoPerMnd,backgroundColor:saldoPerMnd.map(v=>v>=0?'rgba(26,122,60,0.7)':'rgba(185,45,45,0.7)'),borderRadius:3,order:1},
+        {label:'Netto cashflow',data:rows.map(r=>r.netto),type:'line',borderColor:'#1B2A4A',backgroundColor:'transparent',pointBackgroundColor:'#1B2A4A',pointRadius:4,borderWidth:2,order:0},
+      ]
+    },
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false}},
+      scales:{y:{ticks:{callback:v=>'€'+(v/1000).toFixed(0)+'k'},grid:{color:'rgba(0,0,0,0.05)'}}}
+    }
+  });
+
+  document.getElementById('cf-chart-legend').innerHTML=`
+    <span style="display:flex;align-items:center;gap:5px"><span style="width:12px;height:12px;border-radius:2px;background:rgba(26,122,60,0.7)"></span>Banksaldo positief</span>
+    <span style="display:flex;align-items:center;gap:5px"><span style="width:12px;height:12px;border-radius:2px;background:rgba(185,45,45,0.7)"></span>Banksaldo negatief</span>
+    <span style="display:flex;align-items:center;gap:5px"><span style="width:22px;height:2px;background:#1B2A4A"></span>Netto cashflow</span>
+  `;
+
+  // ── KPI KAARTJES ──
+  const laagst=Math.min(...saldoPerMnd);
+  const benodigdVF=laagst<0?Math.abs(laagst):0;
+  const totaalInkJaar=rows.reduce((s,r)=>s+r.totIn,0);
+  const totaalUitJaar=rows.reduce((s,r)=>s+r.totUit,0);
+
+  document.getElementById('cf-kpis').innerHTML=`
+    <div class="cf-k b"><div class="lbl">Beginsaldo (voorfinanciering)</div><div class="val" style="color:var(--blauw)">${eu(startSaldo)}</div><div class="sub">achtergestelde lening holding</div></div>
+    <div class="cf-k ${laagst<0?'r':'g'}"><div class="lbl">Laagste banksaldo</div><div class="val" style="color:${laagst<0?'var(--rood)':'var(--groen)'}">${eu(laagst)}</div><div class="sub">${laagsteMaand>=0?MAANDEN_LANG[laagsteMaand]:'—'}</div></div>
+    <div class="cf-k ${benodigdVF>0?'r':'g'}"><div class="lbl">Benodigde extra voorfinanciering</div><div class="val" style="color:${benodigdVF>0?'var(--rood)':'var(--groen)'}">${benodigdVF>0?eu(benodigdVF):'Voldoende'}</div><div class="sub">${benodigdVF>0?'notitie #3 & #8 — ophogen':'huidig bedrag volstaat'}</div></div>
+    <div class="cf-k o"><div class="lbl">BTW te reserveren (totaal)</div><div class="val" style="color:var(--oranje)">${eu(rows.reduce((s,r)=>s+r.btwIn,0))}</div><div class="sub">notitie #4 — aparte rekening</div></div>
+    <div class="cf-k b"><div class="lbl">RVO-subsidie ontvangst</div><div class="val" style="color:var(--blauw)">${eu(ink.rvo)}</div><div class="sub">augustus — eénmalig</div></div>
+    <div class="cf-k ${nettoTot>=0?'g':'r'}"><div class="lbl">Netto cashflow jaar 1</div><div class="val" style="color:${nettoTot>=0?'var(--groen)':'var(--rood)'}">${eu(nettoTot)}</div><div class="sub">incl. subsidies & BTW</div></div>
+  `;
+
+  // ── NOTITIE BOX ──
+  // Accountantsoordeel cashflow
+  const totBTW=rows.reduce((s,r)=>s+r.btwIn,0);
+  const aantalNegMaanden=saldoPerMnd.filter(s=>s<0).length;
+  const eersteNeg=saldoPerMnd.findIndex(s=>s<0);
+  const eindSaldo=saldoPerMnd[11];
+
+  let oordeel='';
+  let oordeelKleur='';
+
+  if(benodigdVF>0){
+    oordeelKleur='rood';
+    oordeel=`
+      <div style="font-size:13px;font-weight:600;margin-bottom:8px;">🔴 Accountantsoordeel: cashflow onvoldoende gedekt</div>
+      <div style="font-size:12px;line-height:1.8;">
+        Het laagste banksaldo is <strong>${eu(laagst)}</strong> in <strong>${MAANDEN_LANG[laagsteMaand]}</strong> — het saldo wordt negatief in ${aantalNegMaanden} maand(en).
+        De huidig ingestelde voorfinanciering van <strong>${eu(startSaldo)}</strong> is onvoldoende.<br><br>
+        <strong>Aanbeveling accountant:</strong> Verhoog de voorfinanciering naar minimaal <strong>${eu(Math.abs(laagst)+1500)}</strong>
+        (laagste punt + €1.500 buffer). Dit bedrag wordt als achtergestelde lening ingebracht door de holding van de directeur
+        vóór de oprichtingsdatum — zie notitie #8.<br><br>
+        <strong>Risicofactoren in dit scenario:</strong><br>
+        • De RVO-subsidie (${eu(ink.rvo)}) komt pas in augustus binnen — dat is 11 maanden na start. Tot die tijd draait de coöperatie zonder deze buffer.<br>
+        • Bij vertraagd betaalgedrag van lidbedrijven (schakelaar "1 mnd vertraagd") verslechtert het saldo in de eerste maanden direct.<br>
+        • BTW (${eu(totBTW)}) moet worden gereserveerd op een aparte rekening en is geen vrij beschikbaar saldo — notitie #4.
+      </div>`;
+  } else if(eindSaldo < startSaldo * 0.5){
+    oordeelKleur='geel';
+    oordeel=`
+      <div style="font-size:13px;font-weight:600;margin-bottom:8px;">🟡 Accountantsoordeel: cashflow voldoende, maar krap</div>
+      <div style="font-size:12px;line-height:1.8;">
+        De voorfinanciering van <strong>${eu(startSaldo)}</strong> is technisch voldoende — het saldo blijft positief.
+        Laagste punt is <strong>${eu(laagst)}</strong> in <strong>${MAANDEN_LANG[laagsteMaand]}</strong>.
+        Het eindsaldo van <strong>${eu(eindSaldo)}</strong> is minder dan de helft van de startinleg, wat weinig marge laat.<br><br>
+        <strong>Aanbeveling accountant:</strong> Overweeg de voorfinanciering te verhogen naar ${eu(startSaldo+5000)} voor extra buffer.
+        Zorg dat de ledenbijdragen contractueel zijn vastgelegd vóór oprichting (notitie #1) — dit is de eerste en grootste inkomst in september.
+        Reserveer ${eu(totBTW)} BTW op aparte rekening (notitie #4).
+      </div>`;
+  } else {
+    oordeelKleur='groen';
+    oordeel=`
+      <div style="font-size:13px;font-weight:600;margin-bottom:8px;">✅ Accountantsoordeel: cashflow gezond</div>
+      <div style="font-size:12px;line-height:1.8;">
+        De cashflow is solide. Laagste banksaldo is <strong>${eu(laagst)}</strong> in <strong>${MAANDEN_LANG[laagsteMaand]}</strong> —
+        het saldo blijft altijd positief. Eindsaldo jaar 1: <strong>${eu(eindSaldo)}</strong>.<br><br>
+        <strong>Resterende aandachtspunten:</strong><br>
+        • Notitie #2: Factuurmoment (3e week maand) en betaaltermijn (= salarisdatum lidbedrijf) vastleggen in HH-reglement. Dit is bepalend voor het saldoverloop.<br>
+        • Notitie #4: Reserveer <strong>${eu(totBTW)}</strong> BTW gedurende het jaar op een aparte bankrekening. Dit is geen vrij beschikbaar saldo.<br>
+        • Notitie #6: De RVO-subsidie (${eu(ink.rvo)}) komt eenmalig in augustus. Test het cashflowverloop ook zonder deze subsidie als scenario.
+      </div>`;
+  }
+
+  // Technische toelichting cashflow methode
+  const methodeTxt=`
+    <div style="font-size:11px;color:var(--grijs-4);margin-top:12px;padding-top:10px;border-top:1px solid rgba(0,0,0,0.08);line-height:1.6;">
+      <strong>Over deze cashflow:</strong> Een cashflowoverzicht heeft geen "totaal" — het saldo is cumulatief en loopt door.
+      De enige relevante maatstaven zijn het <em>laagste banksaldo</em> (liquiditeitspunt) en het <em>eindsaldo</em> (positie einde jaar).
+      De netto cashflow per maand is informatief maar wordt nooit opgeteld tot een jaartotaal.
+      BTW die binnenkomt is geen inkomst van de coöperatie — het is een schuld aan de Belastingdienst en moet worden gereserveerd.
+    </div>`;
+
+  const noteDiv=document.getElementById('cf-notitie');
+  noteDiv.innerHTML=oordeel+methodeTxt;
+  const kleurMap={'rood':'var(--rood-licht)','geel':'var(--geel-licht)','groen':'var(--groen-licht)'};
+  const randMap={'rood':'var(--rood)','geel':'#E0A020','groen':'var(--groen)'};
+  const txtMap={'rood':'var(--rood)','geel':'var(--geel)','groen':'var(--groen)'};
+  noteDiv.style.background=kleurMap[oordeelKleur];
+  noteDiv.style.borderLeftColor=randMap[oordeelKleur];
+  noteDiv.style.color=txtMap[oordeelKleur];
+}
+
+
+// ═══════════════════════════════════════
+//  INVESTERINGSBEGROTING
+// ═══════════════════════════════════════
+let INVESTERINGEN=[];
+const CAT_LABELS={'huisvesting':'Huisvesting','equipment':'Machines & equipment','ict':'ICT & software','inrichting':'Inrichting & meubilair','leermiddelen':'Leermiddelen','overig':'Overig'};
+const CAT_KLEUREN={'huisvesting':'var(--blauw)','equipment':'var(--oranje)','ict':'#7C3AED','inrichting':'#059669','leermiddelen':'#DC2626','overig':'var(--grijs-4)'};
+
+function voegInvToe(){
+  const omschr=document.getElementById('inv-omschr').value.trim();
+  if(!omschr){alert('Vul een omschrijving in.');return;}
+  const bedrag=parseFloat(document.getElementById('inv-bedrag').value)||0;
+  if(bedrag<=0){alert('Vul een bedrag in.');return;}
+  const datum=document.getElementById('inv-datum').value;
+  const cat=document.getElementById('inv-cat').value;
+  const afschr=parseInt(document.getElementById('inv-afschr').value);
+  INVESTERINGEN.push({id:Date.now(),omschr,cat,bedrag,datum,afschr});
+  document.getElementById('inv-omschr').value='';
+  document.getElementById('inv-bedrag').value='';
+  renderInvestering();
+}
+
+function verwijderInv(id){
+  INVESTERINGEN=INVESTERINGEN.filter(i=>i.id!==id);
+  renderInvestering();
+}
+
+function invJaarVanDatum(datum){
+  // datum = 'YYYY-MM', jaar 1 = 2026
+  const jaar=parseInt(datum.split('-')[0]);
+  return jaar-2025; // jaar 1 = 2026 = index 1
+}
+
+function afschrPerJaar(inv){
+  // geeft array [j1..j10] met afschrijvingsbedrag
+  const result=Array(11).fill(0);
+  if(inv.afschr===0)return result;
+  const startJaar=invJaarVanDatum(inv.datum);
+  const jaarBedrag=Math.round(inv.bedrag/inv.afschr);
+  for(let j=startJaar;j<startJaar+inv.afschr&&j<=10;j++){
+    if(j>=1)result[j]=jaarBedrag;
+  }
+  return result;
+}
+
+function renderInvestering(){
+  // Lijst tabel
+  let h='';
+  if(INVESTERINGEN.length===0){
+    document.getElementById('tbl-inv-lijst').innerHTML=`<tr><td colspan="7" style="text-align:center;padding:24px;color:var(--grijs-4)">Nog geen investeringen toegevoegd. Gebruik het formulier hierboven.</td></tr>`;
+  } else {
+    h=`<thead><tr><th class="lh" style="width:30%">Omschrijving</th><th class="lh">Categorie</th><th>Bedrag</th><th>Datum</th><th>Afschr.</th><th>p.j.</th><th></th></tr></thead><tbody>`;
+    INVESTERINGEN.forEach(inv=>{
+      const pj=inv.afschr>0?Math.round(inv.bedrag/inv.afschr):0;
+      h+=`<tr>
+        <td>${inv.omschr}</td>
+        <td><span style="font-size:11px;padding:2px 7px;border-radius:99px;background:rgba(0,0,0,0.05);color:${CAT_KLEUREN[inv.cat]};font-weight:500">${CAT_LABELS[inv.cat]}</span></td>
+        <td class="r" style="font-weight:600;color:var(--blauw)">${eu(inv.bedrag)}</td>
+        <td class="r">${inv.datum.replace('-','/')}</td>
+        <td class="r">${inv.afschr===0?'—':inv.afschr+' jr'}</td>
+        <td class="r">${pj>0?eu(pj):'—'}</td>
+        <td><button onclick="verwijderInv(${inv.id})" style="background:var(--rood-licht);color:var(--rood);border:none;border-radius:4px;padding:2px 8px;font-size:11px;cursor:pointer;">✕</button></td>
+      </tr>`;
+    });
+    const totaalBedrag=INVESTERINGEN.reduce((s,i)=>s+i.bedrag,0);
+    h+=`<tr class="stot"><td>Totaal investeringen</td><td></td><td class="r">${eu(totaalBedrag)}</td><td colspan="4"></td></tr>`;
+    h+=`</tbody>`;
+    document.getElementById('tbl-inv-lijst').innerHTML=h;
+  }
+
+  // Effect tabel
+  if(INVESTERINGEN.length===0){
+    document.getElementById('tbl-inv-effect').innerHTML=`<tr><td colspan="12" style="text-align:center;padding:20px;color:var(--grijs-4)">Voeg eerst investeringen toe</td></tr>`;
+    document.getElementById('inv-notitie').textContent='';
+    return;
+  }
+
+  // Per jaar: kasuitstroom (investering) + afschrijving
+  const jaarKas=Array(11).fill(0);   // eenmalige kasuitstroom
+  const jaarAfschr=Array(11).fill(0); // jaarlijkse afschrijving (exploitatielast)
+  INVESTERINGEN.forEach(inv=>{
+    const startJ=invJaarVanDatum(inv.datum);
+    if(startJ>=1&&startJ<=10)jaarKas[startJ]+=inv.bedrag;
+    const afArr=afschrPerJaar(inv);
+    for(let j=1;j<=10;j++)jaarAfschr[j]+=afArr[j];
+  });
+
+  // Per categorie
+  const cats=[...new Set(INVESTERINGEN.map(i=>i.cat))];
+
+  let e=`<thead><tr><th class="lh" style="min-width:160px">Post</th>`;
+  JJ.forEach(j=>e+=`<th>${j.lbl}<br><span style="font-weight:400;font-size:10px">${j.jaar}</span></th>`);
+  e+=`</tr></thead><tbody>`;
+
+  e+=`<tr class="grp"><td colspan="12">KASUITSTROOM (eenmalige investering)</td></tr>`;
+  cats.forEach(cat=>{
+    const catInv=INVESTERINGEN.filter(i=>i.cat===cat);
+    const catKas2=Array(11).fill(0);
+    catInv.forEach(inv=>{const sj2=invJaarVanDatum(inv.datum);if(sj2>=1&&sj2<=10)catKas2[sj2]+=inv.bedrag;});
+    let rKas2=`<tr class="sub"><td style="padding-left:20px;color:var(--tekst-sub)">${CAT_LABELS[cat]}</td>`;
+    JJ.forEach(jj=>rKas2+=`<td class="r ${catKas2[jj.nr]>0?'cf-neg':''}">${catKas2[jj.nr]>0?eu(catKas2[jj.nr]):'—'}</td>`);
+    e+=rKas2+'</tr>';
+  });
+  let rKas=`<tr class="stot"><td>Totaal kasuitstroom</td>`;
+  JJ.forEach(j=>rKas+=`<td class="r ${jaarKas[j.nr]>0?'cf-neg':''}">${jaarKas[j.nr]>0?eu(jaarKas[j.nr]):'—'}</td>`);
+  e+=rKas+'</tr>';
+
+  e+=`<tr class="grp"><td colspan="12">AFSCHRIJVINGEN (exploitatielast per jaar)</td></tr>`;
+  cats.forEach(cat=>{
+    const catInv2=INVESTERINGEN.filter(i=>i.cat===cat);
+    const catAfs2=Array(11).fill(0);
+    catInv2.forEach(inv=>{const aArr=afschrPerJaar(inv);for(let ja=1;ja<=10;ja++)catAfs2[ja]+=aArr[ja];});
+    let rAfs2=`<tr class="sub"><td style="padding-left:20px;color:var(--tekst-sub)">${CAT_LABELS[cat]}</td>`;
+    JJ.forEach(jj=>rAfs2+=`<td class="r">${catAfs2[jj.nr]>0?eu(catAfs2[jj.nr]):'—'}</td>`);
+    e+=rAfs2+'</tr>';
+  });
+  let rAfs=`<tr class="totaal"><td>Totaal afschrijvingen</td>`;
+  JJ.forEach(j=>rAfs+=`<td class="r">${jaarAfschr[j.nr]>0?eu(jaarAfschr[j.nr]):'—'}</td>`);
+  e+=rAfs+'</tr>';
+
+  // Boekwaarde
+  let bw=INVESTERINGEN.reduce((s,i)=>s+i.bedrag,0);
+  let rBw=`<tr><td style="font-size:12px;color:var(--grijs-5)">Boekwaarde (restant)</td>`;
+  JJ.forEach(j=>{bw-=jaarAfschr[j.nr];rBw+=`<td class="r" style="font-size:11px;color:var(--grijs-4)">${eu(Math.max(0,bw))}</td>`;});
+  e+=rBw+'</tr>';
+  e+=`</tbody>`;
+  document.getElementById('tbl-inv-effect').innerHTML=e;
+
+  const totInv=INVESTERINGEN.reduce((s,i)=>s+i.bedrag,0);
+  const totAfsJr1=(jaarAfschr[1]||0);
+  document.getElementById('inv-notitie').innerHTML=
+    `Totale investeringsomvang: <strong>${eu(totInv)}</strong>. Afschrijving jaar 1: <strong>${eu(totAfsJr1)}</strong>.
+    Let op: afschrijvingskosten zijn nog niet automatisch verwerkt in het exploitatieoverzicht — voer ze handmatig in als post "Afschrijving inrichting" bij huisvesting (tabblad Kosten).
+    Kasuitstroom is wél zichtbaar in de cashflow als extra post. Tip: bespreek de afschrijvingsmethode met de accountant (lineair vs degressief).`;
+}
+
+function setTab(naam,btn){
+  document.querySelectorAll('.pg').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.nav-tab').forEach(b=>b.classList.remove('on'));
+  document.getElementById('pg-'+naam).classList.add('on');
+  btn.classList.add('on');
+  if(naam==='kosten'){renderKosten();renderKPInvoer();}
+  else if(naam==='inkomsten'){renderInkomsten();renderTCWInvoer();}
+  else if(naam==='exploitatie')renderExploitatie();
+  else if(naam==='cashflow')renderCashflow();
+  else if(naam==='investering')renderInvestering();
+  else render();
+}
+
+
+// ═══════════════════════════════════════
+//  BEOORDELINGSRAPPORT
+// ═══════════════════════════════════════
+function renderOordeel(){
+  const j1=1;
+  const lln1=totLln(j1);
+  const res1=resultaat(j1);
+  const ink1=inkDetail(j1);
+  const k1=kostenDetail(j1);
+  const vf=a('a-vf');
+  const cao=a('a-cao');
+  const werv=a('a-werv');
+
+  // Datum en scenario
+  const nu=new Date();
+  document.getElementById('rapp-datum').textContent=nu.toLocaleDateString('nl-NL',{day:'2-digit',month:'long',year:'numeric'});
+  document.getElementById('rapp-scenario').textContent=document.getElementById('sc-naam').value||'—';
+  document.getElementById('vb-cao').textContent=cao;
+  document.getElementById('vb-vf').textContent=eu(vf);
+
+  // ── Kwaliteit aannames ──
+  const offertePosts=['accountant','notaris','jur0','web','avb','rbv','do_','arbRecht12','huurRuimte','schoonmaak','oomLid'];
+  const ingevuld=offertePosts.filter(k=>KP[k]&&KP[k].v>0).length;
+  const pct=Math.round(ingevuld/offertePosts.length*100);
+
+  let aanmKleur, aanmTekst;
+  if(pct>=80){
+    aanmKleur='var(--groen)'; aanmTekst=`<strong style="color:var(--groen)">Goed (${pct}% van offerte-posten ingevuld)</strong> — de aannames zijn grotendeels onderbouwd met werkelijke bedragen. De begroting heeft een hoge betrouwbaarheidsgraad.`;
+  } else if(pct>=40){
+    aanmKleur='var(--geel)'; aanmTekst=`<strong style="color:var(--geel)">Matig (${pct}% van offerte-posten ingevuld)</strong> — een deel van de aannames is nog indicatief. Haal de ontbrekende offertes op vóór definitieve besluitvorming.`;
+  } else {
+    aanmKleur='var(--oranje)'; aanmTekst=`<strong style="color:var(--oranje)">Indicatief (${pct}% ingevuld)</strong> — de meeste posten zijn nog schattingen. Dit document geeft richting maar is nog niet geschikt als definitieve begroting.`;
+  }
+  document.getElementById('oordeel-aannames').innerHTML=`
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+      <div style="flex:1;height:6px;background:var(--grijs-2);border-radius:3px;overflow:hidden;">
+        <div style="width:${pct}%;height:100%;background:${aanmKleur};border-radius:3px;transition:width .5s;"></div>
+      </div>
+      <span style="font-size:11px;font-weight:600;color:${aanmKleur}">${pct}%</span>
+    </div>
+    <div style="color:var(--tekst-sub)">${aanmTekst}</div>`;
+
+  // ── Kernbevindingen ──
+  let bevindingen='';
+  const subsPct=lln1>0&&ink1?Math.round(ink1.totSubs/ink1.totBaten*100):0;
+  const tarief1=ink1?ink1.tarief:0;
+
+  // Bevinding 1: haalbaarheid jaar 1
+  if(lln1===0){
+    bevindingen+=`<div style="display:flex;gap:8px;margin-bottom:8px;"><span>⚪</span><span>Geen leerlingen ingevoerd — haalbaarheid kan niet worden beoordeeld.</span></div>`;
+  } else if(res1>=0){
+    bevindingen+=`<div style="display:flex;gap:8px;margin-bottom:8px;"><span>✅</span><span>Jaar 1 sluit <strong>kostendekkend</strong> met een positief resultaat van <strong>${eu(res1)}</strong> bij ${lln1} leerlingen.</span></div>`;
+  } else {
+    bevindingen+=`<div style="display:flex;gap:8px;margin-bottom:8px;"><span>🟡</span><span>Jaar 1 sluit met een <strong>tekort van ${eu(res1)}</strong>. Dit is verwacht in een opstartjaar en wordt gedekt door voorfinanciering.</span></div>`;
+  }
+
+  // Bevinding 2: tarief marktconformiteit
+  if(tarief1>0){
+    const mktRef=86; // TCW RIF tarief
+    if(tarief1<=mktRef){
+      bevindingen+=`<div style="display:flex;gap:8px;margin-bottom:8px;"><span>✅</span><span>Uurtarief <strong>€ ${tarief1},—</strong> ligt onder het TCW-referentietarief van € ${mktRef},— — marktconform en concurrerend.</span></div>`;
+    } else {
+      bevindingen+=`<div style="display:flex;gap:8px;margin-bottom:8px;"><span>⚠️</span><span>Uurtarief <strong>€ ${tarief1},—</strong> ligt boven het TCW-referentietarief van € ${mktRef},—. Onderzoek of kosten verder kunnen worden gereduceerd.</span></div>`;
+    }
+  }
+
+  // Bevinding 3: subsidieafhankelijkheid
+  if(subsPct>50){
+    bevindingen+=`<div style="display:flex;gap:8px;margin-bottom:8px;"><span>⚠️</span><span>Subsidieafhankelijkheid is <strong>${subsPct}%</strong> van de totale baten — relatief hoog. Scenario zonder subsidies uitvoeren (tabblad ④).</span></div>`;
+  } else if(subsPct>0){
+    bevindingen+=`<div style="display:flex;gap:8px;margin-bottom:8px;"><span>✅</span><span>Subsidieafhankelijkheid is <strong>${subsPct}%</strong> — acceptabel. Plaatsingsvergoeding is de dominante inkomstenbron.</span></div>`;
+  }
+
+  // Bevinding 4: groeipad
+  const lln5=totLln(5); const res5=resultaat(5);
+  if(lln5>0){
+    bevindingen+=`<div style="display:flex;gap:8px;margin-bottom:8px;"><span>${res5>=0?'✅':'🟡'}</span><span>Jaar 5 (${lln5} leerlingen): resultaat <strong>${eu(res5)}</strong> — ${res5>=0?'groeipad is financieel houdbaar.':'groeipad vraagt bijstelling.'}</span></div>`;
+  }
+
+  // Bevinding 5: cashflow
+  if(vf>0){
+    bevindingen+=`<div style="display:flex;gap:8px;margin-bottom:8px;"><span>📋</span><span>Voorfinanciering <strong>${eu(vf)}</strong> beschikbaar als achtergestelde lening. Toereikendheid verificeren in tabblad ⑤.</span></div>`;
+  }
+
+  document.getElementById('oordeel-bevindingen').innerHTML=bevindingen||'<span style="color:var(--grijs-4)">Voeg leerlingen toe om bevindingen te genereren.</span>';
+
+  // ── Eindoordeel ──
+  let eoIcoon, eoKleur, eoTitel, eoTekst, eoAchtergrond;
+  const offertesCompleet = pct >= 80;
+  const jaar1OK = lln1===0 || res1 >= -5000;
+  const tariefOK = tarief1 > 0 && tarief1 <= 86;
+  const subOK = subsPct <= 50;
+
+  const score = [offertesCompleet, jaar1OK, tariefOK, subOK].filter(Boolean).length;
+
+  if(lln1===0){
+    eoIcoon='⚪'; eoKleur='var(--grijs-4)'; eoAchtergrond='var(--grijs-0)';
+    eoTitel='Geen oordeel mogelijk';
+    eoTekst='Voeg leerlingen toe in tabblad ① om de begroting te activeren.';
+  } else if(score>=3&&pct>=60){
+    eoIcoon='✅'; eoKleur='var(--groen)'; eoAchtergrond='var(--groen-licht)';
+    eoTitel='Positief oordeel — begroting is goed onderbouwd en financieel haalbaar';
+    eoTekst=`De indicatieve begroting geeft een realistisch en intern consistent beeld van de financiële haalbaarheid van de Coöperatie Vakschool Weerterland. De aannames zijn zorgvuldig opgesteld op basis van actuele CAO-lonen (art. 33c), marktconforme kosten en bekende subsidieregelingen. Bij realisatie van de ingevoerde leerlingaantallen en onder de geformuleerde randvoorwaarden is de coöperatie financieel levensvatbaar. Aanbeveling: definitief vaststellen na offerteronde en accountantscheck.`;
+  } else if(score>=2){
+    eoIcoon='🟡'; eoKleur='var(--geel)'; eoAchtergrond='var(--geel-licht)';
+    eoTitel='Voorwaardelijk positief oordeel — aanvulling vereist';
+    eoTekst=`De begroting toont een haalbaar model maar bevat nog aannames die nadere onderbouwing vereisen. Aanvullen met werkelijke offertes voor de gemarkeerde posten en herberekenen. De richting klopt — de nauwkeurigheid moet nog worden verhoogd voor definitieve besluitvorming.`;
+  } else {
+    eoIcoon='🔴'; eoKleur='var(--rood)'; eoAchtergrond='var(--rood-licht)';
+    eoTitel='Oordeel voorbehouden — verdere uitwerking noodzakelijk';
+    eoTekst=`De begroting bevat te veel indicatieve aannames of financiële knelpunten om een positief oordeel te geven. Los de gemarkeerde punten op vóór presentatie aan de leden of externe partijen.`;
+  }
+
+  const balk=document.getElementById('eindoordeel-balk');
+  balk.style.background=eoAchtergrond;
+  document.getElementById('eindoordeel-icoon').textContent=eoIcoon;
+  document.getElementById('eindoordeel-titel').style.color=eoKleur;
+  document.getElementById('eindoordeel-titel').textContent=eoTitel;
+  document.getElementById('eindoordeel-tekst').style.color=eoKleur;
+  document.getElementById('eindoordeel-tekst').textContent=eoTekst;
+}
+
+// INIT
+renderNotities();
+renderInvestering();
+render();
+</script>
+</body>
+</html>
